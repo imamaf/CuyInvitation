@@ -23,3 +23,7 @@ Route::get('/dashboard', function () {
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

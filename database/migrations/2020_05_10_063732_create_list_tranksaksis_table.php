@@ -16,7 +16,7 @@ class CreateListTranksaksisTable extends Migration
         Schema::create('list_tranksaksis', function (Blueprint $table) {
             $table->integer('user_id')->primary();
             $table->string('kode_transaksi' , 30);
-            $table->unique('template_id');
+            $table->string('template_id');
             $table->string('pembayaran');
             $table->timestamps();
         });

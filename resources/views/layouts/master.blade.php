@@ -69,7 +69,11 @@
                         </a>
                     </li>
                     <li class="nav-item" style="position: absolute; bottom: 10px;">
-                        <a class="nav-link" href="#">
+                        <a 
+                        href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();"
+                        class="nav-link" href="#">
                             <i class="material-icons">power_settings_new</i>
                             <p>Logout</p>
                         </a>
@@ -117,7 +121,11 @@
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Log out</a>
+                                    <a 
+                                    href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                    class="dropdown-item" href="#">Log out</a>
                                 </div>
                             </li>
                         </ul>
