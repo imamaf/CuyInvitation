@@ -17,9 +17,8 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+Route::get('/dashboard','DashboardController@index');
+
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');
 });

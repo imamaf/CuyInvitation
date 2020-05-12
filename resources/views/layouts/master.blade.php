@@ -73,10 +73,13 @@
                         href="{{ route('logout') }}"
                          onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();"
-                        class="nav-link" href="#">
+                        class="nav-link">
                             <i class="material-icons">power_settings_new</i>
                             <p>Logout</p>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                         </form>
                     </li>
                 </ul>
             </div>
@@ -123,9 +126,12 @@
                                     <div class="dropdown-divider"></div>
                                     <a 
                                     href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                                    class="dropdown-item" href="#">Log out</a>
+                                      onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();"
+                                    class="dropdown-item">Log out</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         </ul>
