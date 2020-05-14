@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListTemplatesTable extends Migration
+class CreateTemplateCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateListTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('list_templates', function (Blueprint $table) {
+        Schema::create('template_customer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('links' , 255);
             $table->string('nama_mempelai_pria' , 50);
@@ -27,15 +27,6 @@ class CreateListTemplatesTable extends Migration
             $table->dateTime('tgl_resepsi');
             $table->string('path_foto_pria' , 255);
             $table->string('path_foto_wanita' , 255);
-            $table->string('gallery_foto_1' , 255);
-            $table->string('gallery_foto_2' , 255);
-            $table->string('gallery_foto_3' , 255);
-            $table->string('gallery_foto_4' , 255);
-            $table->string('gallery_foto_5' , 255);
-            $table->string('gallery_foto_6' , 255);
-            $table->string('gallery_foto_7' , 255);
-            $table->string('gallery_foto_8' , 255);
-            $table->string('gallery_foto_9' , 255);
             $table->string('path_video' , 255);
             $table->string('deskripsi');
             $table->timestamps();
@@ -49,6 +40,6 @@ class CreateListTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_templates');
+        Schema::dropIfExists('template_customer');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListTranksaksisTable extends Migration
+class CreateFotoGalleryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateListTranksaksisTable extends Migration
      */
     public function up()
     {
-        Schema::create('list_tranksaksis', function (Blueprint $table) {
-            $table->integer('user_id')->primary();
-            $table->string('kode_transaksi' , 30);
+        Schema::create('foto_gallery', function (Blueprint $table) {
+            $table->increments('user_id');
             $table->string('template_id');
-            $table->string('pembayaran');
+            $table->string('path_foto_' , 255);
+            $table->string('deskripsi' , 255);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateListTranksaksisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_tranksaksis');
+        Schema::dropIfExists('foto_gallery');
     }
 }

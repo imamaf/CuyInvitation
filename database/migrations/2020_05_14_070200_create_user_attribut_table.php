@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserAttributsTable extends Migration
+class CreateUserAttributTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserAttributsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_attributs', function (Blueprint $table) {
+        Schema::create('user_attribut', function (Blueprint $table) {
             $table->increments('user_id');
             $table->string('nama' ,50);
             $table->string('no_hp' ,20);
@@ -30,6 +30,6 @@ class CreateUserAttributsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_attributs');
+        Schema::dropIfExists('user_attribut');
     }
 }

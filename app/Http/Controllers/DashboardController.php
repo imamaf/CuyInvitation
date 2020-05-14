@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\User;
 
 class DashboardController extends Controller
 {
@@ -24,6 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $user = user::all();
+        return view('admin.dashboard' , ['user' => $user]);
     }
 }
