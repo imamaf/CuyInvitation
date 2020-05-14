@@ -155,6 +155,7 @@
 												<strong>{{ $errors->first('password') }}</strong>
 											</span>
 										@endif
+										<input id="password-confirm" placeholder="Confirm password" type="password" class="form-control" name="password_confirmation" required>
 									<button type="submit" Class="btn"> Get Started</button>
 									<span>By registering, you agree to our <a href="#">Terms & Conditions.</a></span>
 								</div>
