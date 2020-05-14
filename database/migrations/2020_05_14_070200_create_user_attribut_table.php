@@ -16,6 +16,7 @@ class CreateUserAttributTable extends Migration
         Schema::create('user_attribut', function (Blueprint $table) {
             $table->increments('user_id');
             $table->string('nama' ,50);
+            $table->string('jenis_kelamin' ,50);
             $table->string('no_hp' ,20);
             $table->string('alamat' ,255);
             $table->string('path_foto' ,255);
