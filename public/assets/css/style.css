@@ -452,7 +452,7 @@ h4.b-w3ltxt {
 }
 .form-style-w3layout button.btn {
     color: #fff;
-    background: #ff4f81;
+    background: #FF3E75;
     border: none;
     padding: 14px 0;
     outline: none;
@@ -582,7 +582,7 @@ h2.heading{
     margin-bottom: 60px;
 }
 .services-inner {
-    border: 2px solid #ff4f81;
+    border: 2px solid #FF3E75;
     margin-left: 35px;
     transition: .3s;
     background: #fff
@@ -817,7 +817,7 @@ h3.heading {
     color: #fff;
 }
 .stats-section-w3pvt {
-    background: #ff4f81;
+    background: #FF3E75;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

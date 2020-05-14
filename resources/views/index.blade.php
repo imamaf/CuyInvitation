@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>CuyInvitation</title>
 
     <!-- css files -->
@@ -139,6 +140,142 @@
 	</div>
 </div>
 <!-- //banner -->
+
+<!-- services -->
+<section class="services py-5" id="services">
+	<div class="container">
+		<h3 class="heading mb-5">Our Services</h3>
+		<div class="row">
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<span class="fa fa-handshake-o"></span>
+						</div>
+						<div class="our-services-text">
+							<h4>Invitation Card</h4>
+							<p>Proin varius pellentesque nunc tincidunt ante. Init id lacus</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<span class="fa fa-image"></span>
+						</div>
+						<div class="our-services-text">
+							<h4>Bridal Cottage</h4>
+							<p>Proin varius pellentesque nunc tincidunt ante. Init id lacus</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<span class="fa fa-gavel"></span>
+						</div>
+						<div class="our-services-text">
+							<h4>Catering Services</h4>
+							<p>Proin varius pellentesque nunc tincidunt ante. Init id lacus</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<span class="fa fa-info-circle"></span>
+						</div>
+						<div class="our-services-text">
+							<h4>Wedding Decors</h4>
+							<p>Proin varius pellentesque nunc tincidunt ante. Init id lacus</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<span class="fa fa-hourglass"></span>
+						</div>
+						<div class="our-services-text">
+							<h4>Florist Services </h4>
+							<p>Proin varius pellentesque nunc tincidunt ante. Init id lacus</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="our-services-wrapper mb-60">
+					<div class="services-inner">
+						<div class="our-services-img">
+							<span class="fa fa-paw"></span>
+						</div>
+						<div class="our-services-text">
+							<h4>Matrimony Services</h4>
+							<p>Proin varius pellentesque nunc tincidunt ante. Init id lacus</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //services -->
+
+<!-- stats section -->
+<section class="stats-section-w3pvt" id="stats">
+	<div class="py-5">
+		<div class="container py-lg-5">
+		<h3 class="heading mb-sm-5 mb-4">Our statistics</h3>
+			<div class="row text-center">
+				<div class="col-lg-3 col-6">
+					<div class="w3layouts_stats_left w3_counter_grid">
+						<div class="stats-icon">
+							<span class="fa fa-credit-card"></span>
+						</div>
+						<p class="counter text-black">1568</p>
+						<p class="para-text-w3ls">Happy Couples</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-6">
+					<div class="w3layouts_stats_left w3_counter_grid2">	
+						<div class="stats-icon">
+							<span class="fa fa-users"></span>
+						</div>
+						<p class="counter">1900</p>
+						<p class="para-text-w3ls">Married Couples</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-6 mt-lg-0 mt-4">
+					<div class="w3layouts_stats_left w3_counter_grid1">	
+						<div class="stats-icon">
+							<span class="fa fa-dollar"></span>
+						</div>
+						<p class="counter">1422</p>
+						<p class="para-text-w3ls">Registered</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-6 mt-lg-0 mt-4">
+					<div class="w3layouts_stats_left w3_counter_grid1">	
+						<div class="stats-icon">
+							<span class="fa fa-users"></span>
+						</div>
+						<p class="counter">400</p>
+						<p class="para-text-w3ls">Media Followers</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //stats section -->
 
 </body>
 </html>
