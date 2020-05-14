@@ -25,7 +25,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = user::all();
+        $id = auth()->user()->id;
+        $user = user::where('id' , $id)->first();
+        // dd($user->role->kode_role);
         return view('admin.dashboard' , ['user' => $user]);
     }
 }

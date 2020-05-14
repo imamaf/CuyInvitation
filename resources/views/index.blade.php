@@ -14,6 +14,11 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
+
+	<script src="{{ asset('js/app.js') }}" defer></script>
+
+	  <!-- CSRF Token -->
+	  <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- //css files -->
 
     <!-- google fonts -->
@@ -38,6 +43,9 @@
 		<!-- nav -->
 		<nav class="py-3 d-lg-flex">
 			<div id="logo">
+				@if(Auth::user())
+				<h1> <a href="index.html"></span> Hi {{ Auth::user()->name}}</a></h1>
+				@endif
 				<h1> <a href="index.html"><span class="fa fa-gift"></span> Cuy Invitation </a></h1>
 			</div>
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
@@ -49,6 +57,14 @@
 				<li class=""><a href="#stats">Stats</a></li>
 				<li class=""><a href="#testi">Testimonials</a></li>
 				<li class=""><a href="#subscribe">Subscribe</a></li>
+				@if(Auth::user())
+				<li class=""><a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
+				</li>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>
+				
+				@endif
 			</ul>
 		</nav>
 		<!-- //nav -->
@@ -112,29 +128,42 @@
 					</div>
 					<!-- //banner slider-->
 				</div>
+				@if(!Auth::user())
 				<div class="col-lg-5 col-md-8 px-lg-3 px-0">
 					<div class="banner-form-w3 ml-lg-5">
 						<div class="padding">
-							<form action="#" method="post">
+						<form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                        @csrf
 								<h5 class="mb-3">Register & Join our Matrimony</h5>
 								<div class="form-style-w3layout">
-									<input placeholder="Your Name" name="name" type="text" required="">
-									<input placeholder="Your Email Id" name="email" type="email" required="">
-									<input placeholder="Contact Number" name="number" type="text" required="">
-									<select>
+									<input class="form-control" placeholder="Your Name" name="name" type="text" required="">
+									<input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Your Email Id" name="email" type="email" required="">
+									@if ($errors->has('email'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('email') }}</strong>
+										</span>
+									@endif
+									<input class="form-control" placeholder="Contact Number" name="number" type="text" required="">
+									<!-- <select>
 									  <option value="0">Gender</option>
 									  <option value="1">Male</option>
 									  <option value="2">Female</option>
 									  <option value="4">Transgender</option>
-									</select>
-									<!--<input placeholder="Password" name="password" type="password" required=""> -->
-									<button Class="btn"> Get Started</button>
+									</select> -->
+                              		  <input id="password" placeholder="Password" type="password" class="form-control" name="password" required>
+										@if ($errors->has('password'))
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $errors->first('password') }}</strong>
+											</span>
+										@endif
+									<button type="submit" Class="btn"> Get Started</button>
 									<span>By registering, you agree to our <a href="#">Terms & Conditions.</a></span>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
+				@endif
 			</div>
 		</div>
 	</div>
