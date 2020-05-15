@@ -33,9 +33,9 @@
 		<div class="ml-auto text-right right-p">
 			<ul>
 				<li class="mr-3">
-					<span class="fa fa-phone"></span>+62 856 9539 8738</li>
+					<span class="fa fa-phone"></span>+{{$companys->telepon}}</li>
 				<li>
-					<span class="fa fa-envelope-open"></span> <a href="mailto:info@example.com">cuyinfo@gmail.com</a> </li>
+					<span class="fa fa-envelope-open"></span> <a href="mailto:info@example.com">{{$companys->email}}</a> </li>
 			</ul>
 		</div>
 	</div>
@@ -143,7 +143,7 @@
 											<strong>{{ $errors->first('email') }}</strong>
 										</span>
 									@endif
-									<input class="form-control" placeholder="Contact Number" name="number" type="text" required="">
+									<input class="form-control" placeholder="Contact Number" name="no_hp" type="text" required="">
 									<!-- <select>
 									  <option value="0">Gender</option>
 									  <option value="1">Male</option>
@@ -156,6 +156,7 @@
 												<strong>{{ $errors->first('password') }}</strong>
 											</span>
 										@endif
+										<input id="password-confirm" placeholder="Confirm password" type="password" class="form-control" name="password_confirmation" required>
 									<button type="submit" Class="btn"> Get Started</button>
 									<span>By registering, you agree to our <a href="#">Terms & Conditions.</a></span>
 								</div>

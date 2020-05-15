@@ -39,13 +39,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{url('user-detail')}}">
                             <i class="material-icons">person</i>
                             <p>User Profile</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{url('web-company')}}">
                             <i class="material-icons">bubble_chart</i>
                             <p>Web Company</p>
                         </a>
@@ -374,7 +374,6 @@
             });
         });
     </script>
-
     @yield('scripts')
 
 </body>
