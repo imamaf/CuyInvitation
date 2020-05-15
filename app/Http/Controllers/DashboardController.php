@@ -68,7 +68,7 @@ class DashboardController extends Controller
             'telepon'=> $request->telepon ,
             'email'=> $request->email,
             'banner_1'=>$path_banner_1,
-            'aktif_flag' =>'T',
+            'aktif_flag' => $request->aktif_flag,
         ]);
         return redirect('/web-company')->with('status' , 'Data berhasil di update');
     }

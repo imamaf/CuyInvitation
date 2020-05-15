@@ -10,7 +10,7 @@ class CompanyController extends Controller
     public function index()
     {
 
-        $companys = Company::where('aktif_flag', 'A')->first();
+        $companys = Company::where('aktif_flag', 'Y')->first();
         return view('index', ['companys' => $companys]);
         
     }
