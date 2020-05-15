@@ -59,4 +59,17 @@ class DashboardController extends Controller
         ]);
         return redirect('/web-company')->with('status' , 'Data berhasil di tambah');
     }
+
+    public function updateWebCompany(Request $request , Company $company)
+    {
+          $path_banner_1 = $request->file('banner_1')->store('banner');
+            Company::wheere('id' , $company->id )->update([
+            'links' => $request->links,
+            'telepon'=> $request->telepon ,
+            'email'=> $request->email,
+            'banner_1'=>$path_banner_1,
+            'aktif_flag' =>'T',
+        ]);
+        return redirect('/web-company')->with('status' , 'Data berhasil di tambah');
+    }
 }

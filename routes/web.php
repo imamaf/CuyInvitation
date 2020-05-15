@@ -22,6 +22,8 @@ Route::get('/user-detail','DashboardController@showUserDetail');
 Route::get('/web-company','DashboardController@showWebCompany');
 // CREATE WEB -COMPANY
 Route::post('/create-web-company','DashboardController@createWebCompany');
+// UPDATE WEB -COMPANY
+Route::put('/update-web-company/{company}','DashboardController@updateWebCompany');
 
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');

@@ -49,6 +49,7 @@
                                     <td>
                                         <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
                                         <a data-toggle="modal" data-target="#modalEdit" href="#" class="btn btn-edit"><i class="far fa-edit"></i><a>
+                                        <a href="#" class="btn btn-delete"><i class="far fa-trash-alt"></i><a>
                                     </td>
                                 </tr>
                              @endforeach
@@ -106,6 +107,7 @@
 </section>
 <!-- Modal UPDATE -->
 <section>
+@foreach($companys as $cmp)
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -116,8 +118,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                @foreach($companys as $cmp)
-                    <form action="{{url('/add-alumni')}}" method="POST" enctype="multipart/form-data">
+                    <form action="/update-web-company/{{$cmp->id}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group">        
@@ -153,10 +154,10 @@
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
                 </form>
-                @endforeach
             </div>
         </div>
     </div>
+    @endforeach
 </section>
 
 @endsection
