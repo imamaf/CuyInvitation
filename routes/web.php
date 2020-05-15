@@ -10,12 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//INDEX PAGE
+Route::get('/','CompanyController@index');
 
-Route::get('/', function () {
-    return view('index');
-});
-
+//------------------ ADMIN DASHBOARD---------------------------
+//PAGE DASHBOARD
 Route::get('/dashboard','DashboardController@index');
+// USER DETAIL
+Route::get('/user-detail','DashboardController@showUserDetail');
+// SHOW WEB -COMPANY
+Route::get('/web-company','DashboardController@showWebCompany');
+// CREATE WEB -COMPANY
+Route::post('/create-web-company','DashboardController@createWebCompany');
 
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\User;
+use App\Company;
 
 class DashboardController extends Controller
 {
@@ -26,8 +27,36 @@ class DashboardController extends Controller
     public function index()
     {
         $id = auth()->user()->id;
-        $user = user::where('id' , $id)->first();
-        // dd($user->role->kode_role);
-        return view('admin.dashboard' , ['user' => $user]);
+        $user = User::with(['role'])->where('id' , $id)->get();
+        if($user[0]->role->kode_role == 'SA') {
+            return view('admin.dashboard' , ['user' => $user]);
+        } else {
+            return view('index');
+        }
+    }
+
+    public function showUserDetail()
+    {
+        return view('admin.user-profil.user-profil');
+    }
+    
+    public function showWebCompany()
+    {
+        $companys = Company::all();
+        return view('admin.web-company.web-company' , ['companys' => $companys]);
+    }
+
+
+    public function createWebCompany(Request $request)
+    {
+        $path_banner_1 = $request->file('banner_1')->store('banner');
+            Company::create([
+            'links' => $request->links,
+            'telepon'=> $request->telepon ,
+            'email'=> $request->email,
+            'banner_1'=>$path_banner_1,
+            'aktif_flag' =>'T',
+        ]);
+        return redirect('/web-company')->with('status' , 'Data berhasil di tambah');
     }
 }

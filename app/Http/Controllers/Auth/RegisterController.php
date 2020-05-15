@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\User_attribut;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,10 +74,15 @@ class RegisterController extends Controller
         $userAttribute = User_attribut::create([
             'user_id' => $user->id,
             'nama' => $data['name'],
-            'jenis_kelamin' => 'belum ada pak',
-            'no_hp' => 'ini dari mana',
-            'alamat' => 'ini juga',
-            'path_foto' => 'dan ini',
+            'jenis_kelamin' => '',
+            'no_hp' => $data['no_hp'],
+            'alamat' => '',
+            'path_foto' => '',
+        ]);
+
+        $role = Role::create([
+            'user_id' => $user->id,
+            'kode_role' => 'CSR',
         ]);
         
         return $user;
