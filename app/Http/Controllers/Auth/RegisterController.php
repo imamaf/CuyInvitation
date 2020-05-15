@@ -78,6 +78,7 @@ class RegisterController extends Controller
             'alamat' => 'ini juga',
             'path_foto' => 'dan ini',
         ]);
+        
         return $user;
     }
 }

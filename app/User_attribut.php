@@ -11,4 +11,5 @@ class User_attribut extends Model
         'user_id', 'nama', 'jenis_kelamin', 'no_hp', 'alamat', 'path_foto',
     ];
     //
+    //
 }
