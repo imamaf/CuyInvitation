@@ -70,6 +70,6 @@ class DashboardController extends Controller
             'banner_1'=>$path_banner_1,
             'aktif_flag' =>'T',
         ]);
-        return redirect('/web-company')->with('status' , 'Data berhasil di tambah');
+        return redirect('/web-company')->with('status' , 'Data berhasil di update');
     }
 }
