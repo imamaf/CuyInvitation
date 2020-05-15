@@ -17,9 +17,9 @@ Route::get('/','CompanyController@index');
 //PAGE DASHBOARD
 Route::get('/dashboard','DashboardController@index');
 // USER DETAIL
-Route::get('/user-detail','DashboardController@showUserDetail');
+Route::get('/user-detail','DashboardController@viewUserDetail');
 // SHOW WEB -COMPANY
-Route::get('/web-company','DashboardController@showWebCompany');
+Route::get('/web-company','DashboardController@viewWebCompany');
 // CREATE WEB -COMPANY
 Route::post('/create-web-company','DashboardController@createWebCompany');
 // UPDATE WEB -COMPANY

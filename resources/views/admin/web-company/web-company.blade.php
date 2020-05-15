@@ -33,6 +33,7 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
+                                <th>No</th>
                                 <th>Link</th>
                                 <th>Telepon</th>
                                 <th>Email</th>
@@ -40,8 +41,9 @@
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
-                                @foreach($companys as $cmp)
+                                @foreach($companys as $result => $cmp)
                                 <tr>
+                                    <td>{{$result + $companys->firstitem()}}</td>
                                     <td>{{$cmp->links}}</td>
                                     <td>{{$cmp->telepon}}</td>
                                     <td>{{$cmp->email}}</td>
@@ -55,6 +57,7 @@
                              @endforeach
                             </tbody>
                         </table>
+                        {{ $companys->links() }}
                     </div>
                 </div>
             </div>

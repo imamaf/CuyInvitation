@@ -35,14 +35,14 @@ class DashboardController extends Controller
         }
     }
 
-    public function showUserDetail()
+    public function viewUserDetail()
     {
         return view('admin.user-profil.user-profil');
     }
     
-    public function showWebCompany()
+    public function viewWebCompany()
     {
-        $companys = Company::all();
+        $companys = Company::paginate(2);
         return view('admin.web-company.web-company' , ['companys' => $companys]);
     }
 
