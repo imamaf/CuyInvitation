@@ -361,40 +361,22 @@
 			<h3 class="heading mb-sm-5 mb-4">testimoni our customers</h3>
 			<div class="text-center">
 				<div class="row">
+				@foreach($user_testimonis as $testimonis)
+					@if(!empty($testimonis->testimoni))
 					<div class="col-md-6">
 						<div class="testi-w3pvt-grid">
 							<p>
-								<span class="fa fa-quote-left"></span> Vivamus magna justo, lacinia eget consectetur
-								sed,
-								convallis at tellus. Nulla
-								quis lorem ut libero malesuada feugiat.Nulla quis lorem ut libero malesuada
-								feugiat.
-								Donec rutrum.
+								<span class="fa fa-quote-left"></span>{{$testimonis->testimoni->deskripsi}}
 								<span class="fa ml-2 fa-quote-right"></span>
 							</p>
 						</div>
 						<div class="testi-pos">
 							<img src="assets/images/ts1.jpg" alt="" class="img-fluid rounded-circle mb-3" />
-							<h4>Tommy & Kharin</h4>
+							<h4>{{$testimonis->name}}</h4>
 						</div>
 					</div>
-					<div class="col-md-6 mt-md-0 mt-3">
-						<div class="testi-w3pvt-grid">
-							<p>
-								<span class="fa fa-quote-left"></span> Vivamus magna justo, lacinia eget consectetur
-								sed,
-								convallis at tellus. Nulla
-								quis lorem ut libero malesuada feugiat.Nulla quis lorem ut libero malesuada
-								feugiat.
-								Donec rutrum.
-								<span class="fa ml-2 fa-quote-right"></span>
-							</p>
-						</div>
-						<div class="testi-pos">
-							<img src="assets/images/ts2.jpg" alt="" class="img-fluid rounded-circle mb-3" />
-							<h4>Taufik & Gina</h4>
-						</div>
-					</div>
+					@endif
+				@endforeach
 				</div>
 			</div>
 		</div>

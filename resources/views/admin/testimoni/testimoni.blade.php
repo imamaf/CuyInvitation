@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Data (Web Company)</h4>
+                    <h4 class="card-title ">Data (TESTIMONI)</h4>
                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                 </div>
                   <!-- STATUS MESSAGE -->
@@ -34,20 +34,18 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>No</th>
-                                <th>Link</th>
-                                <th>Telepon</th>
-                                <th>Email</th>
-                                <th>Status</th>
+                                <th>Nama</th>
+                                <th>Deskripsi</th>
+                                <th>Rating</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
-                                @foreach($companys as $result => $cmp)
+                                @foreach($testimonis as $result => $tmn)
                                 <tr>
-                                    <td>{{$result + $companys->firstitem()}}</td>
-                                    <td>{{$cmp->links}}</td>
-                                    <td>{{$cmp->telepon}}</td>
-                                    <td>{{$cmp->email}}</td>
-                                    <td>{{$cmp->aktif_flag == 'Y' ? 'Aktif' : 'Tidak Aktif'}}</td>
+                                    <td>{{$result + $testimonis->firstitem()}}</td>
+                                    <td>{{$tmn->nama}}</td>
+                                    <td>{{$tmn->deskripsi}}</td>
+                                    <td>{{$tmn->rating}}</td>
                                     <td>
                                         <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
                                         <a data-toggle="modal" data-target="#modalEdit" href="#" class="btn btn-edit"><i class="far fa-edit"></i><a>
@@ -57,7 +55,7 @@
                              @endforeach
                             </tbody>
                         </table>
-                        {{ $companys->links() }}
+                        {{ $testimonis->links() }}
                     </div>
                 </div>
             </div>
@@ -76,7 +74,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('/create-web-company')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{url('/create-testimoni')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">        
                          <input type="text" class="form-control" id="links" placeholder="Link" name="links" value="">
@@ -87,18 +85,6 @@
                     <div class="form-group">        
                          <input type="text" class="form-control" id="telepon" placeholder="Telepon" name="telepon" value="">
                      </div>
-                     <div class="form-group">
-                        <label>Image Banner 1</label>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Browse… <input type="file" id="imgInp" name="banner_1" class="custom-file-input" required>
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
-                        </div>
-                        <img class="img-thumbnail"  id='img-upload' style="width : 200px; heigth: 200px"/>
-                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
@@ -110,7 +96,6 @@
 </section>
 <!-- Modal UPDATE -->
 <section>
-@foreach($companys as $cmp)
 <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -121,17 +106,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/update-web-company/{{$cmp->id}}" method="POST" enctype="multipart/form-data">
+                    <form action="/update-testimoni" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="links" placeholder="Link" name="links" value="{{$cmp->links}}">
+                         <input type="text" class="form-control" id="links" placeholder="Link" name="links" value="">
                      </div>
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{$cmp->email}}">
+                         <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="">
                      </div>
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="telepone" placeholder="Telepon" name="telepone" value="{{$cmp->telepone}}">
+                         <input type="text" class="form-control" id="telepone" placeholder="Telepon" name="telepone" value="">
                      </div>
                     <div class="form-group">
                         <label>Image Banner 1</label>
@@ -160,7 +145,6 @@
             </div>
         </div>
     </div>
-    @endforeach
 </section>
 
 @endsection

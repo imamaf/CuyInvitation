@@ -18,10 +18,12 @@ Route::get('/','CompanyController@index');
 Route::get('/dashboard','DashboardController@index');
 // USER DETAIL
 Route::get('/user-detail','DashboardController@viewUserDetail');
-// SHOW WEB -COMPANY
+// SHOW WEB-COMPANY-DATATABLE
 Route::get('/web-company','DashboardController@viewWebCompany');
 // CREATE WEB -COMPANY
 Route::post('/create-web-company','DashboardController@createWebCompany');
+// SHOW TESTIMONI-DATATABLE
+Route::get('/testimoni','DashboardController@viewTestimoni');
 // UPDATE WEB -COMPANY
 Route::put('/update-web-company/{company}','DashboardController@updateWebCompany');
 

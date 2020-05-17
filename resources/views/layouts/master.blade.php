@@ -63,6 +63,12 @@
                         </a>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" href="{{url('testimoni')}}">
+                            <i class="material-icons">library_books</i>
+                            <p>Testimoni</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="#">
                             <i class="material-icons">credit_card</i>
                             <p>Transaksi</p>

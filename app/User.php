@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
+use App\User_attribut;
+use App\Testimoni;
 
 class User extends Authenticatable
 {
@@ -22,6 +24,15 @@ class User extends Authenticatable
     public function role()
     {
     	return $this->hasOne('App\Role');
+    }
+    
+    public function user_attribut()
+    {
+    	return $this->hasOne('App\User_attribut');
+    }
+    public function testimoni()
+    {
+    	return $this->hasOne('App\Testimoni');
     }
 
     /**
