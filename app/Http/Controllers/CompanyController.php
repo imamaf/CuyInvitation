@@ -12,8 +12,15 @@ class CompanyController extends Controller
     {
         $user_testimonis = User::with(['testimoni'])->get();
         $companys = Company::where('aktif_flag', 'Y')->first();
-        return view('index', ['companys' => $companys , 'user_testimonis' => $user_testimonis]);
+        $data = ['companys' => $companys , 'user_testimonis' => $user_testimonis];
+        // dd(is_null($companys));
+        return !is_null($companys)?view('index', $data):'';
         
+    }
+
+    public function getCompanyByIndex(Request $request) {
+        $data = Company::find($request->id);
+        return $data;
     }
     //
 }

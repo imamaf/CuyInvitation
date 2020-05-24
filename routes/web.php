@@ -27,6 +27,8 @@ Route::get('/testimoni','DashboardController@viewTestimoni');
 // UPDATE WEB -COMPANY
 Route::put('/update-web-company/{company}','DashboardController@updateWebCompany');
 
+Route::get('/getCompanyById/{id}', 'CompanyController@getCompanyByIndex');
+
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');
 });

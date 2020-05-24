@@ -399,7 +399,7 @@
 			<div class="team-grid col-md-3 mb-5">
 				<img src="assets/images/couple2.jpg" class="" alt="" />
 				<div class="team-info text-center">
-					<h3 class="">Ade & Yessi</h3>
+					<h3 class="">Ade & Siapapun</h3>
 					<span class="">Love Couple</span>
 				</div>
 			</div>
