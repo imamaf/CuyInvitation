@@ -147,9 +147,15 @@ Web Company
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Example select</label>
+<<<<<<< HEAD
                             <select class="form-control" id="aktif_flagModal" name="aktif_flagModal">
                                 <option value="Y">Aktif</option>
                                 <option value="T">Tidak Aktif</option>
+=======
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Aktif</option>
+                                <option>Tidak Aktif</option>
+>>>>>>> 288d6d7a0e088e50ef8f276c2755eefaf808789b
                             </select>
                         </div>
                         <div class="modal-footer">
