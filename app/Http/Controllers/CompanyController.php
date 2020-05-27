@@ -13,7 +13,6 @@ class CompanyController extends Controller
         $user_testimonis = User::with(['testimoni'])->get();
         $companys = Company::where('aktif_flag', 'Y')->first();
         $data = ['companys' => $companys , 'user_testimonis' => $user_testimonis];
-        // dd(is_null($companys));
         return !is_null($companys)?view('index', $data):'';
         
     }

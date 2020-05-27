@@ -13,26 +13,35 @@
 //INDEX PAGE
 Route::get('/','CompanyController@index');
 
-//------------------ ADMIN DASHBOARD---------------------------
+//----------------------------- ADMIN DASHBOARD ---------------------------
 //PAGE DASHBOARD
 Route::get('/dashboard','DashboardController@index');
+// ---------------------------- ROUTER PAGE USER DASHBOARD ----------------
 // VIEW LIST USER MEMBER DATATABLE
 Route::get('/list-user','DashboardController@viewListUser');
 
 Route::get('/getUserById/{id}', 'DashboardController@getUserByIndex');
 // UPDATE LIST-USER
 Route::put('/update-list-user/{user}','DashboardController@updateListUser');
+// DELETE LIST-USER
+Route::delete('/delete-list-user/{user}','DashboardController@deleteListUser');
 
 // USER DETAIL
 Route::get('/user-detail','DashboardController@viewUserDetail');
+
+// ---------------------------- ROUTER PAGE COMPANY DASHBOARD ----------------
 // VIEW WEB-COMPANY-DATATABLE
 Route::get('/web-company','DashboardController@viewWebCompany');
 // CREATE WEB -COMPANY
 Route::post('/create-web-company','DashboardController@createWebCompany');
-// VIEW TESTIMONI-DATATABLE
-Route::get('/testimoni','DashboardController@viewTestimoni');
 // UPDATE WEB -COMPANY
 Route::put('/update-web-company/{company}','DashboardController@updateWebCompany');
+// DELETE WEB-COMPANY
+Route::delete('/delete-web-company/{company}','DashboardController@deleteWebCompany');
+
+// ---------------------------- ROUTER PAGE TESTIMONI DASHBOARD ----------------
+// VIEW TESTIMONI-DATATABLE
+Route::get('/testimoni','DashboardController@viewTestimoni');
 
 Route::get('/getCompanyById/{id}', 'DashboardController@getCompanyByIndex');
 

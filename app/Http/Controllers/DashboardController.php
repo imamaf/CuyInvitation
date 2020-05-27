@@ -9,6 +9,7 @@ use App\Company;
 use App\Testimoni;
 use App\User_attribut;
 use App\Role;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -19,7 +20,18 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(function ($request, $next){
+            if (Auth::user()){
+                $id = auth()->user()->id;
+                $user = User::with(['user_attribut' , 'role'])->find($id);
+                if($user->role->kode_role == 'SA') {
+                    return $next($request);
+                } else if($user->role->kode_role == 'CSR') {
+                    return redirect('/');
+                }
+            }
+               return abort(404);
+            });
     }
 
     /**
@@ -39,6 +51,7 @@ class DashboardController extends Controller
             return view('index',['companys' => $companys , 'user_testimonis' => $user_testimonis]);
         }
     }
+// --------------------- CONTROLLER PAGE USER ADMIN DASHBOARD  ----------------------
 
     public function viewListUser()
     {
@@ -57,38 +70,42 @@ class DashboardController extends Controller
     {
         User::where('id' , $user->id )->update([
             'name' => $request->nama_Modal,
-            'email' => $request->email_Modal,
         ]);
 
        User_attribut::where('user_id' , $user->id )->update([
-            'user_id' => $user->id,
             'nama' => $request->nama_Modal,
             'no_hp' => $request->no_hp_Modal,
         ]);
 
         Role::where('user_id' , $user->id )->update([
-            'user_id' => $user->id,
             'kode_role' => $request->role_Modal,
         ]);
 
         return redirect('/list-user')->with('status' , 'Data berhasil di update');
     }
 
+    //Delete List User
+    public function deleteListUser(User $user) {
+        User::where('id', $user->id)->delete();
+        User_attribut::where('user_id', $user->id)->delete();
+        Role::where('user_id', $user->id)->delete();
+        $user->delete();
+        return redirect('/list-user')->with('status' , 'Data berhasil dihapus');
+    }
+
     public function viewUserDetail()
     {
         return view('admin.user-profil.user-profil');
     }
+
+
+    // --------------------- CONTROLLER PAGE COMPANY ADMIN DASHBOARD ----------------------
+
     //DATATABLE COMPANY
     public function viewWebCompany()
     {
         $companys = Company::paginate(5);
         return view('admin.web-company.web-company' , ['companys' => $companys]);
-    }
-    // DATATABLE TESTIMONI
-    public function viewTestimoni()
-    {
-        $testimonis = Testimoni::paginate(5);
-        return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
     }
 
     public function createWebCompany(Request $request)
@@ -121,5 +138,21 @@ class DashboardController extends Controller
     public function getCompanyByIndex(Request $request) {
         $data = Company::find($request->id);
         return $data;
+    }
+
+    //Delete List User
+    public function deleteWebCompany(Company $company) {
+        $company->delete();
+        return redirect('/web-company')->with('status' , 'Data berhasil dihapus');
+    }
+
+    
+// --------------------- CONTROLLER PAGE TESTIMONI ADMIN DASHBOARD  ----------------------
+
+     // DATATABLE TESTIMONI
+    public function viewTestimoni()
+    {
+        $testimonis = Testimoni::paginate(5);
+        return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
     }
 }

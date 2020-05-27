@@ -17,18 +17,18 @@ Web Company
                 <h4 class="card-title ">Data (Web Company)</h4>
                 <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
             </div>
-            <!-- STATUS MESSAGE -->
-            @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-            @endif
-            @if (session('error') || !empty($notFound) )
-            <div class="alert alert-danger" role="alert">
-                <?php echo !empty($error) ? $error : $notFound ?>
-            </div>
-            @endif
             <div class="card-body">
+             <!-- STATUS MESSAGE -->
+                @if (session('status'))
+                <p style="color:green">
+                    {{ session('status') }}
+                </p>
+                @endif
+                @if (session('error') || !empty($notFound) )
+                <p style="color:red">
+                    <?php echo !empty($error) ? $error:$notFound ?>
+                </p>
+                @endif  
                 <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
                 <div class="table-responsive">
                     <table class="table">
@@ -51,7 +51,7 @@ Web Company
                                 <td>
                                     <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
                                     <a id="editButton" data-toggle="modal" value="{{$cmp->id}}" href="#" class="btn btn-edit open_modal"><i class="far fa-edit"></i><a>
-                                    <a href="#" class="btn btn-delete"><i class="far fa-trash-alt"></i><a>
+                                    <a  data-toggle="modal" href="#" value="{{$cmp->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
                                 </td>
                             </tr>
                             @endforeach
@@ -121,7 +121,7 @@ Web Company
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/update-web-company/{{$cmp->id}}" method="POST" enctype="multipart/form-data">
+                    <form id="action" action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="form-group">
@@ -147,15 +147,9 @@ Web Company
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Example select</label>
-<<<<<<< HEAD
                             <select class="form-control" id="aktif_flagModal" name="aktif_flagModal">
                                 <option value="Y">Aktif</option>
                                 <option value="T">Tidak Aktif</option>
-=======
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Aktif</option>
-                                <option>Tidak Aktif</option>
->>>>>>> 288d6d7a0e088e50ef8f276c2755eefaf808789b
                             </select>
                         </div>
                         <div class="modal-footer">
@@ -167,6 +161,16 @@ Web Company
             </div>
         </div>
 </section>
+<!-- SECTION MODAL DELETE -->
+@section('message')
+    menghapus data ini
+@endsection
+
+@section('url')
+ /delete-user/
+@endsection
+@include('layouts.modal-info.modal-info')
+<!-- END -->
 
 @endsection
 
@@ -205,6 +209,9 @@ Web Company
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        $("#imgInp").change(function() {
+            readURL(this);
+        });
 
         $(document).on('click', '.open_modal', function() {
             var url = "/getCompanyById";
@@ -214,6 +221,7 @@ Web Company
                 //success data
                 console.log('data : ', data);
                 console.log("$('#links')", $('#linksModal'));
+                $('#action').attr('action' , '/update-web-company/' + tour_id);
                 $('#teleponModal').val(data.telepon);
                 $('#linksModal').val(data.links);
                 $('#emailModal').val(data.email);
@@ -223,9 +231,14 @@ Web Company
             })
         });
 
-        $("#imgInp").change(function() {
-            readURL(this);
-        });
+        $(document).on('click', '.open_modal-delete', function() {
+        var tour_id = $(this).attr("value");
+            console.log('id : ', tour_id);
+
+            $('#action-info').attr('action' , '/delete-web-company/' + tour_id);
+
+            $('#modal-info').modal('show');
+         });
     });
 </script>
 
