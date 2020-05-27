@@ -50,10 +50,14 @@
             <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                     <div class="card-icon">
+                    <a href="{{url('/list-user')}}">
                         <i class="material-icons">info_outline</i>
+                    </a>
                     </div>
                     <p class="card-category">Members</p>
-                    <h3 class="card-title">145</h3>
+                    @foreach($user as $key => $usr)
+                    <h3 class="card-title">{{$key}}</h3>
+                    @endforeach
                 </div>
                 <div class="card-footer">
                     <div class="stats">

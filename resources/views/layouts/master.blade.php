@@ -39,9 +39,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('user-detail')}}">
+                        <a class="nav-link" href="{{url('list-user')}}">
                             <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                            <p>User</p>
                         </a>
                     </li>
                     <li class="nav-item">
