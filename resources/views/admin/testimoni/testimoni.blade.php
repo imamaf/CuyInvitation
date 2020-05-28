@@ -17,19 +17,19 @@
                     <h4 class="card-title ">Data (TESTIMONI)</h4>
                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                 </div>
-                  <!-- STATUS MESSAGE -->
-                  @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                    @if (session('error') || !empty($notFound) )
-                    <div class="alert alert-danger" role="alert">
-                       <?php echo !empty($error) ? $error:$notFound ?>
-                    </div>
-                    @endif  
                 <div class="card-body">
-                <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
+                 <!-- STATUS MESSAGE -->
+                 @if (session('status'))
+                <p style="color:green">
+                    {{ session('status') }}
+                </p>
+                @endif
+                @if (session('error') || !empty($notFound) )
+                <p style="color:red">
+                    <?php echo !empty($error) ? $error:$notFound ?>
+                </p>
+                @endif  
+                <!-- <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button> -->
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -48,8 +48,8 @@
                                     <td>{{$tmn->rating}}</td>
                                     <td>
                                         <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
-                                        <a data-toggle="modal" data-target="#modalEdit" href="#" class="btn btn-edit"><i class="far fa-edit"></i><a>
-                                        <a href="#" class="btn btn-delete"><i class="far fa-trash-alt"></i><a>
+                                        <a data-toggle="modal" data-target="#modalEdit" value="{{$tmn->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
+                                        <a  data-toggle="modal" href="#" value="{{$tmn->id}}"  class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i><a>
                                     </td>
                                 </tr>
                              @endforeach
@@ -106,46 +106,40 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/update-testimoni" method="POST" enctype="multipart/form-data">
+                    <form id="action" action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="links" placeholder="Link" name="links" value="">
+                         <input type="text" class="form-control" id="nama_Modal" placeholder="Nama" name="nama_Modal" value="">
                      </div>
+                     <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi_Modal" name="deskripsi_Modal" rows="3"></textarea>
+                    </div>
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="">
+                         <input type="text" class="form-control" id="rating_Modal" placeholder="Rating" name="rating_Modal" value="">
                      </div>
-                    <div class="form-group">        
-                         <input type="text" class="form-control" id="telepone" placeholder="Telepon" name="telepone" value="">
-                     </div>
-                    <div class="form-group">
-                        <label>Image Banner 1</label>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Browse… <input type="file" id="imgInp" name="banner_1" class="custom-file-input" required>
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
-                        </div>
-                        <img class="img-thumbnail"  id='img-upload' style="width : 200px; heigth: 200px"/>
-                        </div>
-                    <div class="form-group">
-                    <label for="exampleFormControlSelect1">Example select</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Aktif</option>
-                    <option>Tidak Aktif</option>
-                    </select>
-                </div>
+                    
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Konfirmasi</button>
                 </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<!-- SECTION MODAL DELETE -->
+@section('message')
+    menghapus data ini
+@endsection
+
+@section('url')
+ /delete-user/
+@endsection
+@include('layouts.modal-info.modal-info')
+<!-- END -->
 
 @endsection
 
@@ -187,7 +181,31 @@ $(document).ready( function() {
 		$("#imgInp").change(function(){
 		    readURL(this);
 		}); 	
-	});
+    });
+    $(document).on('click', '.open_modal_update', function() {
+        var url = "/getTestimoniById";
+        var tour_id = $(this).attr("value");
+            console.log('id : ', tour_id);
+        $.get(url + '/' + tour_id, function(data) {
+            //success data
+            console.log('data : ', data);
+            console.log('data action : ', $('#action'));
+            $('#action').attr('action' , '/update-testimoni/' + tour_id);
+            $('#nama_Modal').val(data.nama);
+            $('#deskripsi_Modal').val(data.deskripsi);
+            $('#rating_Modal').val(data.rating);
+            $('#btn-save').val("update");
+            $('#modalEdit').modal('show');
+        });
+    });
+    $(document).on('click', '.open_modal_delete', function() {
+        var tour_id = $(this).attr("value");
+            console.log('id : ', tour_id);
+
+            $('#action-info').attr('action' , '/delete-testimoni/' + tour_id);
+
+            $('#modal-info').modal('show');
+         });
 </script>
 
 @endsection

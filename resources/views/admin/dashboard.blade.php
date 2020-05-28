@@ -55,9 +55,9 @@
                     </a>
                     </div>
                     <p class="card-category">Members</p>
-                    @foreach($user as $key => $usr)
-                    <h3 class="card-title">{{$key}}</h3>
-                    @endforeach
+                   
+                    <h3 class="card-title">{{$wordCount}}</h3>
+                  
                 </div>
                 <div class="card-footer">
                     <div class="stats">

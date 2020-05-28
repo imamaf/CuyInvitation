@@ -49,9 +49,9 @@ Web Company
                                 <td>{{$cmp->email}}</td>
                                 <td>{{$cmp->aktif_flag == 'Y' ? 'Aktif' : 'Tidak Aktif'}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
-                                    <a id="editButton" data-toggle="modal" value="{{$cmp->id}}" href="#" class="btn btn-edit open_modal"><i class="far fa-edit"></i><a>
-                                    <a  data-toggle="modal" href="#" value="{{$cmp->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
+                                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$cmp->id}}"><i class="far fa-eye"></i><a>
+                                    <a data-toggle="modal" value="{{$cmp->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
+                                    <a data-toggle="modal" href="#" value="{{$cmp->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
                                 </td>
                             </tr>
                             @endforeach
@@ -63,6 +63,36 @@ Web Company
         </div>
     </div>
 </div>
+
+<!-- Modal VIEW -->
+<section>
+    <div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="linksModal" placeholder="Link" name="linksModal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="emailModal" placeholder="Email" name="emailModal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="teleponModal" placeholder="Telepon" name="teleponModal">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-primary">Aktifkan</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+</section>
 
 <!-- Modal Tambah -->
 <section>
@@ -125,13 +155,13 @@ Web Company
                         @csrf
                         @method('put')
                         <div class="form-group">
-                            <input type="text" class="form-control" id="linksModal" placeholder="Link" name="linksModal">
+                            <input type="text" class="form-control" id="links_Modal" placeholder="Link" name="links_Modal">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="emailModal" placeholder="Email" name="emailModal">
+                            <input type="text" class="form-control" id="email_Modal" placeholder="Email" name="email_Modal">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="teleponModal" placeholder="Telepon" name="teleponModal">
+                            <input type="text" class="form-control" id="telepon_Modal" placeholder="Telepon" name="telepon_Modal">
                         </div>
                         <div class="form-group">
                             <label>Image Banner 1</label>
@@ -145,13 +175,13 @@ Web Company
                             </div>
                             <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
+                        <!-- <div class="form-group">
+                            <label for="exampleFormControlSelect1">Status</label>
                             <select class="form-control" id="aktif_flagModal" name="aktif_flagModal">
                                 <option value="Y">Aktif</option>
                                 <option value="T">Tidak Aktif</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -213,7 +243,7 @@ Web Company
             readURL(this);
         });
 
-        $(document).on('click', '.open_modal', function() {
+        $(document).on('click', '.open_modal_update', function() {
             var url = "/getCompanyById";
             var tour_id = $(this).attr("value");
                 console.log('id : ', tour_id);
@@ -222,9 +252,9 @@ Web Company
                 console.log('data : ', data);
                 console.log("$('#links')", $('#linksModal'));
                 $('#action').attr('action' , '/update-web-company/' + tour_id);
-                $('#teleponModal').val(data.telepon);
-                $('#linksModal').val(data.links);
-                $('#emailModal').val(data.email);
+                $('#telepon_Modal').val(data.telepon);
+                $('#links_Modal').val(data.links);
+                $('#email_Modal').val(data.email);
                 $('#aktif_flagModal').val(data.aktif_flag);
                 $('#btn-save').val("update");
                 $('#modalEdit').modal('show');
@@ -240,6 +270,22 @@ Web Company
             $('#modal-info').modal('show');
          });
     });
+    $(document).on('click', '.open_modal_view', function() {
+            var url = "/getCompanyById";
+            var tour_id = $(this).attr("value");
+                console.log('id : ', tour_id);
+            $.get(url + '/' + tour_id, function(data) {
+                //success data
+                console.log('data : ', data);
+                $('#teleponModal').val(data.telepon);
+                $('#linksModal').val(data.links);
+                $('#emailModal').val(data.email);
+                $('#aktif_flagModal').val(data.aktif_flag);
+                $('#btn-save').val("update");
+                $('#modalView').modal('show');
+            })
+        });
+    
 </script>
 
 @endsection

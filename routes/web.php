@@ -34,16 +34,24 @@ Route::get('/user-detail','DashboardController@viewUserDetail');
 Route::get('/web-company','DashboardController@viewWebCompany');
 // CREATE WEB -COMPANY
 Route::post('/create-web-company','DashboardController@createWebCompany');
+// GET BY ID
+Route::get('/getCompanyById/{id}', 'DashboardController@getCompanyByIndex');
 // UPDATE WEB -COMPANY
 Route::put('/update-web-company/{company}','DashboardController@updateWebCompany');
 // DELETE WEB-COMPANY
 Route::delete('/delete-web-company/{company}','DashboardController@deleteWebCompany');
 
+
 // ---------------------------- ROUTER PAGE TESTIMONI DASHBOARD ----------------
 // VIEW TESTIMONI-DATATABLE
 Route::get('/testimoni','DashboardController@viewTestimoni');
+//GET BY ID
+Route::get('/getTestimoniById/{id}', 'DashboardController@getTestimoniByIndex');
+// UPDATE TESTIMONI
+Route::put('/update-testimoni/{testimoni}','DashboardController@updateTestimoni');
+// DELETE TESTIMONI
+Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimoni');
 
-Route::get('/getCompanyById/{id}', 'DashboardController@getCompanyByIndex');
 
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');

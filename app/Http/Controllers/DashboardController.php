@@ -18,6 +18,7 @@ class DashboardController extends Controller
      *
      * @return void
      */
+    // CHECK AUTH BY ROLE
     public function __construct()
     {
         $this->middleware(function ($request, $next){
@@ -43,10 +44,12 @@ class DashboardController extends Controller
     {
         $id = auth()->user()->id;
         $user = User::with(['role'])->where('id' , $id)->get();
+        $userCount = User::with(['role'])->get();
+        $wordCount = count($userCount);
         $companys = Company::where('aktif_flag', 'Y')->first();
         $user_testimonis = User::with(['testimoni'])->get();
         if($user[0]->role->kode_role == 'SA') {
-            return view('admin.dashboard' , ['user' => $user]);
+            return view('admin.dashboard' , compact('wordCount'), ['user' => $user]);
         } else {
             return view('index',['companys' => $companys , 'user_testimonis' => $user_testimonis]);
         }
@@ -135,7 +138,8 @@ class DashboardController extends Controller
     }
 
     // GET COMPANY BY ID
-    public function getCompanyByIndex(Request $request) {
+    public function getCompanyByIndex(Request $request)
+    {
         $data = Company::find($request->id);
         return $data;
     }
@@ -154,5 +158,30 @@ class DashboardController extends Controller
     {
         $testimonis = Testimoni::paginate(5);
         return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
+    }
+
+    // GET COMPANY BY ID
+    public function getTestimoniByIndex(Request $request)
+    {
+        $data = Testimoni::find($request->id);
+        return $data;
+    }
+
+    // UPDATE TESTIMONI
+    public function updateTestimoni(Request $request , Testimoni $testimoni)
+    {
+            Testimoni::where('id' , $testimoni->id )->update([
+            'nama' => $request->nama_Modal,
+            'deskripsi'=> $request->deskripsi_Modal ,
+            'rating'=> $request->rating_Modal,
+        ]);
+        return redirect('/testimoni')->with('status' , 'Data berhasil di update');
+    }
+
+    //Delete List User
+    public function deleteTestimoni(Testimoni $testimoni) 
+    {
+        $testimoni->delete();
+        return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
     }
 }
