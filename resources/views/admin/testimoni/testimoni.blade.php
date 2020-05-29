@@ -47,8 +47,8 @@
                                     <td>{{$tmn->deskripsi}}</td>
                                     <td>{{$tmn->rating}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
-                                        <a data-toggle="modal" data-target="#modalEdit" value="{{$tmn->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
+                                        <a href="#" class="btn btn-view open_modal_view" value="{{$tmn->id}}"><i class="far fa-eye"></i><a>
+                                        <a data-toggle="modal" value="{{$tmn->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
                                         <a  data-toggle="modal" href="#" value="{{$tmn->id}}"  class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i><a>
                                     </td>
                                 </tr>
@@ -62,32 +62,32 @@
         </div>
     </div>
 
-<!-- Modal Tambah -->
+<!-- Modal VIEW -->
 <section>
-<div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('/create-testimoni')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    <form>
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="links" placeholder="Link" name="links" value="">
+                         <input type="text" readOnly class="form-control" id="nama_view" placeholder="Nama" name="nama" value="">
                      </div>
+                     <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Deskripsi</label>
+                        <textarea readOnly class="form-control" id="deskripsi_view" name="deskripsi_Modal" rows="3"></textarea>
+                    </div>
                     <div class="form-group">        
-                         <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="">
-                     </div>
-                    <div class="form-group">        
-                         <input type="text" class="form-control" id="telepon" placeholder="Telepon" name="telepon" value="">
+                         <input type="text" readOnly class="form-control" id="rating_view" placeholder="Email" name="email" value="">
                      </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Konfirmasi</button>
                 </div>
                 </form>
             </div>
@@ -100,7 +100,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -196,6 +196,22 @@ $(document).ready( function() {
             $('#rating_Modal').val(data.rating);
             $('#btn-save').val("update");
             $('#modalEdit').modal('show');
+        });
+    });
+    $(document).on('click', '.open_modal_view', function() {
+        var url = "/getTestimoniById";
+        var tour_id = $(this).attr("value");
+            console.log('id : ', tour_id);
+        $.get(url + '/' + tour_id, function(data) {
+            //success data
+            console.log('data : ', data);
+            console.log('data action : ', $('#action'));
+            $('#action').attr('action' , '/update-testimoni/' + tour_id);
+            $('#nama_view').val(data.nama);
+            $('#deskripsi_view').val(data.deskripsi);
+            $('#rating_view').val(data.rating);
+            $('#btn-save').val("update");
+            $('#modalView').modal('show');
         });
     });
     $(document).on('click', '.open_modal_delete', function() {

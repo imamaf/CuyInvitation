@@ -2,11 +2,11 @@
 
 
 @section('title')
-    List User | CuyInvitation
+    User | CuyInvitation
 @endsection
 
 @section('header')
-    List User
+    User
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title ">Data (List User)</h4>
+                    <h4 class="card-title ">Data (User)</h4>
                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                 </div>
                 <div class="card-body">
@@ -48,7 +48,7 @@
                                     <td>{{$usr->email}}</td>
                                     <td>{{$usr->role->kode_role}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-view"><i class="far fa-eye"></i><a>
+                                        <a href="#" value="{{$usr->id}}" class="btn btn-view open_modal_view"><i class="far fa-eye"></i><a>
                                         <a id="editButton" data-toggle="modal" value="{{$usr->id}}" href="#" class="btn btn-edit open_modal-update"><i class="far fa-edit"></i><a>
                                         <a  data-toggle="modal" href="#" value="{{$usr->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
                                     </td>
@@ -72,6 +72,40 @@
 @endsection
 
 @include('layouts.modal-info.modal-info')
+
+<!-- Modal View Detail -->
+<section>
+<div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                    <div class="form-group">        
+                         <input type="text" readOnly class="form-control" id="nama_view" placeholder="Nama" name="nama" value="">
+                     </div>
+                    <div class="form-group">        
+                         <input type="text" readOnly class="form-control" id="email_view" placeholder="Email" name="email" value="">
+                     </div>
+                    <div class="form-group">        
+                         <input type="text" readOnly class="form-control" id="no_hp_view" placeholder="No HP" name="no_hp" value="">
+                     </div>
+                    <div class="form-group">        
+                         <input type="text" readOnly class="form-control" id="role_view" placeholder="Role" name="role_view" value="">
+                     </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Modal Tambah -->
 <section>
@@ -177,6 +211,22 @@
             $('#role_Modal').val(data.role.kode_role);
             $('#btn-save').val("update");
             $('#modalEdit').modal('show');
+        })
+    });
+    $(document).on('click', '.open_modal_view', function() {
+        var url = "/getUserById";
+        var tour_id = $(this).attr("value");
+            console.log('id : ', tour_id);
+        $.get(url + '/' + tour_id, function(data) {
+            //success data
+            console.log('data : ', data);
+            console.log('data action : ', $('#action'));
+            $('#nama_view').val(data.name);
+            $('#no_hp_view').val(data.user_attribut.no_hp);
+            $('#email_view').val(data.email);
+            $('#role_view').val(data.role.kode_role);
+            $('#btn-save').val("update");
+            $('#modalView').modal('show');
         })
     });
     $(document).on('click', '.open_modal-delete', function() {

@@ -70,20 +70,20 @@ Web Company
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="linksModal" placeholder="Link" name="linksModal">
+                            <input type="text" readOnly class="form-control" id="linksModal" placeholder="Link" name="linksModal">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="emailModal" placeholder="Email" name="emailModal">
+                            <input type="text" readOnly class="form-control" id="emailModal" placeholder="Email" name="emailModal">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="teleponModal" placeholder="Telepon" name="teleponModal">
+                            <input type="text" readOnly class="form-control" id="teleponModal" placeholder="Telepon" name="teleponModal">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -100,7 +100,7 @@ Web Company
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -145,7 +145,7 @@ Web Company
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
