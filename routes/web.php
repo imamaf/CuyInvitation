@@ -57,6 +57,10 @@ Route::get('/templatecompany', function () {
     return view('admin.templatecompany');
 });
 
+Route::get('/design_C01', function () {
+    return view('product_design.design_C01');
+});
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
