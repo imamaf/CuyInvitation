@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="{{ asset('../assets/img/favicon.png') }}">
     <title>CuyInvitation</title>
 
     <!-- css files -->
-    <link href="assets/css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
-    <link href="assets/css/style.css" rel='stylesheet' type='text/css' /><!-- custom css -->
-	<link href="assets/css/css_slider.css" type="text/css" rel="stylesheet" media="all">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome css -->
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{{ asset('assets/css/bootstrap.css') }}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{{ asset('assets/css/style.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
+	<link href="{{ asset('assets/css/css_slider.css') }}" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet" >
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
 
 	<script src="{{ asset('js/app.js') }}" defer></script>
 
