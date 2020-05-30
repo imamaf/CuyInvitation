@@ -9,6 +9,10 @@
     User
 @endsection
 
+@section('cari')
+User
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-md-12">

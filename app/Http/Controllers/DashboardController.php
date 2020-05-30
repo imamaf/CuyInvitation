@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\User;
@@ -184,4 +184,38 @@ class DashboardController extends Controller
         $testimoni->delete();
         return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
     }
+
+    // ------------------- CONTROLLER SEARCH -------------
+    public function Search(Request $request , string $pathSearch){
+        $cari = $request->cari;
+        $id = auth()->user()->id;
+        //SEARCH USER
+        if($pathSearch == 'User'){
+            $users = User::with(['user_attribut' , 'role'])->where('name' , 'LIKE' ,"%".$cari."%")->paginate(5);
+            if(count($users) == 0) {
+                //MESSAGE DATA TIDAK DITEMUKAN
+                return view('admin.user-profil.list-member-user', ['users' => $users])->with('notFound','Data Tidak ditemukan');
+            }
+            return view('admin.user-profil.list-member-user', ['users' => $users]);
+        }
+        // SEARCH WEB COMPANY
+         else if ($pathSearch == 'Web Company') {
+            $companys = Company::where('links' , 'LIKE' ,"%".$cari."%")->paginate(5);
+            if(count($companys) == 0) {
+                //MESSAGE DATA TIDAK DITEMUKAN
+                return view('admin.web-company.web-company' , ['companys' => $companys])->with('notFound','Data Tidak ditemukan');
+            }
+            return view('admin.web-company.web-company' , ['companys' => $companys]);
+        } 
+        // SEARCH TESTIMONI
+        else if ($pathSearch == 'Testimoni') {
+            $testimonis = Testimoni::where('nama' , 'LIKE' ,"%".$cari."%")->paginate(5);
+            if(count($testimonis) == 0) {
+                //MESSAGE DATA TIDAK DITEMUKAN
+                return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis])->with('notFound','Data Tidak ditemukan');
+            }
+            return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
+        }
+    }
+    
 }

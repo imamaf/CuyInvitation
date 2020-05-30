@@ -9,6 +9,10 @@ Web Company | CuyInvitation
 Web Company
 @endsection
 
+@section('cari')
+Web Company
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">

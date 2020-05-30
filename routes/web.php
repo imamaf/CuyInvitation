@@ -52,6 +52,9 @@ Route::put('/update-testimoni/{testimoni}','DashboardController@updateTestimoni'
 // DELETE TESTIMONI
 Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimoni');
 
+// ---------------------------- SEARCH ------------------
+Route::get('/cari/{pathSearch}','DashboardController@Search');
+
 
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');
