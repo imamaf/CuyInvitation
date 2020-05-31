@@ -64,6 +64,8 @@ Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimo
 Route::get('/template-customer','DashboardController@viewTemplateCustomer');
 //GET BY ID
 Route::get('/getTemplateCustomerById/{id}', 'DashboardController@getTemplateCustomerByIndex');
+// UPDATE TESTIMONI
+Route::put('/update-template-customer/{template_customer}','DashboardController@updateTemplateCustomer');
 
 // ---------------------------- SEARCH ------------------
 Route::get('/cari/{pathSearch}','DashboardController@Search');

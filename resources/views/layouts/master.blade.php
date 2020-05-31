@@ -38,13 +38,13 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ 'list-user' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('list-user')}}">
                             <i class="material-icons">person</i>
                             <p>User</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ 'web-company' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('web-company')}}">
                             <i class="material-icons">bubble_chart</i>
                             <p>Web Company</p>
@@ -56,13 +56,13 @@
                             <p>Template - Company</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item {{ 'template-customer' == request()->path() ? 'active' : '' }} ">
                         <a class="nav-link" href="{{url('/template-customer')}}">
                             <i class="material-icons">library_books</i>
                             <p>Template - Customer</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li class="nav-item {{ 'testimoni' == request()->path() ? 'active' : '' }} ">
                         <a class="nav-link" href="{{url('testimoni')}}">
                             <i class="material-icons">library_books</i>
                             <p>Testimoni</p>

@@ -88,7 +88,7 @@
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                            <img class="img-thumbnail" id='img-upload' style="width : 150px; heigth: 150px" />
                         </div>
                         <!-- <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>

@@ -199,6 +199,18 @@ class DashboardController extends Controller
             return $data;
         }
 
+        // UPDATE TEMPLATE CUSTOMER
+        public function updateTemplateCustomer(Request $request , Template_customer $template_customer)
+        {
+            dd($request);
+                Testimoni::where('id' , $testimoni->id )->update([
+                'nama' => $request->nama_Modal,
+                'deskripsi'=> $request->deskripsi_Modal ,
+                'rating'=> $request->rating_Modal,
+            ]);
+            return redirect('/testimoni')->with('status' , 'Data berhasil di update');
+        }  
+
  // ---------------------  CONTROLLER SEARCH -------------
     public function Search(Request $request , string $pathSearch){
         $cari = $request->cari;

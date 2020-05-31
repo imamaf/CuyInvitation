@@ -13,6 +13,7 @@ Template Customer
 Template Customer
 @endsection
 
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -124,31 +125,27 @@ Template Customer
         </div>
 </section>
 
-<!-- Modal Tambah -->
-<section>
-    <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{url('/create-web-company')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
+
+<!-- Modal UPDATE-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title 1</h4>
+         </div>
+         <div class="modal-body">
+         <form id="actionUpdate" action="" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('put')
+               <fieldset style="display: block;">
+                  <div class="form-top">
+                     <div class="form-top-left">
+                        <h3>Step 1 / 2</h3>
+                        <p>Lengkapi data berikut</p>
+                     </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="links" placeholder="Link" name="links" value="">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="telepon" placeholder="Telepon" name="telepon" value="">
-                        </div>
-                        <div class="form-group">
-                            <label>Image Banner 1</label>
+                            <label>Foto Mempelai Pria</label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
@@ -159,31 +156,18 @@ Template Customer
                             </div>
                             <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-</section>
-
-<!-- Modal UPDATE -->
-<section>
-    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="action" action="" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
+                        <!-- <div class="form-group">
+                            <label>Foto Mempelai Wanita</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp" name="banner_2" class="custom-file-input" required>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                        </div> -->
                         <div class="form-group">
                             <input type="text" class="form-control" id="links_update" placeholder="Link" name="links_update">
                         </div>
@@ -214,8 +198,41 @@ Template Customer
                         <div class="form-group">
                             <input type="text" class="form-control" id="deskripsi_update" placeholder="Deskripsi" name="deskripsi_update">
                         </div>
-                        <div class="form-group">
-                            <label>Image Banner 1</label>
+                     <button type="submit" class="btn btn-next">Next</button>
+                  </div>
+               </fieldset>
+               
+            </form>
+         </div>
+         <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-prev">Prev</button>
+            <button type="button" class="btn btn-default btn-next">Next</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div> -->
+      </div>
+   </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title 2</h4>
+         </div>
+         <div class="modal-body">
+         <form id="actionUpdat" action="" method="POST" enctype="multipart/form-data">
+         @csrf
+        @method('put')
+                  <div class="form-top">
+                     <div class="form-top-left">
+                        <h3>Step 2 / 2</h3>
+                        <p>Foto Gallery:</p>
+                     </div>
+                  </div>         
+                     <div class="form-group col">
+                     <div class="form-group">
+                            <label>Foto Mempelai Pria</label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
@@ -226,22 +243,37 @@ Template Customer
                             </div>
                             <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="exampleFormControlSelect1">Status</label>
-                            <select class="form-control" id="aktif_flagModal" name="aktif_flagModal">
-                                <option value="Y">Aktif</option>
-                                <option value="T">Tidak Aktif</option>
-                            </select>
-                        </div> -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                     <div class="row">
+                        <div class="small-12 medium-2 large-2 columns">
+                            <div class="circle">
+                            <!-- User Profile Image -->
+                            <img class="profile-pic" src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">
+
+                            <!-- Default Image -->
+                            <!-- <i class="fa fa-user fa-5x"></i> -->
+                            </div>
+                            <div class="p-image">
+                            <i class="fa fa-camera upload-button"></i>
+                                <input name="path_foto" id="path_foto" class="file-upload" type="file" accept="image/*"/>
+                            </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-</section>
+                     </div>
+
+                     <div class="form-group">
+                            <input type="text" class="form-control" id="deskripsi_update" placeholder="Deskripsi" name="deskripsi_update">
+                        </div>
+
+                    
+                     <button type="button" class="btn btn-previous btn-prev">Previous</button>
+                     <button type="submit" class="btn">Sign me up!</button>
+                  </div>
+           </form>
+         </div>
+      </div>
+   </div>
+</div>
+
+
 <!-- SECTION MODAL DELETE -->
 @section('message')
     menghapus data ini
@@ -254,6 +286,49 @@ Template Customer
 <!-- END -->
 
 @endsection
+
+<style>
+.profile-pic {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+}
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 1000px !important;
+    overflow: hidden;
+    width: 128px;
+    height: 128px;
+    border: 8px solid rgba(255, 255, 255, 0.7);
+    /* position: absolute; */
+    top: 72px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.p-image {
+  /* position: absolute; */
+  top: 167px;
+  right: 30px;
+  color: #666666;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+</style>
 
 
 @section('scripts')
@@ -302,7 +377,7 @@ Template Customer
                 //success data
                 console.log('data : ', data);
                 console.log("$('#links')", $('#linksModal'));
-                $('#action').attr('action' , '/update-web-company/' + tour_id);
+                $('#actionUpdate').attr('action' , '/update-template-customer/' + tour_id);
                 $('#links_update').val(data.links);
                 $('#nama_mempelai_pria_update').val(data.nama_mempelai_pria);
                 $('#nama_mempelai_wanita_update').val(data.nama_mempelai_wanita);
@@ -315,7 +390,7 @@ Template Customer
                 $('#tgl_resepsi_update').val(data.tgl_resepsi);
                 $('#deskripsi_update').val(data.deskripsi);
                 $('#btn-save').val("update");
-                $('#modalEdit').modal('show');
+                $('#myModal1').modal('show');
             })
         });
 
@@ -350,6 +425,49 @@ Template Customer
                 $('#modalView').modal('show');
             })
         });
+
+$("div[id^='myModal']").each(function(){
+  
+  var currentModal = $(this);
+  
+  //click next
+  currentModal.find('.btn-next').click(function(){
+    currentModal.modal('hide');
+    currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+  });
+  
+  //click prev
+  currentModal.find('.btn-prev').click(function(){
+    currentModal.modal('hide');
+    currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+  });
+
+//   $("#avatar-1").fileinput({
+//     overwriteInitial: true,
+//     maxFileSize: 1500,
+//     showClose: false,
+//     showCaption: false,
+//     showBrowse: false,
+//     browseOnZoneClick: true,
+//     removeLabel: '',
+//     removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+//     removeTitle: 'Cancel or reset changes',
+//     elErrorContainer: '#kv-avatar-errors-2',
+//     msgErrorClass: 'alert alert-block alert-danger',
+//     defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar" style="width:160px"><h6 class="text-muted">Click to select</h6>',
+//     layoutTemplates: {main2: '{preview} {remove} {browse}'},
+//     allowedFileExtensions: ["jpg", "png", "gif"]
+// });
+
+
+});
+
+
+
+
+
+
+
     
 </script>
 
