@@ -9,6 +9,7 @@
     <link href="{{ asset('assets/css/style.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet"><!-- fontawesome css -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('/js/sal.js/dist/sal.css') }}">
 
 	<script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -110,6 +111,35 @@
             font-family: 'Poppins-Reg';
             font-size: 20px;
         }
+        .bag8bg {
+            text-align: center;
+            margin: 70px 100px;
+            /* width: 100%; */
+            background: url("{{ asset('assets/images/designc01/image-kehadiran.png')}}")no-repeat center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            background-size: cover;
+        }
+        .judul-bag8 {
+            padding: 20px 0;
+            font-family: 'Poppins-Reg';
+            font-weight: bolder;
+            color: #5d5d5d;
+        }
+        .btn-emas {
+            color: #fff;
+            background-color:#9d7b48;
+            border-color: #9d7b48;
+        }
+        .penutup {
+            font-family: 'GreatVibes';
+            color: #9d7b48;
+            font-size: 55px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
         @media (max-width: 992px) {
             .bag3{
                 margin: 20px 150px 20px 150px !important;
@@ -121,6 +151,29 @@
                 height: 150px !important;
                 width: 150px!important;
                 border-radius: 5%;
+            }
+            .bag7 {
+                margin: 70px 20px !important;
+            }
+            .bag8bg {
+                margin: 70px 20px !important;
+            }
+            .bag4 {
+                margin: 70px 60px !important;
+            }
+            .box-akad {
+                margin-top: -15vw !important;
+                width: 450px !important;
+                height: 290px !important;
+            }
+            .img-akad {
+                max-width: 450px !important;
+            }
+            .bag4-judul {
+                font-size: 27px !important;
+            }
+            .bag4-tempat {
+                font-size: 16px !important;
             }
         }
         @media (max-width: 780px) {
@@ -154,6 +207,21 @@
                 border-radius: 5%;
             }
             .judul-box {
+                font-size: 15px;
+            }
+            .bag7 {
+                margin: 70px 20px !important;
+            }
+            .bag8bg {
+                margin: 70px 20px !important;
+            }
+            .img-akad {
+                max-width: 400px !important;
+            }
+            .bag4-judul {
+                font-size: 25px;
+            }
+            .bag4-tempat {
                 font-size: 15px;
             }
         }
@@ -195,6 +263,40 @@
             .bag3{
                 margin: 20px 20px 20px 20px !important;
             }
+            .bodi-box {
+                font-size: 30px !important;
+            }
+            .box-jam {
+                height: 80px !important;
+                width: 80px!important;
+                border-radius: 5%;
+            }
+            .judul-box {
+                font-size: 10px;
+            }
+            .bag7 {
+                margin: 70px 20px !important;
+            }
+            .bag8bg {
+                margin: 70px 20px !important;
+            }
+            .bag4 {
+                margin: 70px 20px !important;
+            }
+            .img-akad {
+                max-width: 100% !important;
+            }
+            .bag4-judul {
+                font-size: 22px !important;
+            }
+            .bag4-tempat {
+                font-size: 13px !important;
+            }
+            .box-akad {
+                margin-top: -8vw !important;
+                width: 100% !important;
+                height: 230px !important;
+            }
         }
         
         /*  */
@@ -227,8 +329,9 @@
         }
 
         .box-akad {
-            /* border: 2px solid black; */
-            margin-top: 150px;
+            margin-top: -15vw;
+            width: 600px;
+            height: 36      0px;
             z-index: 1;
             background-color: #fff;
             text-align: center;
@@ -237,7 +340,7 @@
             box-shadow: 9px 9px 18px -1px rgba(0,0,0,0.75);
         }
         .img-akad {
-            max-width: 600px !important;
+            max-width: 600px;
         }
         .pad-nol {
             padding: 0px 0px;
@@ -249,34 +352,19 @@
         .padcol div {
             padding: 7px 7px;
         }
-        .bag8bg {
-            text-align: center;
-            margin: 70px 100px;
-            /* width: 100%; */
-            background: url("{{ asset('assets/images/designc01/image-kehadiran.png')}}")no-repeat center;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            -ms-background-size: cover;
-            background-size: cover;
-        }
-        .judul-bag8 {
-            padding: 20px 0;
+
+        .bag4-judul {
             font-family: 'Poppins-Reg';
-            font-weight: bolder;
+            font-weight: 900;
             color: #5d5d5d;
+            font-size: 30px;
         }
-        .btn-emas {
-            color: #fff;
-            background-color:#9d7b48;
-            border-color: #9d7b48;
+        .bag4-tempat {
+            font-family: 'Poppins-Reg';
+            color: #black;
+            font-size: 20px;
         }
-        .penutup {
-            font-family: 'GreatVibes';
-            color: #9d7b48;
-            font-size: 55px;
-            text-align: center;
-        }
+        
     </style>
 </head>
 <body class="bodyx">
@@ -284,10 +372,10 @@
         <div class="overlay">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 bag1 text-center">
-                    <div class="judul-1">Save The Date</div>
-                    <div class="judul-2">wedding of</div>
-                    <div class="judul-1">Henry &amp; Laura</div>
-                    <div class="judul-3">On February 02, 2020</div>
+                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800">Save The Date</div>
+                    <div class="judul-2" data-sal="flip-up" data-sal-duration="800" data-sal-delay="200">wedding of</div>
+                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">Henry &amp; Laura</div>
+                    <div class="judul-3" data-sal="flip-up" data-sal-duration="800" data-sal-delay="600">On February 02, 2020</div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pad-nol">
                     {{--  --}}
@@ -297,22 +385,22 @@
     </div>
     <div class="bag2">
         <div class="row align-items-center">
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-left">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-left" data-sal="slide-right" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai pria</div>
                     <div class="bag2-judul2">Henry Fernandez</div>
                     <div class="bag2-judul3">Putra Pertama Bpk. Ahmad Suryadi &amp; Ibu Mislawati</div>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-left" data-sal-duration="800">
                 <img src="{{url('assets/images/designc01/male.png')}}" alt="">
             </div>
         </div>
     </div>
     <div class="bag2">
         <div class="row align-items-center">
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-right" data-sal-duration="800">
                 <img src="{{url('assets/images/designc01/female.png')}}" alt="">
             </div>
-            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right" data-sal="slide-left" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai wanita</div>
                     <div class="bag2-judul2">Laura Basuki Kirana</div>
                     <div class="bag2-judul3">Putri Pertama Bpk. Tomi Erfanda &amp; Ibu Dilla Juita</div>
@@ -322,7 +410,7 @@
     </div>
     <div class="bag3">
         <div class="row justify-content-center text-center">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            <div class="col-3" data-sal="slide-down" data-sal-duration="800">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
                         <div class="mb-auto py-3 judul-box">DAYS</div>
@@ -330,7 +418,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            <div class="col-3" data-sal="slide-down" data-sal-duration="800" data-sal-delay="200">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
                         <div class="mb-auto py-3 judul-box">MINUTES</div>
@@ -338,7 +426,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+            <div class="col-3" data-sal="slide-down" data-sal-duration="800" data-sal-delay="400">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
                         <div class="mb-auto py-3 judul-box">HOURS</div>
@@ -346,7 +434,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-2">
+            <div class="col-3" data-sal="slide-down" data-sal-duration="800" data-sal-delay="600">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
                         <div class="mb-auto py-3 judul-box">SECONDS</div>
@@ -356,26 +444,54 @@
             </div>
         </div>
     </div>
-    {{-- <div class="bag4">
+    <div class="bag4">
         <h1 class="judul-bag4">Detail Acara</h1> <br> <br>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-12">
                 <img src="{{url('assets/images/designc01/image-akad.png')}}" class="img-akad" alt="">
             </div>
-            <div class="col-lg-6">
-                <div class="box-akad">
-                    Akad <br>
-                    Minggu, 02 Februari 2020 <br>
-                    08.00 s/d selesai <br>
-                    Mason Pine Hotel Bandung <br>
-                    ( Pine Garden Area ) <br> <br>
-                    Merupakan suatu kehormatan apabila <br>
-                    Bapak/Ibu/Saudara/i dapat hadir <br>
-                    untuk memberikan doa restu 
+            <div class="col-12">
+                <div class="d-flex justify-content-end py-3">
+                    <div class="box-akad">
+                        <div class="bag4-judul py-2">Akad</div>
+                        <div class="bag4-tempat py-2">
+                            Minggu, 02 Februari 2020 <br>
+                            08.00 s/d selesai <br>
+                            Mason Pine Hotel Bandung <br>
+                            ( Pine Garden Area ) <br> 
+                        <br>
+                            Merupakan suatu kehormatan apabila <br>
+                            Bapak/Ibu/Saudara/i dapat hadir <br>
+                            untuk memberikan doa restu 
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-12">
+                <div class="d-flex justify-content-end py-3">
+
+                <img src="{{url('assets/images/designc01/image-resepsi.png')}}" class="img-akad" alt="">
+                </div>
+            </div>
+            <div class="col-12">
+                {{-- <div class="d-flex justify-content-end py-3"> --}}
+                    <div class="box-akad">
+                        <div class="bag4-judul py-2">Resepsi</div>
+                        <div class="bag4-tempat py-2">
+                            Minggu, 02 Februari 2020 <br>
+                            11.00 s/d selesai <br>
+                            Mason Pine Hotel Bandung <br>
+                            ( Pine Garden Area ) <br> 
+                        <br>
+                            Merupakan suatu kehormatan apabila <br>
+                            Bapak/Ibu/Saudara/i dapat hadir <br>
+                            untuk memberikan doa restu 
+                        </div>
+                    </div>
+                {{-- </div> --}}
+            </div>
         </div>
-    </div> --}}
+    </div>
     <div class="bag7">
         <h1 class="judul-bag4">Galeri</h1> <br> <br>
         <div class="row text-center padcol">
@@ -426,3 +542,9 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jQuery.scrollSpeed.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
+<script src="js/sal.js/dist/sal.js"></script>
+<script>
+    sal({
+        once: false
+    });
+</script>
