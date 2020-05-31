@@ -245,42 +245,20 @@
 		<div class="container py-lg-5 py-3">
 			<h3 class="heading mb-sm-5 mb-4">Choose Your Design </h3>
 			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="grid">
-						<a href="#">
-							<img src="assets/images/couple1.jpg" alt="" class="img-fluid" />
-							<div class="info p-4">
-								<h4 class="">Design C01</h4>
-								<p class="mt-3">Rp. 200,000</p>
-								<button class="btn btn-primary">See more</button>
-							</div>
-						</a>
+				@foreach($template_company as $templateCompany)
+					<div class="col-lg-4 col-md-6">
+						<div class="grid">
+							<a href="/detailproduk/{{$templateCompany->id}}">
+								<img src="{{$templateCompany->url_gambar}}" alt="" class="img-fluid" />
+								<div class="info p-4">
+									<h4 class="">{{$templateCompany->nama_template}}</h4>
+									<p class="mt-3">Rp. {{$templateCompany->harga_template}}</p>
+									<button class="btn btn-primary">See more</button>
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mt-md-0 mt-4">
-					<div class="grid">
-						<a href="#">
-							<img src="assets/images/couple2.jpg" alt="" class="img-fluid" />
-							<div class="info p-4">
-								<h4 class="">Design C02</h4>
-								<p class="mt-3">Rp. 250,000</p>
-								<button class="btn btn-primary">See more</button>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
-					<div class="grid">
-						<a href="#">
-							<img src="assets/images/couple3.jpg" alt="" class="img-fluid" />
-							<div class="info p-4">
-								<h4 class="">Design C03</h4>
-								<p class="mt-3">Rp. 300,000</p>
-								<button class="btn btn-primary">See more</button>
-							</div>
-						</a>
-					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</section>

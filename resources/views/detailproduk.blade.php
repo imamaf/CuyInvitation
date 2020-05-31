@@ -12,7 +12,7 @@
         <div class="main-desc">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="../assets/images/couple1.jpg" alt class="img-fluid mx-auto d-block">
+                    <img src="{{$templateDetail->url_gambar}}" alt class="img-fluid mx-auto d-block">
                 </div>
                 <div class="col-md-6">
                     <div class="title-detail">
