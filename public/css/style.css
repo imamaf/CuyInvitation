@@ -246,7 +246,8 @@ background: #00aaff;
     margin-top: 10px;
     margin-bottom: 0;
     line-height: 26px;
-    font-size: 14px;
+	font-size: 14px;
+	overflow-wrap: break-word;
 }
 .produk-desc p {
     font-size: 14px;
