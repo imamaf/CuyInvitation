@@ -25,14 +25,14 @@
         }
         @font-face {
             font-family: GreatVibes;
-            src: url(assets/fonts/GreatVibes-Regular.ttf);
+            src: url("{{ asset('assets/fonts/GreatVibes-Regular.ttf')}}");
         }
         .ft-great {
             font-family: 'GreatVibes';
         }
         @font-face {
             font-family: Poppins-Reg;
-            src: url(assets/fonts/Poppins/Poppins-Regular.ttf);
+            src: url("{{ asset('assets/fonts/Poppins/Poppins-Regular.ttf')}}");
         }
         .ft-poppins-reg {
             font-family: 'Poppins-Reg';
@@ -42,7 +42,7 @@
         }
         .headbg {
             width: 100%;
-            background: url(assets/images/designc01/banner-temp-1.png)no-repeat center;
+            background: url("{{ asset('/assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -159,7 +159,7 @@
         }
         @media (max-width: 575px) {
             .headbg {
-                background: url(assets/images/designc01/banner-p.png)no-repeat center;
+                background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center;
             }
             .overlay {
                 background-color: #00000085;
@@ -253,7 +253,7 @@
             text-align: center;
             margin: 70px 100px;
             /* width: 100%; */
-            background: url(assets/images/designc01/image-kehadiran.png)no-repeat center;
+            background: url("{{ asset('assets/images/designc01/image-kehadiran.png')}}")no-repeat center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -299,23 +299,23 @@
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-left">
                     <div class="bag2-judul1 text-uppercase">mempelai pria</div>
-                    <div class="bag2-judul2">Henry Fernandez</div>
-                    <div class="bag2-judul3">Putra Pertama Bpk. Ahmad Suryadi &amp; Ibu Mislawati</div>
+                    <div class="bag2-judul2"> {{ empty($template_customer) ? "Henry Fernandez" : $template_customer->nama_mempelai_pria }}</div>
+                    <div class="bag2-judul3">Putra Pertama Bpk. {{ empty($template_customer) ? "Ahmad Suryadi" : $template_customer->nama_orang_tua_pria_bapak }}  &amp; {{ empty($template_customer) ? "Ibu Mislawati" : "Ibu ".$template_customer->nama_orang_tua_pria_ibu }} </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center">
-                <img src="assets/images/designc01/male.png" alt="">
+                <img src="{{url('assets/images/designc01/male.png')}}" alt="">
             </div>
         </div>
     </div>
     <div class="bag2">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center">
-                <img src="assets/images/designc01/female.png" alt="">
+                <img src="{{url('assets/images/designc01/female.png')}}" alt="">
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right">
                     <div class="bag2-judul1 text-uppercase">mempelai wanita</div>
-                    <div class="bag2-judul2">Laura Basuki Kirana</div>
-                    <div class="bag2-judul3">Putri Pertama Bpk. Tomi Erfanda &amp; Ibu Dilla Juita</div>
+                    <div class="bag2-judul2">{{ empty($template_customer) ? "Laura Basuki Kirana" : $template_customer->nama_mempelai_wanita }}</div>
+                    <div class="bag2-judul3">Putri Pertama Bpk. {{ empty($template_customer) ? "Taufik Romadhon" : $template_customer->nama_orang_tua_wanita_bapak }} &amp; {{ empty($template_customer) ? "Ibu Gina Rizka" : "Ibu ".$template_customer->nama_orang_tua_wanita_ibu }}</div>
             </div>
             
         </div>
@@ -360,7 +360,7 @@
         <h1 class="judul-bag4">Detail Acara</h1> <br> <br>
         <div class="row">
             <div class="col-lg-6">
-                <img src="assets/images/designc01/image-akad.png" class="img-akad" alt="">
+                <img src="{{url('assets/images/designc01/image-akad.png')}}" class="img-akad" alt="">
             </div>
             <div class="col-lg-6">
                 <div class="box-akad">
@@ -380,31 +380,31 @@
         <h1 class="judul-bag4">Galeri</h1> <br> <br>
         <div class="row text-center padcol">
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-1.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-1.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-2.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-2.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-3.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-3.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-4.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-4.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-5.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-5.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-6.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-6.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-7.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-7.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-8.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-8.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-9.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-9.jpg')}}" alt="">
             </div>
         </div>
     </div>
