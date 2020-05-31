@@ -16,6 +16,10 @@ Route::get('/','CompanyController@index');
 //INDEX PAGE
 Route::get('/detailproduk/{id}','DetailProdukController@getTemplateDetail');
 
+Route::get('/companyTemplateDetail/{id}', 'AdminTemplateCompany@getTemplateById');
+
+Route::put('/companyTemplateDetail/{id}', 'AdminTemplateCompany@updateTemplate');
+
 //----------------------------- ADMIN DASHBOARD ---------------------------
 //PAGE DASHBOARD
 Route::get('/dashboard','DashboardController@index');
@@ -64,9 +68,7 @@ Route::get('/getTemplateCustomerById/{id}', 'DashboardController@getTemplateCust
 // ---------------------------- SEARCH ------------------
 Route::get('/cari/{pathSearch}','DashboardController@Search');
 
-Route::get('/templatecompany', function () {
-    return view('admin.templatecompany');
-});
+Route::get('/templatecompany', 'AdminTemplateCompany@index');
 
 // ------------------------- TEMPLATE CLIENT ----------------
 
