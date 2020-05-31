@@ -14,7 +14,7 @@
 Route::get('/','CompanyController@index');
 
 //INDEX PAGE
-Route::get('/detailproduk','DetailProdukController@index');
+Route::get('/detailproduk/{id}','DetailProdukController@getTemplateDetail');
 
 //----------------------------- ADMIN DASHBOARD ---------------------------
 //PAGE DASHBOARD
