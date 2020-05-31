@@ -13,6 +13,9 @@
 //INDEX PAGE
 Route::get('/','CompanyController@index');
 
+//INDEX PAGE
+Route::get('/detailproduk/{id}','DetailProdukController@getTemplateDetail');
+
 //----------------------------- ADMIN DASHBOARD ---------------------------
 //PAGE DASHBOARD
 Route::get('/dashboard','DashboardController@index');
@@ -52,6 +55,12 @@ Route::put('/update-testimoni/{testimoni}','DashboardController@updateTestimoni'
 // DELETE TESTIMONI
 Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimoni');
 
+// ---------------------------- ROUTER PAGE TEMPLATE CUSTOMER DASHBOARD ----------------
+// VIEW TESTIMONI-DATATABLE
+Route::get('/template-customer','DashboardController@viewTemplateCustomer');
+//GET BY ID
+Route::get('/getTemplateCustomerById/{id}', 'DashboardController@getTemplateCustomerByIndex');
+
 // ---------------------------- SEARCH ------------------
 Route::get('/cari/{pathSearch}','DashboardController@Search');
 
@@ -63,7 +72,9 @@ Route::get('/templatecompany', function () {
 
 Route::get('/design_C01', 'TemplateCustomerController@index_tempalet_1');
 
-Route::get('/design_C01/{template_customer}', 'TemplateCustomerController@get_template_1');
+Route::get('/design_C01/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_1');
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+

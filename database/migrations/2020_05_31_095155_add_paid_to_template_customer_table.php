@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTestimonisTable extends Migration
+class AddPaidToTemplateCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTestimonisTable extends Migration
      */
     public function up()
     {
-        Schema::create('testimonis', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('template_customer', function (Blueprint $table) {
+            $table->string('kode_template')->after('id')->primary();
+            //
         });
     }
 
@@ -26,6 +26,8 @@ class CreateTestimonisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('testimonis');
+        Schema::table('template_customer', function (Blueprint $table) {
+            //
+        });
     }
 }

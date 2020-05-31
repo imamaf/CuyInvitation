@@ -9,6 +9,7 @@ use App\Company;
 use App\Testimoni;
 use App\User_attribut;
 use App\Role;
+use App\Template_customer;
 use Auth;
 
 class DashboardController extends Controller
@@ -101,8 +102,7 @@ class DashboardController extends Controller
         return view('admin.user-profil.user-profil');
     }
 
-
-    // --------------------- CONTROLLER PAGE COMPANY ADMIN DASHBOARD ----------------------
+ // --------------------- CONTROLLER PAGE COMPANY ADMIN DASHBOARD ----------------------
 
     //DATATABLE COMPANY
     public function viewWebCompany()
@@ -185,7 +185,21 @@ class DashboardController extends Controller
         return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
     }
 
-    // ------------------- CONTROLLER SEARCH -------------
+//   --------------------  CONTROLLER TEMPLATE CUSTOMER --------------
+         // DATATABLE Template Customer
+         public function viewTemplateCustomer()
+         {
+             $template_customer = Template_customer::paginate(5);
+             return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer] );
+         }
+         // GET TEMPLATE CLIENT BY ID
+        public function getTemplateCustomerByIndex(Request $request)
+        {
+            $data = Template_customer::find($request->id);
+            return $data;
+        }
+
+ // ---------------------  CONTROLLER SEARCH -------------
     public function Search(Request $request , string $pathSearch){
         $cari = $request->cari;
         $id = auth()->user()->id;

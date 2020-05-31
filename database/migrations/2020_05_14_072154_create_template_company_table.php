@@ -16,6 +16,7 @@ class CreateTemplateCompanyTable extends Migration
         Schema::create('template_company', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama_template' , 50);
+            $table->string('url_gambar', 255);
             $table->integer('harga_template');
             $table->string('deskripsi_template' , 255);
             $table->timestamps();

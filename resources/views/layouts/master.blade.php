@@ -51,15 +51,15 @@
                         </a>
                     </li>
                     <li class="nav-item {{ 'templatecompany' == request()->path() ? 'active' : '' }}">
-                        <a class="nav-link" href="/templatecompany">
+                        <a class="nav-link" href="{{url('/templatecompany')}}">
                             <i class="material-icons">library_books</i>
                             <p>Template - Company</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{url('/template-customer')}}">
                             <i class="material-icons">library_books</i>
-                            <p>Template - Client</p>
+                            <p>Template - Customer</p>
                         </a>
                     </li>
                     <li class="nav-item ">

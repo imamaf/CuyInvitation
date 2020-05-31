@@ -29,7 +29,7 @@ class TransactionController extends Controller
         $templateId = $request->template_id;
         $pembayaran = $request->pembayaran;
 
-        $dataSave = Transaction::where($request->id)->update([
+        $dataSave = Transaction::where('id', $request->id)->update([
             'user_id' => $userId,
             'kode_transaksi' => $kodeTransaksi,
             'template_id' => $templateId,
