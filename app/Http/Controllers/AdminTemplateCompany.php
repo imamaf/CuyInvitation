@@ -23,7 +23,7 @@ class AdminTemplateCompany extends Controller
         $path_banner = '';
         $dataFind = TemplateCompany::where('id', $request->id);
         if ($request_banner != null) {
-            $path_banner = $request_banner->store('banner');
+            $path_banner = $request_banner->store('public');
         } else {
             $path_banner = $dataFind->get()->first()->url_gambar;
         }
