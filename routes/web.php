@@ -13,6 +13,9 @@
 //INDEX PAGE
 Route::get('/','CompanyController@index');
 
+//INDEX PAGE
+Route::get('/detailproduk','DetailProdukController@index');
+
 //----------------------------- ADMIN DASHBOARD ---------------------------
 //PAGE DASHBOARD
 Route::get('/dashboard','DashboardController@index');
@@ -64,6 +67,8 @@ Route::get('/design_C01', function () {
     return view('product_design.design_C01');
 });
 
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
