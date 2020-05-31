@@ -13,7 +13,7 @@ class TemplateCustomerController extends Controller
     }
 
     public function get_template_1(string $search_cust_pria , string $search_cust_wanita){
-        $template_customer = Template_customer::where('nama_mempelai_pria' , $search_cust_pria)->where('nama_mempelai_wanita', $search_cust_wanita)->first();
+        $template_customer = Template_customer::where('nama_mempelai_pria' , $search_cust_pria)->where('nama_mempelai_wanita', $search_cust_wanita)->where('kode_template' , 'C01')->first();
         $gallerys = null;
         if(!empty($template_customer)) {
             $gallerys = Foto_gallery::where('template_id' , $template_customer->id)->where('user_id',  $template_customer->user_id)->get();

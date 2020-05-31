@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFotoGalleriesTable extends Migration
+class AddPaidToTemplateCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateFotoGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('foto_galleries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::table('template_customer', function (Blueprint $table) {
+            $table->string('kode_template')->after('id')->primary();
+            //
         });
     }
 
@@ -26,6 +26,8 @@ class CreateFotoGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foto_galleries');
+        Schema::table('template_customer', function (Blueprint $table) {
+            //
+        });
     }
 }
