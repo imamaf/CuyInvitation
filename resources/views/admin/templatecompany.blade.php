@@ -83,7 +83,7 @@
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
                                         <!-- <label for="imageModal">Browse...</label> -->
-                                        Browse...<input type="file" id="imageModal" name="banner_1" class="custom-file-input" style="z-index: 1">
+                                        Browse...<input type="file" accept="image/x-png,image/gif,image/jpeg" id="imageModal" name="banner_1" class="custom-file-input" style="z-index: 1">
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
@@ -157,7 +157,7 @@
                 $('#templateNameModal').val(data.nama_template);
                 $('#descriptionModal').val(data.deskripsi_template);
                 $('#priceModal').val(data.harga_template);
-                $('#img-upload').attr('src', "{{Storage::url('app/')}}"+data.url_gambar);
+                $('#img-upload').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/",""));
                 $('#btn-save').val("update");
                 $('#modalEdit').modal('show');
             })
