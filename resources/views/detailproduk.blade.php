@@ -27,6 +27,9 @@
                         <p>{{$templateDetail->deskripsi_template}}
                         </p>
                     </div>
+                    <div class="float-right" style="margin-left:10px;">
+                        <a href="#" class="btn-detail">Preview</a>
+                    </div>
                     <div class="float-right">
                         <a href="#" class="btn-detail">add to cart</a>
                     </div>
