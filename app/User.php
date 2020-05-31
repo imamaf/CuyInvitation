@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
 use App\User_attribut;
 use App\Testimoni;
+use App\Template_customer;
 
 class User extends Authenticatable
 {
@@ -21,11 +22,13 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+// ONE TO ONE role
     public function role()
     {
     	return $this->hasOne('App\Role');
     }
     
+// ONE TO ONE user_attribut
     public function user_attribut()
     {
     	return $this->hasOne('App\User_attribut');

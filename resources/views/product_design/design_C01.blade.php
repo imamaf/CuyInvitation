@@ -379,6 +379,8 @@
     <div class="bag7">
         <h1 class="judul-bag4">Galeri</h1> <br> <br>
         <div class="row text-center padcol">
+        @if(empty($gallerys))
+         <!-- KONDISI TIDAK ADA DATA  -->
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <img src="{{url('assets/images/designc01/galeri-1.jpg')}}" alt="">
             </div>
@@ -406,6 +408,15 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <img src="{{url('assets/images/designc01/galeri-9.jpg')}}" alt="">
             </div>
+            @endif
+            @if(!empty($gallerys))
+            <!-- KONDISI ADA DATA  -->
+                    @foreach($gallerys as $glr)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <img src="<?php echo url('assets/images' ,$glr->path_foto)?>" alt="">
+                    </div>
+                 @endforeach
+            @endif
         </div>
     </div>
     <div class="bag8bg">
@@ -419,7 +430,9 @@
         </div>
     </div>
     <div class="penutup">
-        Henry &amp; Laura
+    {{ empty($template_customer) ? "Henry" : $template_customer->nama_mempelai_pria }}
+         &amp;
+    {{ empty($template_customer) ? "Laura" : $template_customer->nama_mempelai_wanita }}
     </div>
 </body>
 </html>
