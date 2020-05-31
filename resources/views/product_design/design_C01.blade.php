@@ -88,7 +88,7 @@
             font-size: 20px;
         }
         .bag3{
-            margin: 20px 200px 20px 200px;
+            margin: 70px 200px 70px 200px;
         }
         .box-jam {
             height: 190px;
@@ -364,6 +364,9 @@
             color: #black;
             font-size: 20px;
         }
+        .spasi {
+            margin-bottom: 50px;
+        }
         
     </style>
 </head>
@@ -447,10 +450,10 @@
     <div class="bag4">
         <h1 class="judul-bag4">Detail Acara</h1> <br> <br>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" data-sal="slide-right" data-sal-duration="800">
                 <img src="{{url('assets/images/designc01/image-akad.png')}}" class="img-akad" alt="">
             </div>
-            <div class="col-12">
+            <div class="col-12 spasi" data-sal="slide-up" data-sal-duration="800">
                 <div class="d-flex justify-content-end py-3">
                     <div class="box-akad">
                         <div class="bag4-judul py-2">Akad</div>
@@ -467,13 +470,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" data-sal="slide-down" data-sal-duration="1200">
                 <div class="d-flex justify-content-end py-3">
 
                 <img src="{{url('assets/images/designc01/image-resepsi.png')}}" class="img-akad" alt="">
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12" data-sal="slide-right" data-sal-duration="800">
                 {{-- <div class="d-flex justify-content-end py-3"> --}}
                     <div class="box-akad">
                         <div class="bag4-judul py-2">Resepsi</div>
