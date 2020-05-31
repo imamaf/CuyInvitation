@@ -25,14 +25,14 @@
         }
         @font-face {
             font-family: GreatVibes;
-            src: url(assets/fonts/GreatVibes-Regular.ttf);
+            src: url("{{ asset('assets/fonts/GreatVibes-Regular.ttf')}}");
         }
         .ft-great {
             font-family: 'GreatVibes';
         }
         @font-face {
             font-family: Poppins-Reg;
-            src: url(assets/fonts/Poppins/Poppins-Regular.ttf);
+            src: url("{{ asset('assets/fonts/Poppins/Poppins-Regular.ttf')}}");
         }
         .ft-poppins-reg {
             font-family: 'Poppins-Reg';
@@ -42,7 +42,7 @@
         }
         .headbg {
             width: 100%;
-            background: url("{{ asset('assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
+            background: url("{{ asset('/assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -159,7 +159,7 @@
         }
         @media (max-width: 575px) {
             .headbg {
-                background: url(assets/images/designc01/banner-p.png)no-repeat center;
+                background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center;
             }
             .overlay {
                 background-color: #00000085;
@@ -253,7 +253,7 @@
             text-align: center;
             margin: 70px 100px;
             /* width: 100%; */
-            background: url(assets/images/designc01/image-kehadiran.png)no-repeat center;
+            background: url("{{ asset('assets/images/designc01/image-kehadiran.png')}}")no-repeat center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
