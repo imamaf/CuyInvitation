@@ -42,7 +42,7 @@
         }
         .headbg {
             width: 100%;
-            background: url(assets/images/designc01/banner-temp-1.png)no-repeat center;
+            background: url("{{ asset('assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -303,14 +303,14 @@
                     <div class="bag2-judul3">Putra Pertama Bpk. Ahmad Suryadi &amp; Ibu Mislawati</div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center">
-                <img src="assets/images/designc01/male.png" alt="">
+                <img src="{{url('assets/images/designc01/male.png')}}" alt="">
             </div>
         </div>
     </div>
     <div class="bag2">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center">
-                <img src="assets/images/designc01/female.png" alt="">
+                <img src="{{url('assets/images/designc01/female.png')}}" alt="">
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right">
                     <div class="bag2-judul1 text-uppercase">mempelai wanita</div>
@@ -360,7 +360,7 @@
         <h1 class="judul-bag4">Detail Acara</h1> <br> <br>
         <div class="row">
             <div class="col-lg-6">
-                <img src="assets/images/designc01/image-akad.png" class="img-akad" alt="">
+                <img src="{{url('assets/images/designc01/image-akad.png')}}" class="img-akad" alt="">
             </div>
             <div class="col-lg-6">
                 <div class="box-akad">
@@ -380,31 +380,31 @@
         <h1 class="judul-bag4">Galeri</h1> <br> <br>
         <div class="row text-center padcol">
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-1.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-1.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-2.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-2.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-3.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-3.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-4.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-4.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-5.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-5.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-6.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-6.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-7.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-7.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-8.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-8.jpg')}}" alt="">
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">
-                <img src="assets/images/designc01/galeri-9.jpg" alt="">
+                <img src="{{url('assets/images/designc01/galeri-9.jpg')}}" alt="">
             </div>
         </div>
     </div>

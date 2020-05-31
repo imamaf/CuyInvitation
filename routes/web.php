@@ -55,15 +55,15 @@ Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimo
 // ---------------------------- SEARCH ------------------
 Route::get('/cari/{pathSearch}','DashboardController@Search');
 
-
 Route::get('/templatecompany', function () {
     return view('admin.templatecompany');
 });
 
-Route::get('/design_C01', function () {
-    return view('product_design.design_C01');
-});
+// ------------------------- TEMPLATE CLIENT ----------------
 
+Route::get('/design_C01', 'TemplateCustomerController@index_tempalet_1');
+
+Route::get('/design_C01/{template_customer}', 'TemplateCustomerController@get_template_1');
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
