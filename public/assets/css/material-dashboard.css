@@ -3887,7 +3887,7 @@ tbody.collapse.show {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
 }
 

@@ -19,6 +19,7 @@
                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                 </div>
                 <div class="card-body">
+                <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -51,6 +52,52 @@
             </div>
         </div>
     </div>
+</section>
+
+<!-- Modal Tambah -->
+<section>
+    <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="templateCompanyModalAdd" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="templateCompanyModalAdd">Tambah Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url('/create-web-company')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="templateNameModal" placeholder="Nama Template" name="templateNameModal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="descriptionModal" placeholder="Deskripsi" name="descriptionModal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="priceModal" placeholder="Harga" name="priceModal">
+                        </div>
+                        <div class="form-group">
+                            <label>Image Banner 1</label>
+                            <br>
+                            <div class="input-group center-form">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" accept="image/x-png,image/gif,image/jpeg" id="imageModal"  name="banner_1" class="custom-file-input" style="z-index: 1" required>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 </section>
 
 <!-- Modal UPDATE -->
@@ -88,7 +135,7 @@
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 150px; heigth: 150px" />
+                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
                         </div>
                         <!-- <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>
