@@ -16,9 +16,13 @@ Route::get('/','CompanyController@index');
 //INDEX PAGE
 Route::get('/detailproduk/{id}','DetailProdukController@getTemplateDetail');
 
-Route::get('/companyTemplateDetail/{id}', 'AdminTemplateCompany@getTemplateById');
+Route::get('/companyTemplate/{id}', 'AdminTemplateCompany@getTemplateById');
 
-Route::put('/companyTemplateDetail/{id}', 'AdminTemplateCompany@updateTemplate');
+Route::put('/companyTemplate/{id}', 'AdminTemplateCompany@updateTemplate');
+
+Route::post('/addCompanyTemplate', 'AdminTemplateCompany@addTemplate');
+
+Route::delete('/deleteCompanyTemplate/{template_company}', 'AdminTemplateCompany@deleteTemplate');
 
 //----------------------------- ADMIN DASHBOARD ---------------------------
 //PAGE DASHBOARD

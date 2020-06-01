@@ -41,7 +41,7 @@
                                         <td>
                                             <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$templateCompany->id}}"><i class="far fa-eye"></i><a>
                                             <a data-toggle="modal" value="{{$templateCompany->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
-                                            <a data-toggle="modal" href="#" value="{{$templateCompany->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
+                                            <a data-toggle="modal" href="#" value="{{$templateCompany->id}}"  class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i><a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -66,16 +66,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{url('/create-web-company')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{url('/addCompanyTemplate')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" id="templateNameModal" placeholder="Nama Template" name="templateNameModal">
+                            <input type="text" class="form-control" id="templateNameAdd" placeholder="Nama Template" name="templateNameAdd">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="descriptionModal" placeholder="Deskripsi" name="descriptionModal">
+                            <input type="text" class="form-control" id="descriptionAdd" placeholder="Deskripsi" name="descriptionAdd">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="priceModal" placeholder="Harga" name="priceModal">
+                            <input type="text" class="form-control" id="priceAdd" placeholder="Harga" name="priceAdd">
                         </div>
                         <div class="form-group">
                             <label>Image Banner 1</label>
@@ -83,12 +83,12 @@
                             <div class="input-group center-form">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" accept="image/x-png,image/gif,image/jpeg" id="imageModal"  name="banner_1" class="custom-file-input" style="z-index: 1" required>
+                                        Browse… <input type="file" accept="image/*" id="imageModalAdd"  name="banner_1_add" class="custom-file-input" style="z-index: 1" required>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                            <img class="img-thumbnail" id='img-upload-add' style="width : 200px; heigth: 200px" />
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -126,16 +126,17 @@
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
-                            <div class="input-group">
+                            <br>
+                            <div id="imageGroupEdit" class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
                                         <!-- <label for="imageModal">Browse...</label> -->
-                                        Browse...<input type="file" accept="image/x-png,image/gif,image/jpeg" id="imageModal" name="banner_1" class="custom-file-input" style="z-index: 1">
+                                        Browse...<input type="file" accept="image/*" id="imageModalEdit" name="banner_1" class="custom-file-input" style="z-index: 1">
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                            <img class="img-thumbnail" id='img-upload-edit' style="width : 200px; heigth: 200px" />
                         </div>
                         <!-- <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>
@@ -146,13 +147,25 @@
                         </div> -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary" id="btn-save-edit">Save</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 </section>
+
+<!-- SECTION MODAL DELETE -->
+@section('message')
+    menghapus data ini
+@endsection
+
+@section('url')
+ /delete-user/
+@endsection
+@include('layouts.modal-info.modal-info')
+<!-- END -->
+
 @endsection
 
 
@@ -179,61 +192,71 @@
 
         });
 
-        function readURL(input) {
+        function readURL(input, from) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    console.log(e.target.result);
-                    $('#img-upload').attr('src', e.target.result);
+                    if (from == 'edit') {
+                        $('#img-upload-edit').attr('src', e.target.result);
+                    }
+                    else if (from == 'add') {
+                        $('#img-upload-add').attr('src', e.target.result);
+                    }
                 }
 
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#imageModal").change(function() {
-            readURL(this);
+        $("#imageModalEdit").change(function() {
+            readURL(this, 'edit');
+        });
+        $("#imageModalAdd").change(function() {
+            readURL(this, 'add');
         });
 
         $(document).on('click', '.open_modal_update', function() {
-            var url = "/companyTemplateDetail";
+            var url = "/companyTemplate";
             var id = $(this).attr("value");
             $.get(url + '/' + id, function(data) {
                 //success data
-                $('#action').attr('action' , '/companyTemplateDetail/' + id);
-                $('#templateNameModal').val(data.nama_template);
-                $('#descriptionModal').val(data.deskripsi_template);
-                $('#priceModal').val(data.harga_template);
-                $('#img-upload').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/",""));
-                $('#btn-save').val("update");
+                $('#action').attr('action' , '/companyTemplate/' + id);
+                $('#templateNameModal').val(data.nama_template).prop('disabled', false);
+                $('#descriptionModal').val(data.deskripsi_template).prop('disabled', false);
+                $('#priceModal').val(data.harga_template).prop('disabled', false);
+                $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', false);
+                $('#imageModalEdit').prop('disabled', false);
+                $('#imageGroupEdit').prop('hidden', false);
+                $('#btn-save-edit').val("update").prop('hidden', false);
                 $('#modalEdit').modal('show');
             })
         });
 
-        $(document).on('click', '.open_modal-delete', function() {
+        $(document).on('click', '.open_modal_view', function() {
+            var url = "/companyTemplate";
+            var id = $(this).attr("value");
+            $.get(url + '/' + id, function(data) {
+                //success data
+                // $('#action').attr('action' , '/companyTemplateDetail/' + id);
+                $('#templateNameModal').val(data.nama_template).prop('disabled', true);
+                $('#descriptionModal').val(data.deskripsi_template).prop('disabled', true);
+                $('#priceModal').val(data.harga_template).prop('disabled', true);
+                $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', true);
+                $('#imageModalEdit').prop('disabled', true);
+                $('#imageGroupEdit').prop('hidden', true);
+                $('#btn-save-edit').val("update").prop('hidden', true);
+                $('#modalEdit').modal('show');
+            })
+        });
+
+        $(document).on('click', '.open_modal_delete', function() {
         var tour_id = $(this).attr("value");
             console.log('id : ', tour_id);
 
-            $('#action-info').attr('action' , '/delete-web-company/' + tour_id);
+            $('#action-info').attr('action' , '/deleteCompanyTemplate/' + tour_id);
 
             $('#modal-info').modal('show');
          });
     });
-    $(document).on('click', '.open_modal_view', function() {
-            var url = "/getCompanyById";
-            var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
-            $.get(url + '/' + tour_id, function(data) {
-                //success data
-                console.log('data : ', data);
-                $('#teleponModal').val(data.telepon);
-                $('#linksModal').val(data.links);
-                $('#emailModal').val(data.email);
-                $('#aktif_flagModal').val(data.aktif_flag);
-                $('#btn-save').val("update");
-                $('#modalView').modal('show');
-            })
-        });
-    
 </script>
 @endsection
