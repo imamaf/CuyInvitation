@@ -127,17 +127,17 @@ Template Customer
 
 
 <!-- Modal UPDATE-->
+<form id="actionUpdate" action="" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('put')
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Biodata Pasangan</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title 1</h4>
          </div>
          <div class="modal-body">
-         <form id="actionUpdate" action="" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('put')
                <fieldset style="display: block;">
                   <div class="form-top">
                      <div class="form-top-left">
@@ -149,25 +149,25 @@ Template Customer
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="banner_1" class="custom-file-input" required>
+                                        Browse… <input type="file" id="imgInp1" name="path_foto_pria" class="custom-file-input" required>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                            <img class="img-thumbnail" id="img-upload1" style="width : 200px; heigth: 200px" />
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label>Foto Mempelai Wanita</label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="banner_2" class="custom-file-input" required>
+                                        Browse… <input type="file" id="imgInp2" name="path_foto_wanita" class="custom-file-input" required>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
-                        </div> -->
+                            <img class="img-thumbnail" id='img-upload2' style="width : 200px; heigth: 200px" />
+                        </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="links_update" placeholder="Link" name="links_update">
                         </div>
@@ -198,11 +198,9 @@ Template Customer
                         <div class="form-group">
                             <input type="text" class="form-control" id="deskripsi_update" placeholder="Deskripsi" name="deskripsi_update">
                         </div>
-                     <button type="submit" class="btn btn-next">Next</button>
+                     <button type="button" class="btn btn-next">Next</button>
                   </div>
                </fieldset>
-               
-            </form>
          </div>
          <!-- <div class="modal-footer">
             <button type="button" class="btn btn-default btn-prev">Prev</button>
@@ -217,13 +215,10 @@ Template Customer
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Foto Gallery</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title 2</h4>
          </div>
          <div class="modal-body">
-         <form id="actionUpdat" action="" method="POST" enctype="multipart/form-data">
-         @csrf
-        @method('put')
                   <div class="form-top">
                      <div class="form-top-left">
                         <h3>Step 2 / 2</h3>
@@ -231,47 +226,19 @@ Template Customer
                      </div>
                   </div>         
                      <div class="form-group col">
-                     <div class="form-group">
-                            <label>Foto Mempelai Pria</label>
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="banner_1" class="custom-file-input" required>
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
-                            </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
-                        </div>
-                     <div class="row">
-                        <div class="small-12 medium-2 large-2 columns">
-                            <div class="circle">
-                            <!-- User Profile Image -->
-                            <img class="profile-pic" src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">
 
-                            <!-- Default Image -->
-                            <!-- <i class="fa fa-user fa-5x"></i> -->
-                            </div>
-                            <div class="p-image">
-                            <i class="fa fa-camera upload-button"></i>
-                                <input name="path_foto" id="path_foto" class="file-upload" type="file" accept="image/*"/>
-                            </div>
-                        </div>
-                     </div>
+                     <div class="row" id = "circle">
+                        
 
-                     <div class="form-group">
-                            <input type="text" class="form-control" id="deskripsi_update" placeholder="Deskripsi" name="deskripsi_update">
-                        </div>
-
-                    
+                     </div>               
                      <button type="button" class="btn btn-previous btn-prev">Previous</button>
-                     <button type="submit" class="btn">Sign me up!</button>
+                     <button type="button" class="btn btn-submit-simpan">Simpan</button>
                   </div>
-           </form>
          </div>
       </div>
    </div>
 </div>
+</form>
 
 
 <!-- SECTION MODAL DELETE -->
@@ -359,15 +326,20 @@ img {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#img-upload').attr('src', e.target.result);
+                    $('#img-upload1').attr('src', e.target.result);
+                    $('#img-upload2').attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#imgInp").change(function() {
+        $("#imgInp1").change(function() {
             readURL(this);
         });
+        $("#imgInp2").change(function() {
+            readURL(this);
+        });
+
 
         $(document).on('click', '.open_modal_update', function() {
             var url = "/getTemplateCustomerById";
@@ -377,7 +349,6 @@ img {
                 //success data
                 console.log('data : ', data);
                 console.log("$('#links')", $('#linksModal'));
-                $('#actionUpdate').attr('action' , '/update-template-customer/' + tour_id);
                 $('#links_update').val(data.links);
                 $('#nama_mempelai_pria_update').val(data.nama_mempelai_pria);
                 $('#nama_mempelai_wanita_update').val(data.nama_mempelai_wanita);
@@ -391,8 +362,33 @@ img {
                 $('#deskripsi_update').val(data.deskripsi);
                 $('#btn-save').val("update");
                 $('#myModal1').modal('show');
+
+
+                var url_gallery = "/getFotoGalleryById";
+
+                $.get(url_gallery + '/' + tour_id, function(datagallery) {
+                    var wrapper = document.getElementById("circle");
+                    console.log( 'sss' , wrapper);
+                    // sukses data gallery
+                    console.log('datagallery  : ', datagallery);
+                    var myHtml = '';
+                    for (var i = 0; i < datagallery.length; i++) {
+                        myHtml += '<div class="small-12 medium-2 large-2 columns"> <div class="circle"><img class="profile-pic" src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg"></div><div class="p-image"><i class="fa fa-camera upload-button"></i> <input class="file-upload" type="file" accept="image/*"/> </div></div>';
+                    }
+                    console.log('inner HTML  : ', datagallery);
+
+                    wrapper .innerHTML= myHtml;
+
+                });
+
+                $(document).on('click', '.btn-submit-simpan', function() {
+                    console.log('button submit' );
+                    $('#actionUpdate').attr('action' , '/update-template-customer/' + tour_id);
+                    document.getElementById("actionUpdate").submit(); 
+                });
             })
         });
+
 
         $(document).on('click', '.open_modal-delete', function() {
         var tour_id = $(this).attr("value");
@@ -442,32 +438,29 @@ $("div[id^='myModal']").each(function(){
     currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
   });
 
-//   $("#avatar-1").fileinput({
-//     overwriteInitial: true,
-//     maxFileSize: 1500,
-//     showClose: false,
-//     showCaption: false,
-//     showBrowse: false,
-//     browseOnZoneClick: true,
-//     removeLabel: '',
-//     removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-//     removeTitle: 'Cancel or reset changes',
-//     elErrorContainer: '#kv-avatar-errors-2',
-//     msgErrorClass: 'alert alert-block alert-danger',
-//     defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar" style="width:160px"><h6 class="text-muted">Click to select</h6>',
-//     layoutTemplates: {main2: '{preview} {remove} {browse}'},
-//     allowedFileExtensions: ["jpg", "png", "gif"]
-// });
+var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
 
 
 });
-
-
-
-
-
-
-
     
 </script>
 

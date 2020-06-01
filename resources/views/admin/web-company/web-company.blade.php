@@ -159,33 +159,33 @@ Web Company
                         @csrf
                         @method('put')
                         <div class="form-group">
-                            <input type="text" class="form-control" id="links_Modal" placeholder="Link" name="links_Modal">
+                            <input type="text" required class="form-control" id="links_Modal" placeholder="Link" name="links_Modal">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="email_Modal" placeholder="Email" name="email_Modal">
+                            <input type="text" required class="form-control" id="email_Modal" placeholder="Email" name="email_Modal">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="telepon_Modal" placeholder="Telepon" name="telepon_Modal">
+                            <input type="text" required class="form-control" id="telepon_Modal" placeholder="Telepon" name="telepon_Modal">
                         </div>
                         <div class="form-group">
                             <label>Image Banner 1</label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp" name="banner_1" class="custom-file-input" required>
+                                        Browse… <input type="file" required id="imgInp2" name="banner_1" class="custom-file-input" required>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
+                            <img class="img-thumbnail" id='img-upload2' style="width : 200px; heigth: 200px" />
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>
                             <select class="form-control" id="aktif_flagModal" name="aktif_flagModal">
                                 <option value="Y">Aktif</option>
                                 <option value="T">Tidak Aktif</option>
                             </select>
-                        </div> -->
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -237,13 +237,13 @@ Web Company
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#img-upload').attr('src', e.target.result);
+                    $('#img-upload2').attr('src', e.target.result);
                 }
 
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $("#imgInp").change(function() {
+        $("#imgInp2").change(function() {
             readURL(this);
         });
 
@@ -293,3 +293,4 @@ Web Company
 </script>
 
 @endsection
+

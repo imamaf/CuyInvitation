@@ -10,6 +10,7 @@ use App\Testimoni;
 use App\User_attribut;
 use App\Role;
 use App\Template_customer;
+use App\Foto_gallery;
 use Auth;
 
 class DashboardController extends Controller
@@ -126,11 +127,11 @@ class DashboardController extends Controller
 
     public function updateWebCompany(Request $request , Company $company)
     {
-          $path_banner_1 = $request->file('banner_1')->store('banner');
+        $path_banner_1 = $request->file('banner_1')->store('banner');
             Company::where('id' , $company->id )->update([
-            'links' => $request->linksModal,
-            'telepon'=> $request->teleponModal ,
-            'email'=> $request->emailModal,
+            'links' => $request->links_Modal,
+            'telepon'=> $request->telepon_Modal ,
+            'email'=> $request->email_Modal,
             'banner_1'=>$path_banner_1,
             'aktif_flag' => $request->aktif_flagModal,
         ]);
@@ -189,7 +190,7 @@ class DashboardController extends Controller
          // DATATABLE Template Customer
          public function viewTemplateCustomer()
          {
-             $template_customer = Template_customer::paginate(5);
+             $template_customer = Template_customer::paginate(5);       
              return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer] );
          }
          // GET TEMPLATE CLIENT BY ID
@@ -198,11 +199,18 @@ class DashboardController extends Controller
             $data = Template_customer::find($request->id);
             return $data;
         }
+         // GET Foto Gallery BY ID
+        public function getFotoGalleryByIndex(Request $request)
+        {
+            $data = Foto_gallery::where('template_id' , $request->id)->get();
+            return $data;
+        }
 
         // UPDATE TEMPLATE CUSTOMER
         public function updateTemplateCustomer(Request $request , Template_customer $template_customer)
         {
             dd($request);
+            $path_foto_1 = $request->file('path_foto')->store('template_customer');
                 Testimoni::where('id' , $testimoni->id )->update([
                 'nama' => $request->nama_Modal,
                 'deskripsi'=> $request->deskripsi_Modal ,
