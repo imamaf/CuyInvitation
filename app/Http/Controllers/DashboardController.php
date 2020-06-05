@@ -186,39 +186,6 @@ class DashboardController extends Controller
         return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
     }
 
-//   --------------------  CONTROLLER TEMPLATE CUSTOMER --------------
-         // DATATABLE Template Customer
-         public function viewTemplateCustomer()
-         {
-             $template_customer = Template_customer::paginate(5);       
-             return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer] );
-         }
-         // GET TEMPLATE CLIENT BY ID
-        public function getTemplateCustomerByIndex(Request $request)
-        {
-            $data = Template_customer::find($request->id);
-            return $data;
-        }
-         // GET Foto Gallery BY ID
-        public function getFotoGalleryByIndex(Request $request)
-        {
-            $data = Foto_gallery::where('template_id' , $request->id)->get();
-            return $data;
-        }
-
-        // UPDATE TEMPLATE CUSTOMER
-        public function updateTemplateCustomer(Request $request , Template_customer $template_customer)
-        {
-            dd($request);
-            $path_foto_1 = $request->file('path_foto')->store('template_customer');
-                Testimoni::where('id' , $testimoni->id )->update([
-                'nama' => $request->nama_Modal,
-                'deskripsi'=> $request->deskripsi_Modal ,
-                'rating'=> $request->rating_Modal,
-            ]);
-            return redirect('/testimoni')->with('status' , 'Data berhasil di update');
-        }  
-
  // ---------------------  CONTROLLER SEARCH -------------
     public function Search(Request $request , string $pathSearch){
         $cari = $request->cari;

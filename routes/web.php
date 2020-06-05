@@ -64,14 +64,15 @@ Route::put('/update-testimoni/{testimoni}','DashboardController@updateTestimoni'
 Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimoni');
 
 // ---------------------------- ROUTER PAGE TEMPLATE CUSTOMER DASHBOARD ----------------
-// VIEW TESTIMONI-DATATABLE
-Route::get('/template-customer','DashboardController@viewTemplateCustomer');
+// VIEW  TEMPLATE CUSTOMER-DATATABLE
+Route::get('/template-customer','AdminTemplateCustomerController@viewTemplateCustomer');
 //GET BY ID
-Route::get('/getTemplateCustomerById/{id}', 'DashboardController@getTemplateCustomerByIndex');
+Route::get('/getTemplateCustomerById/{id}', 'AdminTemplateCustomerController@getTemplateCustomerByIndex');
 //GET FOTO GALLERY BY ID
-Route::get('/getFotoGalleryById/{id}', 'DashboardController@getFotoGalleryByIndex');
-// UPDATE TESTIMONI
-Route::put('/update-template-customer/{template_customer}','DashboardController@updateTemplateCustomer');
+Route::get('/getFotoGalleryById/{id}', 'AdminTemplateCustomerController@getFotoGalleryByIndex');
+// UPDATE  TEMPLATE CUSTOMER
+Route::put('/update-template-customer/{template_customer}','AdminTemplateCustomerController@updateTemplateCustomer');
+Route::post('/add/template-customer','AdminTemplateCustomerController@addTemplateCustomer');
 
 // ---------------------------- SEARCH ------------------
 Route::get('/cari/{pathSearch}','DashboardController@Search');
@@ -80,9 +81,9 @@ Route::get('/templatecompany', 'AdminTemplateCompany@index');
 
 // ------------------------- TEMPLATE CLIENT ----------------
 
+Route::get('/design_C01/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_1');
 Route::get('/design_C01', 'TemplateCustomerController@index_tempalet_1');
 
-Route::get('/design_C01/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_1');
 
 Auth::routes();
 
