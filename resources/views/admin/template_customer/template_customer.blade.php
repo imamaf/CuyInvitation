@@ -168,25 +168,30 @@ Template Customer
                             <img class="img-thumbnail" id='img-upload2' style="width : 200px; heigth: 200px" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="links" placeholder="Link" name="links">
+                        <label> Kode Template </label>
+                            <select class="form-control" placeholder="Jurusan" id="kode_template" name="kode_template" value="">
+                                <option value="C01">C01 - Template 1</option>
+                                <option value="C02">C02 - Template 2</option>
+                                <option value="C03">C03 - Template 3</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="nama_mempelai_pria" placeholder="Nama Mempelai Pria" name="nama_mempelai_pria">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_mempelai_wanita" placeholder="Telepon" name="nama_mempelai_wanita">
+                            <input type="text" class="form-control" id="nama_mempelai_wanita" placeholder="Nama Mempelai Wanita" name="nama_mempelai_wanita">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_pria_ibu" placeholder="Nama Orang Tua Pria(Ibu)" name="nama_orang_tua_pria_ibu">
+                            <input type="text" class="form-control" id="nama_orang_tua_pria_bapak" placeholder="Nama Orang Tua Pria (Bpk)" name="nama_orang_tua_pria_bapak">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_pria_bapak" placeholder="Nama Orang Tua Pria(Bpk)" name="nama_orang_tua_pria_bapak">
+                            <input type="text" class="form-control" id="nama_orang_tua_pria_ibu" placeholder="Nama Orang Tua Pria (Ibu)" name="nama_orang_tua_pria_ibu">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_wanita_bapak" placeholder="Nama Orang Tua Wanita(Bpk)" name="nama_orang_tua_wanita_bapak">
+                            <input type="text" class="form-control" id="nama_orang_tua_wanita_bapak" placeholder="Nama Orang Tua (Bpk)" name="nama_orang_tua_wanita_bapak">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_wanita_ibu" placeholder="Lokasi Akad" name="nama_orang_tua_wanita_ibu">
+                            <input type="text" class="form-control" id="nama_orang_tua_wanita_ibu" placeholder="Nama Orang Tua Wanita (Ibu)" name="nama_orang_tua_wanita_ibu">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="tgl_akad" placeholder="Tanggal Akad" name="tgl_akad">
@@ -222,6 +227,63 @@ Template Customer
             <div class="col-12"> 
              <div class="wrapper">
                 <div class="row"> 
+                
+                        <div class="box col-4">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                            <label>
+                                <input type="file" class="image-upload" name="path_foto[]" accept="image/*" />
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="box col-4">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                            <label>
+                                <input type="file" class="image-upload" name="path_foto[]" accept="image/*" />
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="box col-4">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                            <label>
+                                <input type="file" class="image-upload" name="path_foto[]" accept="image/*" />
+                            </label>
+                            </div>
+                        </div>
+                        
+
+                        <div class="box col-4">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                            <label>
+                                <input type="file" class="image-upload" name="path_foto[]" accept="image/*" />
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="box col-4">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                            <label>
+                                <input type="file" class="image-upload" name="path_foto[]" accept="image/*" />
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="box col-4">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                            <label>
+                                <input type="file" class="image-upload" name="path_foto[]" accept="image/*" />
+                            </label>
+                            </div>
+                        </div>
+                        
+
                         <div class="box col-4">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
@@ -338,11 +400,6 @@ Template Customer
                   </div>
                </fieldset>
          </div>
-         <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-prev">Prev</button>
-            <button type="button" class="btn btn-default btn-next">Next</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-         </div> -->
       </div>
    </div>
 </div>

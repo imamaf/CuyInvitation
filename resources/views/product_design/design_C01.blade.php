@@ -377,7 +377,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 bag1 text-center">
                     <div class="judul-1" data-sal="flip-up" data-sal-duration="800">Save The Date</div>
                     <div class="judul-2" data-sal="flip-up" data-sal-duration="800" data-sal-delay="200">wedding of</div>
-                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">Henry &amp; Laura</div>
+                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">{{ empty($template_customer) ? "Henry Fernandez" : $template_customer->nama_mempelai_pria }} &amp; {{ empty($template_customer) ? "Laura Basuki Kirana" : $template_customer->nama_mempelai_wanita }}</div>
                     <div class="judul-3" data-sal="flip-up" data-sal-duration="800" data-sal-delay="600">On February 02, 2020</div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pad-nol">
@@ -411,29 +411,32 @@
             
         </div>
     </div>
+    <p id="demo"></p>
+    
+
     <div class="bag3">
         <div class="row justify-content-center text-center">
             <div class="col-3" data-sal="slide-down" data-sal-duration="800">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
                         <div class="mb-auto py-3 judul-box">DAYS</div>
-                        <div class="bodi-box">120</div>
+                        <div class="bodi-box" id="days"></div>
                     </div>
                 </div>
             </div>
             <div class="col-3" data-sal="slide-down" data-sal-duration="800" data-sal-delay="200">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
-                        <div class="mb-auto py-3 judul-box">MINUTES</div>
-                        <div class="bodi-box">54</div>
+                        <div class="mb-auto py-3 judul-box">HOURS</div>
+                        <div class="bodi-box" id="hours"></div>
                     </div>
                 </div>
             </div>
             <div class="col-3" data-sal="slide-down" data-sal-duration="800" data-sal-delay="400">
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
-                        <div class="mb-auto py-3 judul-box">HOURS</div>
-                        <div class="bodi-box">13</div>
+                        <div class="mb-auto py-3 judul-box">MINUTE</div>
+                        <div class="bodi-box" id="minutes"></div>
                     </div>
                 </div>
             </div>
@@ -441,7 +444,7 @@
                 <div class="d-flex justify-content-center py-3">
                     <div class="box-jam">
                         <div class="mb-auto py-3 judul-box">SECONDS</div>
-                        <div class="bodi-box">39</div>
+                        <div class="bodi-box" id="seconds">39</div>
                     </div>
                 </div>
             </div>
@@ -458,7 +461,7 @@
                     <div class="box-akad">
                         <div class="bag4-judul py-2">Akad</div>
                         <div class="bag4-tempat py-2">
-                            Minggu, 02 Februari 2020 <br>
+                            Minggu, <?php echo date('d F Y', strtotime('1994-02-15'))?> <br>
                             08.00 s/d selesai <br>
                             Mason Pine Hotel Bandung <br>
                             ( Pine Garden Area ) <br> 
@@ -532,7 +535,7 @@
             <!-- KONDISI ADA DATA  -->
                     @foreach($gallerys as $glr)
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <img src="<?php echo url('assets/images' ,$glr->path_foto)?>" alt="">
+                        <img src="<?php echo url('storage' , $glr->path_foto)?>" alt="">
                     </div>
                  @endforeach
             @endif
@@ -555,12 +558,50 @@
     </div>
 </body>
 </html>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jQuery.scrollSpeed.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script src="js/sal.js/dist/sal.js"></script>
+<script src="{{asset('js/bootstrap.min.js') }}"></script>
+<script src="{{asset('js/jQuery.scrollSpeed.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('js/sal.js/dist/sal.js')}}"></script>
 <script>
     sal({
         once: false
     });
+</script>
+
+<script>
+// Set the date we're counting down to
+var dataDate =  <?php echo !empty($template_customer) ? json_encode($template_customer->tgl_akad) : json_encode("Jan 5, 2021 15:37:25") ?>;
+console.log('data date' , dataDate);
+var countDownDate = new Date(dataDate).getTime();
+
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("days").innerHTML = days ;
+  document.getElementById("hours").innerHTML = hours; 
+  document.getElementById("minutes").innerHTML = minutes; 
+  document.getElementById("seconds").innerHTML = seconds; 
+//   + "d " + hours + "h "
+//   + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
 </script>
