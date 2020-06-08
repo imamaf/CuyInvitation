@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Foto_gallery;
 use App\Template_customer;
+use App\User;
 
 class AdminTemplateCustomerController extends Controller
 {
@@ -13,8 +14,11 @@ class AdminTemplateCustomerController extends Controller
          // DATATABLE Template Customer
          public function viewTemplateCustomer()
          {
+            $userDropdown = User::whereHas('role', function($query){
+                $query->where('kode_role', '=', 'CSR');
+            })->get();
              $template_customer = Template_customer::paginate(5);       
-             return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer] );
+             return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer , 'userDropdown' => $userDropdown] );
          }
          // GET TEMPLATE CLIENT BY ID
         public function getTemplateCustomerByIndex(Request $request)
@@ -32,9 +36,11 @@ class AdminTemplateCustomerController extends Controller
         // ADD TEMPLATE CUSTOMER
         public function addTemplateCustomer(Request $request)
         {
+            $dir_foto_pria = $request->file('path_foto_pria')->store('foto mempelai pria');
+            $dir_foto_wanita = $request->file('path_foto_wanita')->store('foto mempelai wanita');
            $template_customer = Template_customer::create([
-                'user_id' => '3',
-                'kode_template' => 'C01',
+                'user_id' => $request->user_id,
+                'kode_template' => $request->kode_template,
                 'links'=> $request->links ,
                 'nama_mempelai_pria'=> $request->nama_mempelai_pria,
                 'nama_mempelai_wanita'=> $request->nama_mempelai_wanita,
@@ -45,8 +51,8 @@ class AdminTemplateCustomerController extends Controller
                 'lokasi_akad'=> $request->lokasi_akad,
                 'tgl_akad'=> $request->tgl_akad,
                 'tgl_resepsi'=> $request->tgl_resepsi,
-                'path_foto_pria'=> $request->path_foto_pria,
-                'path_foto_wanita'=> $request->path_foto_wanita,
+                'path_foto_pria'=> $dir_foto_pria,
+                'path_foto_wanita'=> $dir_foto_wanita,
                 'path_video'=> $request->path_video,
                 'deskripsi'=> $request->deskripsi,
             ]);

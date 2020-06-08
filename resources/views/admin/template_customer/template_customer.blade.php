@@ -168,8 +168,16 @@ Template Customer
                             <img class="img-thumbnail" id='img-upload2' style="width : 200px; heigth: 200px" />
                         </div>
                         <div class="form-group">
+                        <label> ID User </label>
+                            <select class="form-control" id="user_id" name="user_id" value="">
+                                @foreach ($userDropdown as $usrDrpdwn)
+                                <option value="{{$usrDrpdwn->id}}">{{$usrDrpdwn->id}} - {{$usrDrpdwn->name}} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                         <label> Kode Template </label>
-                            <select class="form-control" placeholder="Jurusan" id="kode_template" name="kode_template" value="">
+                            <select class="form-control" id="kode_template" name="kode_template" value="">
                                 <option value="C01">C01 - Template 1</option>
                                 <option value="C02">C02 - Template 2</option>
                                 <option value="C03">C03 - Template 3</option>
@@ -224,11 +232,11 @@ Template Customer
                         <p>Foto Gallery:</p>
                      </div>
                   </div>  
-            <div class="col-12"> 
+            <div class="col-md-12"> 
              <div class="wrapper">
                 <div class="row"> 
-                
-                        <div class="box col-4">
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -236,8 +244,9 @@ Template Customer
                             </label>
                             </div>
                         </div>
-
-                        <div class="box col-4">
+                    </div>
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -245,8 +254,9 @@ Template Customer
                             </label>
                             </div>
                         </div>
-
-                        <div class="box col-4">
+                    </div>
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -254,9 +264,10 @@ Template Customer
                             </label>
                             </div>
                         </div>
+                    </div>
                         
-
-                        <div class="box col-4">
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -264,8 +275,9 @@ Template Customer
                             </label>
                             </div>
                         </div>
-
-                        <div class="box col-4">
+                    </div>
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -273,8 +285,9 @@ Template Customer
                             </label>
                             </div>
                         </div>
-
-                        <div class="box col-4">
+                    </div>
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -282,9 +295,10 @@ Template Customer
                             </label>
                             </div>
                         </div>
+                    </div>
                         
-
-                        <div class="box col-4">
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -292,8 +306,9 @@ Template Customer
                             </label>
                             </div>
                         </div>
-
-                        <div class="box col-4">
+                    </div>
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -301,8 +316,9 @@ Template Customer
                             </label>
                             </div>
                         </div>
-
-                        <div class="box col-4">
+                    </div>
+                     <div class="col-md-4">
+                        <div class="box">
                             <div class="js--image-preview"></div>
                             <div class="upload-options">
                             <label>
@@ -310,6 +326,7 @@ Template Customer
                             </label>
                             </div>
                         </div>
+                    </div>
                         
                     </div>
                     </div>
@@ -490,7 +507,7 @@ h1 {
   display: block;
   /* min-width: 300px; */
   height: 300px;
-  /* margin: 10px; */
+  margin: 10px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -647,25 +664,27 @@ i.material-icons {
 
         });
 
-        function readURL(input) {
+        function readURL(input , from) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-                    $('#img-upload1').attr('src', e.target.result);
-                    $('#img-upload2').attr('src', e.target.result);
+                    if(from == "img1") {
+                        $('#img-upload1').attr('src', e.target.result);
+                    } else if (from == "img2") {
+                        $('#img-upload2').attr('src', e.target.result);
+                    }
                 }
 
                 reader.readAsDataURL(input.files[0]);
             }
         }
         $("#imgInp1").change(function() {
-            readURL(this);
+            readURL(this , "img1");
         });
         $("#imgInp2").change(function() {
-            readURL(this);
+            readURL(this , "img2");
         });
-
 
         $(document).on('click', '.open_modal_update', function() {
             var url = "/getTemplateCustomerById";
@@ -780,6 +799,7 @@ $("div[id^='myModal']").each(function(){
     currentModal.closest("div[id^='myModalAdd']").prevAll("div[id^='myModalAdd']").first().modal('show'); 
   });
 
+  // js FOTO GALLERY
 var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

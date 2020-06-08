@@ -394,14 +394,14 @@
                     <div class="bag2-judul3">Putra Pertama Bpk. {{ empty($template_customer) ? "Ahmad Suryadi" : $template_customer->nama_orang_tua_pria_bapak }}  &amp; {{ empty($template_customer) ? "Ibu Mislawati" : "Ibu ".$template_customer->nama_orang_tua_pria_ibu }} </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-left" data-sal-duration="800">
-                <img src="{{url('assets/images/designc01/male.png')}}" alt="">
+                <img src="<?php echo empty($template_customer) ? url('assets/images/designc01/male.png') : url('storage' , $template_customer->path_foto_pria)  ?>" alt="">
             </div>
         </div>
     </div>
     <div class="bag2">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-right" data-sal-duration="800">
-                <img src="{{url('assets/images/designc01/female.png')}}" alt="">
+                <img src="<?php echo empty($template_customer) ? url('assets/images/designc01/female.png') : url('storage' , $template_customer->path_foto_wanita)  ?>" alt="">
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right" data-sal="slide-left" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai wanita</div>
