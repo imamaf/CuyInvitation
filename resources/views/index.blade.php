@@ -249,7 +249,7 @@
 					<div class="col-lg-4 col-md-6">
 						<div class="grid">
 							<a href="/detailproduk/{{$templateCompany->id}}">
-								<img src="{{$templateCompany->url_gambar}}" alt="" class="img-fluid" />
+								<img src="{{ url('storage' , $templateCompany->url_gambar)}}" alt="" class="img-fluid" />
 								<div class="info p-4">
 									<h4 class="">{{$templateCompany->nama_template}}</h4>
 									<p class="mt-3">Rp. {{$templateCompany->harga_template}}</p>

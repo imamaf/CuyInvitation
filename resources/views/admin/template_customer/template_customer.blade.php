@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+   <script src="{{ asset('./assets/js/core/jquery.min.js') }}"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 
 @section('title')
 Template Customer | CuyInvitation
@@ -140,32 +144,20 @@ Template Customer
                <fieldset style="display: block;">
                   <div class="form-top">
                      <div class="form-top-left">
-                        <h3>Step 1 / 2</h3>
+                        <h3>Step 1 / 4</h3>
                         <p>Lengkapi data berikut</p>
                      </div>
                         <div class="form-group">
-                            <label>Foto Mempelai Pria</label>
+                            <label>Banner </label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp1" name="path_foto_pria" class="custom-file-input" required>
+                                        Browse… <input type="file" id="imgInp3" name="banner" class="custom-file-input" required>
                                     </span>
                                 </span>
                                 <input type="text" class="form-control" readonly>
                             </div>
-                            <img class="img-thumbnail" id="img-upload1" style="width : 200px; heigth: 200px" />
-                        </div>
-                        <div class="form-group">
-                            <label>Foto Mempelai Wanita</label>
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Browse… <input type="file" id="imgInp2" name="path_foto_wanita" class="custom-file-input" required>
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
-                            </div>
-                            <img class="img-thumbnail" id='img-upload2' style="width : 200px; heigth: 200px" />
+                            <img class="img-thumbnail" id="img-upload3" style="width : 200px; heigth: 200px" />
                         </div>
                         <div class="form-group">
                         <label> ID User </label>
@@ -183,32 +175,23 @@ Template Customer
                                 <option value="C03">C03 - Template 3</option>
                             </select>
                         </div>
+                        <label for="tgl_akad">Tanggal Akad</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_mempelai_pria" placeholder="Nama Mempelai Pria" name="nama_mempelai_pria">
-                        </div>
+                            <input type="text" name="tgl_akad" class="form-control" id="tgl_akad" style="background-color:white"/>
+                                <script>
+                                    $('#tgl_akad').datetimepicker({ footer: true, modal: true, format:"yyyy-mm-dd HH:MM:ss", });
+                            </script>
+                          </div>
+                        <label for="npm">Tanggal Resepsi</label>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_mempelai_wanita" placeholder="Nama Mempelai Wanita" name="nama_mempelai_wanita">
-                        </div>
+                            <input type="text" name="tgl_resepsi" class="form-control" id="tgl_resepsi" style="background-color:white"/>
+                                <script>
+                                    $('#tgl_resepsi').datetimepicker({ footer: true, modal: true, format:"yyyy-mm-dd HH:MM:ss", });
+                            </script>
+                          </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_pria_bapak" placeholder="Nama Orang Tua Pria (Bpk)" name="nama_orang_tua_pria_bapak">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_pria_ibu" placeholder="Nama Orang Tua Pria (Ibu)" name="nama_orang_tua_pria_ibu">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_wanita_bapak" placeholder="Nama Orang Tua (Bpk)" name="nama_orang_tua_wanita_bapak">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_wanita_ibu" placeholder="Nama Orang Tua Wanita (Ibu)" name="nama_orang_tua_wanita_ibu">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tgl_akad" placeholder="Tanggal Akad" name="tgl_akad">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tgl_resepsi" placeholder="Tanggal Resepsi" name="tgl_resepsi">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="deskripsi" placeholder="Deskripsi" name="deskripsi">
+                            <label>Keterangan</label>
+                            <textarea name="deskripsi" id="deskripsi"> </textarea>
                         </div>
                      <button type="button" class="btn btn-next">Next</button>
                   </div>
@@ -217,8 +200,102 @@ Template Customer
       </div>
    </div>
 </div>
-<!-- Modal -->
+{{-- STEPS 2 --}}
 <div class="modal fade" id="myModalAdd2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Biodata Pasangan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         </div>
+         <div class="modal-body">
+               <fieldset style="display: block;">
+                  <div class="form-top">
+                     <div class="form-top-left">
+                        <h3>Step 2 / 4</h3>
+                        <p>Lengkapi data berikut</p>
+                     </div>
+                        <div class="form-group">
+                            <label>Foto Mempelai Pria</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp1" name="path_foto_pria" class="custom-file-input" required>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img class="img-thumbnail" id="img-upload1" style="width : 200px; heigth: 200px" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_panggilan_pria" placeholder="Nama Panggilan Pria" name="nama_panggilan_pria">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_mempelai_pria" placeholder="Nama Lengkap Pria" name="nama_mempelai_pria">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_orang_tua_pria_bapak" placeholder="Nama Orang Tua Pria (Bpk)" name="nama_orang_tua_pria_bapak">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_orang_tua_pria_ibu" placeholder="Nama Orang Tua Pria (Ibu)" name="nama_orang_tua_pria_ibu">
+                        </div>
+                    <button type="button" class="btn btn-previous btn-prev">Previous</button>
+                     <button type="button" class="btn btn-next">Next</button>
+                  </div>
+               </fieldset>
+         </div>
+      </div>
+   </div>
+</div>
+{{-- STEPS 3 --}}
+<div class="modal fade" id="myModalAdd3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Biodata Pasangan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         </div>
+         <div class="modal-body">
+               <fieldset style="display: block;">
+                  <div class="form-top">
+                     <div class="form-top-left">
+                        <h3>Step 3 / 4</h3>
+                        <p>Lengkapi data berikut</p>
+                     </div>
+                        <div class="form-group">
+                            <label>Foto Mempelai Wanita</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" id="imgInp2" name="path_foto_wanita" class="custom-file-input" required>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img class="img-thumbnail" id='img-upload2' style="width : 200px; heigth: 200px" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_panggilan_wanita" placeholder="Nama Panggilan Wanita" name="nama_panggilan_wanita">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_mempelai_wanita" placeholder="Nama Lengkap Wanita" name="nama_mempelai_wanita">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_orang_tua_wanita_bapak" placeholder="Nama Orang Tua (Bpk)" name="nama_orang_tua_wanita_bapak">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama_orang_tua_wanita_ibu" placeholder="Nama Orang Tua Wanita (Ibu)" name="nama_orang_tua_wanita_ibu">
+                        </div>
+                    <button type="button" class="btn btn-previous btn-prev">Previous</button>
+                     <button type="button" class="btn btn-next">Next</button>
+                  </div>
+               </fieldset>
+         </div>
+      </div>
+   </div>
+</div>
+{{-- STEPS 4 --}}
+<div class="modal fade" id="myModalAdd4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -228,7 +305,7 @@ Template Customer
          <div class="modal-body">
                   <div class="form-top">
                      <div class="form-top-left">
-                        <h3>Step 2 / 2</h3>
+                        <h3>Step 4 / 4</h3>
                         <p>Foto Gallery:</p>
                      </div>
                   </div>  
@@ -642,8 +719,10 @@ i.material-icons {
 
 
 @section('scripts')
-
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
+CKEDITOR.replace("deskripsi");
+
     $(document).ready(function() {
         $(document).on('change', '.btn-file :file', function() {
             var input = $(this),
@@ -669,10 +748,13 @@ i.material-icons {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
+                    console.log('frooom ' , from)
                     if(from == "img1") {
                         $('#img-upload1').attr('src', e.target.result);
                     } else if (from == "img2") {
                         $('#img-upload2').attr('src', e.target.result);
+                    } else if (from == "img3") {
+                        $('#img-upload3').attr('src', e.target.result);
                     }
                 }
 
@@ -684,6 +766,9 @@ i.material-icons {
         });
         $("#imgInp2").change(function() {
             readURL(this , "img2");
+        });
+        $("#imgInp3").change(function() {
+            readURL(this , "img3");
         });
 
         $(document).on('click', '.open_modal_update', function() {

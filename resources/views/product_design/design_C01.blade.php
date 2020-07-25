@@ -377,7 +377,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 bag1 text-center">
                     <div class="judul-1" data-sal="flip-up" data-sal-duration="800">Save The Date</div>
                     <div class="judul-2" data-sal="flip-up" data-sal-duration="800" data-sal-delay="200">wedding of</div>
-                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">{{ empty($template_customer) ? "Henry Fernandez" : $template_customer->nama_mempelai_pria }} &amp; {{ empty($template_customer) ? "Laura Basuki Kirana" : $template_customer->nama_mempelai_wanita }}</div>
+                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">{{ empty($tmplt_custr) ? "Henry Fernandez" : $tmplt_custr->nama_mempelai_pria }} &amp; {{ empty($tmplt_custr) ? "Laura Basuki Kirana" : $tmplt_custr->nama_mempelai_wanita }}</div>
                     <div class="judul-3" data-sal="flip-up" data-sal-duration="800" data-sal-delay="600">On February 02, 2020</div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pad-nol">
@@ -390,23 +390,23 @@
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-left" data-sal="slide-right" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai pria</div>
-                    <div class="bag2-judul2"> {{ empty($template_customer) ? "Henry Fernandez" : $template_customer->nama_mempelai_pria }}</div>
-                    <div class="bag2-judul3">Putra Pertama Bpk. {{ empty($template_customer) ? "Ahmad Suryadi" : $template_customer->nama_orang_tua_pria_bapak }}  &amp; {{ empty($template_customer) ? "Ibu Mislawati" : "Ibu ".$template_customer->nama_orang_tua_pria_ibu }} </div>
+                    <div class="bag2-judul2"> {{ empty($tmplt_custr) ? "Henry Fernandez" : $tmplt_custr->nama_mempelai_pria }}</div>
+                    <div class="bag2-judul3">Putra Pertama Bpk. {{ empty($tmplt_custr) ? "Ahmad Suryadi" : $tmplt_custr->nama_orang_tua_pria_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_pria_ibu }} </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-left" data-sal-duration="800">
-                <img src="<?php echo empty($template_customer) ? url('assets/images/designc01/male.png') : url('storage' , $template_customer->path_foto_pria)  ?>" alt="">
+                <img src="<?php echo empty($tmplt_custr) ? url('assets/images/designc01/male.png') : url('storage' , $tmplt_custr->path_foto_pria)  ?>" alt="">
             </div>
         </div>
     </div>
     <div class="bag2">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-right" data-sal-duration="800">
-                <img src="<?php echo empty($template_customer) ? url('assets/images/designc01/female.png') : url('storage' , $template_customer->path_foto_wanita)  ?>" alt="">
+                <img src="<?php echo empty($tmplt_custr) ? url('assets/images/designc01/female.png') : url('storage' , $tmplt_custr->path_foto_wanita)  ?>" alt="">
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right" data-sal="slide-left" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai wanita</div>
-                    <div class="bag2-judul2">{{ empty($template_customer) ? "Laura Basuki Kirana" : $template_customer->nama_mempelai_wanita }}</div>
-                    <div class="bag2-judul3">Putri Pertama Bpk. {{ empty($template_customer) ? "Taufik Romadhon" : $template_customer->nama_orang_tua_wanita_bapak }} &amp; {{ empty($template_customer) ? "Ibu Gina Rizka" : "Ibu ".$template_customer->nama_orang_tua_wanita_ibu }}</div>
+                    <div class="bag2-judul2">{{ empty($tmplt_custr) ? "Laura Basuki Kirana" : $tmplt_custr->nama_mempelai_wanita }}</div>
+                    <div class="bag2-judul3">Putri Pertama Bpk. {{ empty($tmplt_custr) ? "Taufik Romadhon" : $tmplt_custr->nama_orang_tua_wanita_bapak }} &amp; {{ empty($tmplt_custr) ? "Ibu Gina Rizka" : "Ibu ".$tmplt_custr->nama_orang_tua_wanita_ibu }}</div>
             </div>
             
         </div>
@@ -552,9 +552,9 @@
         </div>
     </div>
     <div class="penutup">
-    {{ empty($template_customer) ? "Henry" : $template_customer->nama_mempelai_pria }}
+    {{ empty($tmplt_custr) ? "Henry" : $tmplt_custr->nama_mempelai_pria }}
          &amp;
-    {{ empty($template_customer) ? "Laura" : $template_customer->nama_mempelai_wanita }}
+    {{ empty($tmplt_custr) ? "Laura" : $tmplt_custr->nama_mempelai_wanita }}
     </div>
 </body>
 </html>
@@ -570,7 +570,7 @@
 
 <script>
 // Set the date we're counting down to
-var dataDate =  <?php echo !empty($template_customer) ? json_encode($template_customer->tgl_akad) : json_encode("Jan 5, 2021 15:37:25") ?>;
+var dataDate =  <?php echo !empty($tmplt_custr) ? json_encode($tmplt_custr->tgl_akad) : json_encode("Jan 5, 2021 15:37:25") ?>;
 console.log('data date' , dataDate);
 var countDownDate = new Date(dataDate).getTime();
 

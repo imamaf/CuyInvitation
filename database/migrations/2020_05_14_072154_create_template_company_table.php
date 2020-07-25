@@ -15,10 +15,11 @@ class CreateTemplateCompanyTable extends Migration
     {
         Schema::create('template_company', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_template' , 50);
-            $table->string('url_gambar', 255);
-            $table->integer('harga_template');
-            $table->string('deskripsi_template' , 255);
+            $table->string('nama_template' , 50)->nullable();
+            $table->string('url_gambar', 255)->nullable();
+            $table->integer('harga_template')->nullable();
+            $table->string('deskripsi_template' , 255)->nullable();
+            $table->string('link' , 255)->nullable();
             $table->timestamps();
         });
     }

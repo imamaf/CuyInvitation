@@ -15,18 +15,15 @@ class CreateCompanyTable extends Migration
     {
         Schema::create('company', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('links' , 255);
-            $table->string('email' , 50);
-            $table->string('telepon' , 20);
-            $table->string('alamat' , 255);
-            $table->string('banner_1' , 255);
-            $table->string('banner_2' , 255);
-            $table->string('banner_3' , 255);
-            $table->string('deskripsi_banner' , 255);
-            $table->string('nama_testimoni' , 50);
-            $table->string('path_foto' , 255);
-            $table->string('deskripsi_testimoni' , 255);
-            $table->string('aktif_flag' , 1);
+            $table->string('links' , 255)->nullable();
+            $table->string('email' , 50)->nullable();
+            $table->string('telepon' , 20)->nullable();
+            $table->string('alamat' , 255)->nullable();
+            $table->string('banner_1' , 255)->nullable();
+            $table->string('banner_2' , 255)->nullable();
+            $table->string('banner_3' , 255)->nullable();
+            $table->string('deskripsi_banner' , 255)->nullable();
+            $table->string('aktif_flag' , 1)->nullable();
             $table->timestamps();
         });
     }

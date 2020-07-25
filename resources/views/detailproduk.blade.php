@@ -12,7 +12,7 @@
         <div class="main-desc">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{$templateDetail->url_gambar}}" alt class="img-fluid mx-auto d-block">
+                    <img src="{{ url('storage' , $templateDetail->url_gambar)}}" alt class="img-fluid mx-auto d-block">
                 </div>
                 <div class="col-md-6">
                     <div class="title-detail">
@@ -28,7 +28,7 @@
                         </p>
                     </div>
                     <div class="float-right" style="margin-left:10px;">
-                        <a href="#" class="btn-detail">Preview</a>
+                        <a href="{{ url($templateDetail->link) }}" class="btn-detail">Preview</a>
                     </div>
                     <div class="float-right">
                         <a href="#" class="btn-detail">add to cart</a>

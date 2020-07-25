@@ -15,11 +15,11 @@ class CreateUserAttributTable extends Migration
     {
         Schema::create('user_attribut', function (Blueprint $table) {
             $table->increments('user_id');
-            $table->string('nama' ,50);
-            $table->string('jenis_kelamin' ,50);
-            $table->string('no_hp' ,20);
-            $table->string('alamat' ,255);
-            $table->string('path_foto' ,255);
+            $table->string('nama' ,50)->nullable();
+            $table->string('jenis_kelamin' ,50)->nullable();
+            $table->string('no_hp' ,20)->nullable();
+            $table->string('alamat' ,255)->nullable();
+            $table->string('path_foto' ,255)->nullable();
             $table->timestamps();
         });
     }

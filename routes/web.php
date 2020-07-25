@@ -11,6 +11,9 @@
 |
 */
 //INDEX PAGE
+
+use Illuminate\Support\Facades\Route;
+
 Route::get('/','CompanyController@index');
 
 //INDEX PAGE
@@ -83,6 +86,18 @@ Route::get('/templatecompany', 'AdminTemplateCompany@index');
 
 Route::get('/design_C01/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_1');
 Route::get('/design_C01', 'TemplateCustomerController@index_tempalet_1');
+Route::get('/design_C02', 'TemplateCustomerController@index_tempalet_2');
+Route::get('/design_C02/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_2');
+Route::get('/design_C03', 'TemplateCustomerController@index_tempalet_3');
+Route::get('/design_C03/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_3');
+
+Route::post('/add-komentar', 'KomentarController@addKomentar');
+// Route::get('/design_C02', function () {
+//     return view('product_design.design_C02');
+// });
+// Route::get('/design_C03', function () {
+//     return view('product_design.design_C03');
+// });
 
 
 Auth::routes();

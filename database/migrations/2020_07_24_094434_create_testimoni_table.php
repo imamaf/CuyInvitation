@@ -14,17 +14,14 @@ class CreateTestimoniTable extends Migration
     public function up()
     {
         Schema::create('testimoni', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('template_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('template_id')->references('id')->on('template_customer');
-            $table->string('path_foto' , 255);
-            $table->string('nama' , 100);
-            $table->string('deskripsi' , 255);
-            $table->mediumInteger('rating');
+            $table->increments('id');
+            $table->integer('user_id')->nullable();
+            $table->integer('template_id')->nullable();
+            $table->string('path_foto' , 255)->nullable();
+            $table->string('nama' , 100)->nullable();
+            $table->string('deskripsi' , 255)->nullable();
+            $table->mediumInteger('rating')->nullable();
             $table->timestamps();
-            $table->primary('user_id','template_id');
         });
     }
 

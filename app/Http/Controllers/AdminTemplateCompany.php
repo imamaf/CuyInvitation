@@ -51,6 +51,7 @@ class AdminTemplateCompany extends Controller
             'nama_template' => $request->templateNameModal,
             'url_gambar' => $path_banner,
             'harga_template' => $request->priceModal,
+            'link' => $request->linkModal,
             'deskripsi_template' => $request->descriptionModal
         ]);
         return redirect('/templatecompany')->with('status' , 'Data berhasil diupdate');
@@ -62,6 +63,7 @@ class AdminTemplateCompany extends Controller
             'nama_template' => $request->templateNameAdd,
             'url_gambar' => $path_banner,
             'harga_template' => $request->priceAdd,
+            'link' => $request->link,
             'deskripsi_template' => $request->descriptionAdd
         ]);
         return redirect('/templatecompany')->with('status' , 'Data berhasil ditambah');

@@ -47,7 +47,7 @@
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 			<input type="checkbox" id="drop" />
 			<ul class="menu ml-auto mt-1">
-				<li class="nav-item active"><a href="index.html">Home</a></li>
+				<li class="nav-item active"><a href="{{ URL('/') }}">Home</a></li>
 				<li class="nav-item"><a href="#services">Services</a></li>
 				<li class="nav-item"><a href="#stats">Stats</a></li>
 				<li class="nav-item"><a href="#design">Design</a></li>

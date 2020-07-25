@@ -24,20 +24,20 @@
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>Nama</th>
-                                <th>Deskripsi</th>
-                                <!-- <th>Link</th> -->
+                                {{-- <th>Link</th> --}}
                                 <th>Harga</th>
                                 <th>Images</th>
+                                <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
                                 @foreach($template_company as $templateCompany)
                                     <tr>
                                         <td>{{$templateCompany->nama_template}}</td>
-                                        <td>{{str_limit($templateCompany->deskripsi_template, $limit = 30, $end = '...')}}</td>
                                         <!-- <td>{{$templateCompany->url_gambar}}</td> -->
                                         <td>{{$templateCompany->harga_template}}</td>
                                         <td>{{str_limit($templateCompany->url_gambar, $limit = 30, $end = '...')}}</td>
+                                        <td>{{str_limit($templateCompany->deskripsi_template, $limit = 30, $end = '...')}}</td>
                                         <td>
                                             <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$templateCompany->id}}"><i class="far fa-eye"></i><a>
                                             <a data-toggle="modal" value="{{$templateCompany->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
@@ -76,6 +76,9 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="priceAdd" placeholder="Harga" name="priceAdd">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="linkAdd" placeholder="Link Preview" name="link">
                         </div>
                         <div class="form-group">
                             <label>Image Banner 1</label>
@@ -123,6 +126,9 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="priceModal" placeholder="Harga" name="priceModal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="linkModal" placeholder="Link Preview" name="linkModal">
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
@@ -224,6 +230,7 @@
                 $('#templateNameModal').val(data.nama_template).prop('disabled', false);
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', false);
                 $('#priceModal').val(data.harga_template).prop('disabled', false);
+                $('#linkModal').val(data.link).prop('disabled', false);
                 $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', false);
                 $('#imageModalEdit').prop('disabled', false);
                 $('#imageGroupEdit').prop('hidden', false);
@@ -241,6 +248,7 @@
                 $('#templateNameModal').val(data.nama_template).prop('disabled', true);
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', true);
                 $('#priceModal').val(data.harga_template).prop('disabled', true);
+                $('#linkModal').val(data.link).prop('disabled', true);
                 $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', true);
                 $('#imageModalEdit').prop('disabled', true);
                 $('#imageGroupEdit').prop('hidden', true);

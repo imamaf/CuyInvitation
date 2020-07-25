@@ -15,10 +15,10 @@ class CreateTransaksiTable extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('kode_transaksi' , 30);
-            $table->string('template_id');
-            $table->string('pembayaran');
+            $table->integer('user_id')->nullable();
+            $table->string('kode_transaksi' , 30)->nullable();
+            $table->string('template_id')->nullable();
+            $table->string('pembayaran')->nullable();
             $table->timestamps();
         });
     }

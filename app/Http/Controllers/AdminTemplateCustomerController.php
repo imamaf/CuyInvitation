@@ -36,13 +36,18 @@ class AdminTemplateCustomerController extends Controller
         // ADD TEMPLATE CUSTOMER
         public function addTemplateCustomer(Request $request)
         {
+            $dir_banner = $request->file('banner')->store('foto Banner Customer');
             $dir_foto_pria = $request->file('path_foto_pria')->store('foto mempelai pria');
             $dir_foto_wanita = $request->file('path_foto_wanita')->store('foto mempelai wanita');
            $template_customer = Template_customer::create([
                 'user_id' => $request->user_id,
                 'kode_template' => $request->kode_template,
+                'kode_template' => $request->kode_template,
                 'links'=> $request->links ,
+                'banner'=> $dir_banner ,
+                'nama_panggilan_pria'=> $request->nama_panggilan_pria,
                 'nama_mempelai_pria'=> $request->nama_mempelai_pria,
+                'nama_panggilan_wanita'=> $request->nama_panggilan_wanita,
                 'nama_mempelai_wanita'=> $request->nama_mempelai_wanita,
                 'nama_orang_tua_pria_bapak'=> $request->nama_orang_tua_pria_bapak,
                 'nama_orang_tua_pria_ibu'=> $request->nama_orang_tua_pria_ibu,

@@ -1,0 +1,2042 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}
+
+body a {
+  outline: none;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  text-decoration: none;
+}
+
+body a:hover {
+  text-decoration: none;
+}
+
+body a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+input[type="button"],
+input[type="submit"] {
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}
+
+select,
+input[type="email"],
+input[type="text"],
+input[type=password],
+input[type="button"],
+input[type="submit"],
+textarea {
+  font-family: 'Raleway', sans-serif;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+  font-family: 'Poiret One', cursive;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+}
+
+
+/*-- //Reset-Code --*/
+
+.title {
+  font-size: 54px;
+  color: #000;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.clr {
+  color: #fff;
+}
+
+.agile-left-side-img p,
+.blog-txt-info p,
+.clients-w3layouts-txt p,
+.meet-hostory-us p,
+.groom-bride-grid p,
+.event-blog-agile p,
+.contact-list-grid p,
+.contact-list-grid p a {
+  font-size: 14px;
+  color: #000;
+  line-height: 28px;
+}
+
+.video-info-img p {
+  color: #fff;
+}
+
+.blog-txt-info h4 a,
+.clients-w3layouts-txt h4,
+.time-agile-title h3,
+.groom-bride-grid h4,
+.blog-wthree-info h4,
+.sub-head h4,
+.contact-list-grid h6 {
+  font-size: 22px;
+  color: #4292ec;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.news-date ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+
+/*-- header --*/
+
+.header-outs {
+  position: relative;
+  background: url(../../images/designc03/b4.jpg) no-repeat 0px 0px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 800px;
+}
+
+h1 a.navbar-brand {
+  padding: 21px 0px 0px;
+  font-size: 31px;
+  color: #ffa2df !important;
+  text-transform: capitalize;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-shadow: -1px 1px #212121;
+}
+
+h1 a.navbar-brand span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+  text-transform: capitalize;
+  line-height: 35px;
+  margin: 0px 44px;
+}
+
+.header-w3layouts {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+  background: transparent;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light {
+  background: rgba(0, 0, 0, 0);
+  z-index: 999;
+  padding: 0px;
+}
+
+ul.navbar-nav.nav-fill {
+  width: 100%;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link,
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #ffa2df;
+  background: transparent;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0px 4px;
+  padding: 12px 17px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover,
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #ffa2df;
+}
+
+.navbar-light .navbar-nav.active>.nav-link,
+.navbar-light .navbar-nav.nav-link.active,
+.navbar-light .navbar-nav.nav-link.open,
+.navbar-light .navbar-nav .open>.nav-link {
+  color: #ffa2df;
+}
+
+
+/*-- //nav --*/
+
+
+/* --banner-- */
+
+.banner-slide-img {
+  padding-top: 22em;
+}
+
+.banner-bride-name h4 {
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  text-shadow: -3px 1px 8px black;
+  font-family: 'Tangerine', cursive;
+}
+
+.banner-groom-name h4 {
+  font-size: 5em;
+  margin-top: 20px;
+  color: #4292ec;
+  text-transform: capitalize;
+  letter-spacing: 5px;
+  font-weight: 700;
+  text-shadow: 0px 1px #000000;
+}
+
+
+/*--// banner-- */
+
+
+/*-- //header --*/
+
+
+/*--About --*/
+
+.wedding-graph {
+  position: relative;
+}
+
+.groom-left-agile {
+  position: absolute;
+  top: 113px;
+  right: -30px;
+  width: 59%;
+  transform: rotate(-11deg);
+  -webkit-transform: rotate(11deg);
+  -moz-transform: rotate(-11deg);
+  -ms-transform: rotate(-11deg);
+  -o-transform: rotate(-11deg);
+}
+
+.wed-both {
+  position: absolute;
+  top: 87px;
+  width: 59%;
+  left: -94px;
+  transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+}
+
+.groom-left-agile img,
+.wed-both img,
+.bride-right-agile img {
+  border: 3px solid #ffa2df;
+  padding: 2px;
+}
+
+.jst-wthree-text h2 {
+  font-size: 35px;
+  color: #4292ec;
+  font-weight: 600;
+}
+
+
+/*--aboutinner-- */
+
+.bride-image-w3layouts {
+  background: url(../../images/designc03/bride.jpg) no-repeat 0px 0px;
+}
+
+.groom-image-w3layouts {
+  background: url(../../images/designc03/groom.jpg) no-repeat 0px 0px;
+}
+
+.bride-image-w3layouts,
+.groom-image-w3layouts {
+  background-size: cover;
+  min-height: 378px;
+}
+
+.groom-bride-grid h4 span {
+  font-size: 15px;
+  padding-left: 18px;
+  color: #ffa2df;
+}
+
+.groom-bride-grid {
+  padding: 3em 2.5em;
+}
+
+.outs_more-buttn a {
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+  display: inline-block;
+  letter-spacing: 2px;
+  background: transparent;
+  outline: none;
+  padding: 9px 25px;
+  border-radius: 50px;
+  border: 4px double #FFA2E0;
+  margin-top: 17px;
+}
+
+.outs_more-buttn a:hover {
+  background: #4292ec;
+  color: #fff;
+}
+
+.social-media ul li span {
+  font-size: 15px;
+  letter-spacing: 0px;
+  text-align: center;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  background: #4292ec;
+  border-radius: 50px;
+  margin: 0px 4px;
+  color: #fff;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -moz-transition: 0.5s all;
+}
+
+.social-media ul li span:hover {
+  background: #ffa2df;
+}
+
+
+/*--// aboutinner-- */
+
+
+/*--// about-- */
+
+
+/*-- inner-banner --*/
+
+.inner_page-banner {
+  text-align: center;
+  background: url(../../images/designc03/b4.jpg) no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 300px;
+}
+
+ul.short_ls li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+ul.short_ls li {
+  list-style: none;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.using-border {
+  width: 100%;
+  border: none;
+  background: #4292ec;
+  text-align: center;
+}
+
+
+/*-- //inner-banner --*/
+
+
+/*--timer--*/
+
+.date {
+  background: url(../../images/designc03/d1.jpg)no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+}
+
+.examples {
+  width: 50%;
+  margin: 0px auto;
+}
+
+.simply-countdown {
+  overflow: hidden;
+  display: table;
+}
+
+.simply-countdown>.simply-section {
+  width: 137px;
+  height: 137px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  float: left;
+  /*margin: 15px;*/
+  background: rgba(255, 255, 255, 0.6196078431372549);
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+}
+
+.simply-countdown>.simply-section .simply-amount {
+  font-size: 61px;
+  color: rgba(0, 0, 0, 0.47);
+  line-height: 75px;
+}
+
+.simply-countdown>.simply-section .simply-word {
+  font-size: 17px;
+  color: #000;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: capitalize;
+}
+
+.simply-countdown>.simply-section .simply-amount,
+.simply-countdown>.simply-section .simply-word {
+  display: block;
+  text-align: center;
+}
+
+
+/*--//timer--*/
+
+
+/*--//about --*/
+
+
+/*-- story-- */
+
+.vtimeline {
+  position: relative;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.vtimeline:before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  background: #ffa2df;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.vtimeline-point {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.vtimeline-icon {
+  position: absolute;
+  top: 10px;
+  height: 25px;
+  width: 25px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #4292ec;
+}
+
+.vtimeline-block {
+  width: 45%;
+  margin: 0;
+  transition: 0.5s ease all;
+}
+
+.vtimeline-block:after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 45%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #ffa2df;
+  border-right: none;
+}
+
+.vtimeline-right {
+  margin-left: 55%;
+}
+
+.vtimeline-right.vt-animate-slide .vtimeline-content {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.vtimeline-right .vtimeline-date {
+  left: auto;
+  right: 55%;
+}
+
+.vtimeline-right:after {
+  left: auto;
+  right: 45%;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: none;
+  border-right: 10px solid #ffa2df;
+}
+
+.vtimeline-date {
+  position: absolute;
+  left: 55%;
+  top: 15px;
+  font-size: 17px;
+  color: #fff;
+  padding: 9px;
+  background: #ffa2df;
+}
+
+.vtimeline-content {
+  padding: 2em 1.5em;
+  transition: 0.5s ease all;
+  border: 2px solid #4292ec;
+  box-shadow: -4px 3px 15px black;
+}
+
+.vt-animate-fade {
+  opacity: 0;
+}
+
+.vt-animate-slide {
+  opacity: 0;
+}
+
+.vt-animate-slide .vtimeline-content {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.vt-noarrows:after {
+  content: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .vtimeline:before {
+    left: 30px;
+    right: auto;
+    margin: 0;
+  }
+  .vtimeline-icon {
+    left: -10px;
+    right: auto;
+    margin: 0;
+  }
+  .vtimeline-block {
+    width: 85%;
+    margin-left: 15%;
+  }
+  .vtimeline-block:after {
+    left: auto;
+    right: 85%;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: none;
+    border-right: 10px solid #ffa2df;
+  }
+  .vtimeline-date {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    right: auto;
+  }
+  .vtimeline-right .vtimeline-date {
+    right: auto;
+  }
+  .vtimeline.basic .vtimeline-date {
+    padding: 10px 10px 0 10px;
+  }
+  .vt-animate-slide .vtimeline-content {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+
+
+/*--// story-- */
+
+
+/*--blog-- */
+
+.line-w3ls-title {
+  width: 100%;
+  height: 2px;
+  margin: 10px 0px 15px;
+  background: #afafaf;
+}
+
+
+/*--//blog-- */
+
+
+/*-- Wedding Journal-- */
+
+.carousel-indicators li {
+  width: 9px;
+  height: 9px;
+  border-radius: 50px;
+  margin: 0px 7px;
+  background-color: rgb(0, 0, 0);
+}
+
+.carousel-indicators .active {
+  background-color: #ffa2df;
+  cursor: pointer;
+}
+
+.carousel-indicators {
+  bottom: -51px;
+}
+
+.clients-color {
+  padding: 20px;
+  background: #ffa2df;
+  box-shadow: -1px -1px 6px black;
+}
+
+.news-date ul li a {
+  letter-spacing: 2px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.news-date ul li span {
+  color: #ff3b9f;
+  padding-right: 10px;
+}
+
+
+/*-- //Wedding Journal-- */
+
+
+/*-- gallery hover-- */
+
+.grid {
+  position: relative;
+  list-style: none;
+  text-align: center;
+}
+
+
+/* Common style */
+
+.grid figure {
+  position: relative;
+  overflow: hidden;
+  background: #3085a3;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 0 0em;
+}
+
+.grid figure img {
+  position: relative;
+  display: block;
+  min-height: 100%;
+  max-width: 100%;
+  opacity: 0.5;
+}
+
+.grid figure figcaption {
+  padding: 2em 2em;
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+/*.grid figure figcaption::before,
+.grid figure figcaption::after {
+	pointer-events: none;
+}*/
+
+.grid figure figcaption,
+.grid figure figcaption>a {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Anchor will cover the whole item by default */
+
+
+/* For some effects it will show as a button */
+
+.grid figure figcaption>a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+
+.grid figure h6 {
+  word-spacing: -0.15em;
+  font-weight: 300;
+}
+
+.grid figure h6 span {
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #000;
+}
+
+.grid figure h6,
+.grid figure p {
+  margin: 0;
+}
+
+.grid figure p {
+  letter-spacing: 1px;
+  font-size: 12px;
+  padding: 5px 0px 0px;
+}
+
+
+/*-----------------*/
+
+
+/***** Selena *****/
+
+
+/*-----------------*/
+
+figure.effect-selena {
+  background: #4292ec;
+}
+
+figure.effect-selena img {
+  opacity: 0.95;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+figure.effect-selena:hover img {
+  -webkit-transform: scale3d(0.95, 0.95, 1);
+  transform: scale3d(0.95, 0.95, 1);
+}
+
+figure.effect-selena h6 {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0);
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+figure.effect-selena p {
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+  transform: perspective(1000px) rotate3d(1, 0, 0, 90deg);
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+
+figure.effect-selena:hover h6 {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+
+/*figure.effect-selena:hover p {
+	opacity: 1;
+	-webkit-transform: perspective(1000px) rotate3d(1,0,0,0);
+	transform: perspective(1000px) rotate3d(1,0,0,0);
+}*/
+
+
+/*--// gallery hover-- */
+
+
+/*--Typography-- */
+
+.sub-title span.border {
+  width: 70px;
+  height: 71px;
+  margin: 12px;
+  display: inline-block;
+  background: #f7f7f7;
+}
+
+.progress-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  background-color: #007bff;
+  transition: width .6s ease;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+  font-size: 13px;
+  color: #7d7d7d;
+  border-top: none !important;
+}
+
+.table td,
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+  padding: 15px!important;
+}
+
+
+/*--//Typography-- */
+
+
+/*-- friends &honors-- */
+
+.honors {
+  background: url(../../images/designc03/f1.jpg)no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+}
+
+.clients-news-agile img {
+  background: #4292ec;
+  padding: 16px;
+}
+
+.clients-w3layouts-txt {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 15px;
+}
+
+.clients-w3layouts-txt h6 {
+  font-size: 16px;
+  color: #e91e63;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+
+/*-- //friends &honors-- */
+
+
+/*--Crazy Movements-- */
+
+#flexiselDemo3 {
+  display: none;
+}
+
+.nbs-flexisel-container {
+  position: relative;
+  max-width: 100%;
+}
+
+.nbs-flexisel-ul {
+  position: relative;
+  width: 99999px;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  text-align: center;
+  overflow: auto;
+}
+
+.nbs-flexisel-inner {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  width: 100%;
+  background: #fcfcfc;
+  /*background:-moz-linear-gradient #fcfcfc (top, #fcfcfc 0%, #eee 100%); /* FF3.6+ */
+  /*background:-webkit-gradient #fcfcfc (linear, left top, left bottom, color-stop(0%,#fcfcfc), color-stop(100%,#eee)); /* Chrome,Safari4+ */
+  /*background:-webkit-linear-gradient #fcfcfc(top, #fcfcfc 0%, #eee 100%); /* Chrome10+,Safari5.1+ */
+  /*background:-o-linear-gradient #fcfcfc(top, #fcfcfc 0%, #eee 100%); /* Opera11.10+ */
+  /*background:-ms-linear-gradient #fcfcfc(top, #fcfcfc 0%, #eee 100%); /* IE10+ */
+  /*background:linear-gradient #fcfcfc(top, #fcfcfc 0%, #eee 100%); /* W3C */
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.nbs-flexisel-item {
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  line-height: 0px;
+}
+
+.nbs-flexisel-item img {
+  max-width: 100%;
+  position: relative;
+}
+
+
+/*** Navigation ***/
+
+.nbs-flexisel-nav-left,
+.nbs-flexisel-nav-right {
+  padding: 5px 10px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.nbs-flexisel-nav-left {
+  left: 10px;
+}
+
+.nbs-flexisel-nav-left:before {
+  content: "<"
+}
+
+.nbs-flexisel-nav-left.disabled {
+  opacity: 0.4;
+}
+
+.nbs-flexisel-nav-right {
+  right: 5px;
+}
+
+.nbs-flexisel-nav-right:before {
+  content: ">"
+}
+
+.nbs-flexisel-nav-right.disabled {
+  opacity: 0.4;
+}
+
+
+/*-- //Crazy Movements-- */
+
+
+/*-- contact--*/
+
+.contact-forms input,
+.contact-forms select,
+.contact-forms textarea {
+  width: 100%;
+  font-size: 14px;
+  color: #000;
+  padding: .8em .9em;
+  border: 2px solid #ffa2df;
+  border-radius: 0px;
+  background: transparent;
+  outline: none;
+  margin-bottom: 25px;
+}
+
+.sent-butnn {
+  width: 100%;
+  font-size: 17px;
+  padding: 11px 0px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: #4292ec;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -moz-transition: 0.5s all;
+}
+
+.sent-butnn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.contact-forms textarea {
+  resize: none;
+  height: 10em;
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: 45px;
+  color: #000;
+}
+
+.address_mail_footer_grids iframe {
+  width: 100%;
+  height: 15em;
+  border: none;
+}
+
+.contact-forms ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #000;
+}
+
+.contact-forms ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #000;
+}
+
+.contact-forms :-ms-input-placeholder {
+  /* IE 10+ */
+  color: #000;
+}
+
+.contact-forms :-moz-placeholder {
+  /* Firefox 18- */
+  color: #000;
+}
+
+
+/*--//contact--*/
+
+
+/* footer */
+
+footer {
+  background: #ffa2df;
+}
+
+.groom-w3layouts-footer img {
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.bride-groom-names h4 a {
+  font-size: 26px;
+  color: #4292ec;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.icons-footer ul li a span {
+  font-size: 17px;
+  letter-spacing: 0px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background: #ffffff;
+  border-radius: 50px;
+  margin: 0px 12px;
+  color: #ffa2df;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+  -moz-transition: 0.5s all;
+}
+
+.icons-footer ul li a span:hover,
+.contact-list-grid p a:hover {
+  color: #4292ec;
+}
+
+footer p {
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 2px;
+}
+
+footer p a {
+  font-weight: bold;
+  color: #4292ec;
+}
+
+footer p a:hover {
+  color: rgb(255, 255, 255);
+}
+
+
+/*--// footer--*/
+
+
+/*-- to-top --*/
+
+#toTop {
+  display: none;
+  text-decoration: none;
+  position: fixed;
+  bottom: 20px;
+  right: 2%;
+  overflow: hidden;
+  z-index: 999;
+  width: 46px;
+  height: 36px;
+  border: none;
+  text-indent: 100%;
+  background: url(../../images/designc03/arr.png) no-repeat 0px 0px;
+}
+
+#toTopHover {
+  width: 32px;
+  height: 32px;
+  display: block;
+  overflow: hidden;
+  float: right;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+
+/*-- //to-top --*/
+
+
+/*--responsive--*/
+
+@media(max-width:1920px) {}
+
+@media(max-width:1680px) {}
+
+@media(max-width:1600px) {}
+
+@media(max-width:1440px) {
+  .header-outs {
+    min-height: 680px;
+  }
+  .banner-slide-img {
+    padding-top: 17em;
+  }
+  .banner-groom-name h4 {
+    font-size: 4.5em;
+    margin-top: 15px;
+  }
+  .banner-bride-name h4 {
+    font-size: 48px;
+  }
+  .jst-wthree-text h2 {
+    font-size: 33px;
+    color: #4292ec;
+    font-weight: 600;
+  }
+  .title {
+    font-size: 52px;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    font-size: 58px;
+    line-height: 73px;
+  }
+  .blog-txt-info h4 a,
+  .clients-w3layouts-txt h4,
+  .time-agile-title h3,
+  .groom-bride-grid h4,
+  .blog-wthree-info h4,
+  .sub-head h4,
+  .contact-list-grid h6 {
+    font-size: 20px;
+    color: #4292ec;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  .bride-groom-names h4 a {
+    font-size: 24px;
+  }
+  .icons-footer ul li a span {
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+  }
+  .inner_page-banner {
+    min-height: 271px;
+  }
+  .outs_more-buttn a {
+    padding: 7px 23px;
+  }
+  .groom-bride-grid {
+    padding: 2em 2.5em;
+  }
+  .vtimeline-content {
+    padding: 1.7em 1.5em
+  }
+  .contact-forms input,
+  .contact-forms select,
+  .contact-forms textarea {
+    padding: .7em .8em;
+  }
+  .address_mail_footer_grids iframe {
+    height: 13em;
+  }
+}
+
+@media(max-width:1366px) {
+  h1 a.navbar-brand {
+    padding: 19px 0px 0px;
+    font-size: 29px;
+  }
+  h1 a.navbar-brand span {
+    font-size: 19px;
+    margin: 0px 34px;
+  }
+  .blog-txt-info h4 a,
+  .clients-w3layouts-txt h4,
+  .time-agile-title h3,
+  .groom-bride-grid h4,
+  .blog-wthree-info h4,
+  .sub-head h4,
+  .contact-list-grid h6 {
+    font-size: 19px;
+  }
+  .vtimeline-content {
+    padding: 1.7em 1.2em;
+  }
+}
+
+@media(max-width:1280px) {
+  .banner-bride-name h4 {
+    font-size: 46px;
+  }
+  .header-outs {
+    min-height: 600px;
+  }
+  .banner-slide-img {
+    padding-top: 15em;
+  }
+  .banner-groom-name h4 {
+    font-size: 4em;
+  }
+  h1 a.navbar-brand {
+    font-size: 27px;
+  }
+  .simply-countdown>.simply-section .simply-word {
+    font-size: 16px;
+  }
+  .title {
+    font-size: 50px;
+  }
+  .icons-footer ul li a span {
+    font-size: 16px;
+  }
+  .outs_more-buttn a {
+    font-size: 15px;
+  }
+  .vtimeline-block {
+    width: 47%;
+  }
+  .vtimeline-block:after {
+    top: 13px;
+  }
+  .contact-forms input,
+  .contact-forms select,
+  .contact-forms textarea {
+    margin-bottom: 23px;
+  }
+}
+
+@media(max-width:1080px) {
+  .examples {
+    width: 60%;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    font-size: 55px;
+  }
+  .clients-color {
+    padding: 17px;
+  }
+  .clients-news-agile img {
+    padding: 9px;
+  }
+  .story-img img {
+    width: 99%;
+  }
+  .vtimeline-date {
+    font-size: 16px;
+  }
+  .wed-both {
+    width: 68%;
+  }
+  .groom-left-agile {
+    width: 68%;
+  }
+}
+
+@media(max-width:1050px) {
+  .blog-txt-info h4 a,
+  .clients-w3layouts-txt h4,
+  .time-agile-title h3,
+  .groom-bride-grid h4,
+  .blog-wthree-info h4,
+  .sub-head h4,
+  .contact-list-grid h6 {
+    font-size: 18px;
+  }
+  .bride-groom-names h4 a {
+    font-size: 23px;
+    letter-spacing: 1px;
+  }
+  .banner-bride-name h4 {
+    font-size: 44px;
+  }
+  .banner-groom-name h4 {
+    letter-spacing: 4px;
+    margin-top: 12px;
+  }
+  .jst-wthree-text h2 {
+    font-size: 31px;
+  }
+  .groom-left-agile {
+    right: -14px;
+  }
+  .wed-both {
+    top: 111px;
+  }
+  .groom-bride-grid {
+    padding: 2em 2em;
+  }
+}
+
+@media(max-width:1024px) {
+  h1 a.navbar-brand span {
+    font-size: 18px;
+  }
+  .title {
+    font-size: 48px;
+  }
+  .simply-countdown>.simply-section .simply-word {
+    letter-spacing: 2px;
+  }
+  .icons-footer ul li a span {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+  }
+  .social-media ul li span {
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+  }
+  .vtimeline-date {
+    padding: 7px;
+  }
+  .contact-forms textarea {
+    height: 9em;
+  }
+}
+
+@media(max-width:991px) {
+  div#navbarSupportedContent {
+    background: #000;
+    text-align: center;
+    padding: 13px 0px;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    padding: 10px 15px;
+    margin: 0px auto;
+  }
+  .navbar-light .navbar-toggler {
+    border-color: rgb(0, 0, 0);
+    background: #4292ec;
+    padding: 1px 4px;
+    margin-top: 0px;
+    outline: none;
+    margin-right: 0px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+  }
+  .navbar-light .navbar-toggler:hover {
+    background: #fff;
+  }
+  .abut-img-grids {
+    margin-top: 25px;
+  }
+  .bride-right-agile {
+    text-align: center;
+  }
+  .wed-both {
+    top: 103px;
+    width: 28%;
+    left: 148px;
+  }
+  .carousel-indicators {
+    bottom: -40px;
+  }
+  .groom-left-agile {
+    right: 111px;
+    width: 28%;
+  }
+  .about-groom-w3layouts {
+    margin-bottom: 30px;
+  }
+  .simply-countdown>.simply-section {
+    width: 124px;
+    height: 124px;
+  }
+  .examples {
+    width: 74%;
+  }
+  .clients-color {
+    padding: 12px;
+  }
+  .title {
+    font-size: 46px;
+  }
+  .pics-groom-bride {
+    text-align: center;
+  }
+  .groom-bride-grid {
+    padding: 1.5em 1.7em;
+  }
+  .outs_more-buttn a {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+  }
+  .vtimeline-content {
+    padding: 1.5em 1.2em;
+  }
+  .grid figure figcaption,
+  .grid figure figcaption>a {
+    top: 11px;
+  }
+  figure.effect-selena h6 {
+    font-size: 17px;
+  }
+  .btn {
+    font-size: 13px;
+  }
+  .clients-news-agile img {
+    margin-bottom: 20px;
+  }
+  .contact-forms input,
+  .contact-forms select,
+  .contact-forms textarea {
+    margin-bottom: 20px;
+  }
+}
+
+@media(max-width:900px) {
+  .header-outs {
+    min-height: 552px;
+  }
+  .banner-slide-img {
+    padding-top: 14em;
+  }
+  .inner_page-banner {
+    min-height: 245px;
+  }
+  .vtimeline-block {
+    width: 54%;
+  }
+}
+
+@media(max-width:800px) {
+  h1 a.navbar-brand {
+    font-size: 26px;
+  }
+  .banner-groom-name h4 {
+    font-size: 3.7em;
+  }
+  .simply-countdown>.simply-section .simply-word {
+    font-size: 15px;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    line-height: 68px;
+  }
+  .vtimeline-block {
+    width: 73%;
+  }
+  .address_mail_footer_grids iframe {
+    height: 11em;
+  }
+}
+
+@media(max-width:768px) {
+  .title {
+    font-size: 43px;
+  }
+  .clients-w3layouts-txt h6 {
+    font-size: 15px;
+  }
+  .icons-footer ul li a span {
+    font-size: 15px;
+  }
+  .bride-groom-names h4 a {
+    font-size: 22px;
+  }
+  .groom-bride-grid {
+    padding: 1em 1.2em;
+  }
+  .vtimeline-date {
+    font-size: 15px;
+  }
+  .table td,
+  .table>tbody>tr>td,
+  .table>tbody>tr>th,
+  .table>tfoot>tr>td,
+  .table>tfoot>tr>th,
+  .table>thead>tr>td,
+  .table>thead>tr>th {
+    padding: 10px!important;
+  }
+}
+
+@media(max-width:767px) {
+  .wed-both {
+    top: 93px;
+    width: 38%;
+    left: 36px;
+  }
+  .groom-left-agile {
+    right: 61px;
+    width: 38%;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    font-size: 50px;
+  }
+  .jst-wthree-text h2 {
+    font-size: 29px;
+  }
+  .simply-countdown>.simply-section {
+    width: 111px;
+    height: 111px;
+  }
+  .examples {
+    width: 91%;
+  }
+  .blog-grid-flex {
+    width: 82%;
+    margin: 0px auto;
+  }
+  .blog-grid-flex:nth-child(1),
+  .blog-grid-flex:nth-child(2) {
+    margin-bottom: 28px;
+  }
+  footer p {
+    letter-spacing: 1px;
+  }
+  .bride-image-w3layouts,
+  .groom-image-w3layouts {
+    min-height: 322px;
+  }
+  .inner_page-banner {
+    min-height: 213px;
+  }
+  h4.bootstrap-heading {
+    font-size: 18px;
+  }
+  h5.bootstrap-heading {
+    font-size: 16px;
+  }
+  .blog-wed-img:nth-child(1),
+  .blog-wed-img:nth-child(3) {
+    margin-bottom: 20px;
+  }
+  .blog-wed-img:nth-child(2) {
+    margin-top: 20px;
+  }
+  .contact-forms input,
+  .contact-forms select,
+  .contact-forms textarea {
+    margin-bottom: 18px;
+  }
+}
+
+@media(max-width:736px) {
+  .header-outs {
+    min-height: 552px;
+  }
+  .banner-slide-img {
+    padding-top: 12em;
+  }
+  .banner-groom-name h4 {
+    font-size: 3.4em;
+  }
+  .blog-txt-info h4 a,
+  .clients-w3layouts-txt h4,
+  .time-agile-title h3,
+  .groom-bride-grid h4,
+  .blog-wthree-info h4,
+  .sub-head h4,
+  .contact-list-grid h6 {
+    font-size: 17px;
+  }
+  .outs_more-buttn a {
+    font-size: 14px;
+  }
+  .vtimeline-block {
+    width: 86%;
+  }
+  .grid figure figcaption,
+  .grid figure figcaption>a {
+    top: 5px;
+  }
+  .contact-forms textarea {
+    height: 8em;
+  }
+  .contact-form:nth-child(2) {
+    margin: 25px 0px;
+  }
+}
+
+@media(max-width:667px) {
+  .header-outs {
+    min-height: 500px;
+  }
+  .banner-bride-name h4 {
+    font-size: 42px;
+  }
+  .banner-slide-img {
+    padding-top: 11em;
+  }
+  .jst-wthree-text h2 {
+    font-size: 28px;
+  }
+  .icons-footer ul li a span {
+    margin: 0px 9px;
+  }
+  .groom-bride-grid {
+    padding: 1em 1em;
+  }
+  .vtimeline-point {
+    margin-bottom: 27px;
+  }
+  .grid figure figcaption {
+    padding: 1.5em 1.5em;
+  }
+  figure.effect-selena h6 {
+    font-size: 15px;
+  }
+}
+
+@media(max-width:640px) {
+  .banner-groom-name h4 {
+    font-size: 3.2em;
+  }
+  .title {
+    font-size: 40px;
+    letter-spacing: 1px;
+  }
+  .icons-footer ul li a span {
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+  }
+}
+
+@media(max-width:600px) {
+  h1 a.navbar-brand span {
+    margin: 0px 30px;
+  }
+  h1 a.navbar-brand {
+    letter-spacing: 1px;
+  }
+  .banner-bride-name h4 {
+    font-size: 40px;
+  }
+  .bride-groom-names h4 a {
+    font-size: 20px;
+  }
+  .bride-image-w3layouts,
+  .groom-image-w3layouts {
+    min-height: 299px;
+  }
+  .vtimeline-content {
+    padding: 1.3em 1em;
+  }
+  .sent-butnn {
+    padding: 9px 0px;
+  }
+}
+
+@media(max-width:568px) {
+  .header-outs {
+    min-height: 444px;
+  }
+  .banner-slide-img {
+    padding-top: 10em;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    font-size: 45px;
+  }
+  .simply-countdown>.simply-section .simply-word {
+    font-size: 14px;
+  }
+  .icons-footer ul li a span {
+    margin: 0px 5px;
+  }
+  .vtimeline-block {
+    width: 89%;
+  }
+  .gallery-grids {
+    width: 60%;
+    margin: 0px auto;
+  }
+  .grid figure figcaption,
+  .grid figure figcaption>a {
+    top: 37px;
+  }
+  control:not([size]):not([multiple]) {
+    height: 41px;
+  }
+  .contact-forms input,
+  .contact-forms select,
+  .contact-forms textarea {
+    padding: .6em .7em;
+  }
+}
+
+@media(max-width:480px) {
+  .banner-groom-name h4 {
+    font-size: 3em;
+    margin-top: 7px;
+  }
+  .simply-countdown>.simply-section {
+    width: 98px;
+    height: 105px;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    line-height: 59px;
+  }
+  .blog-grid-flex {
+    width: 95%;
+  }
+  footer p {
+    font-size: 13px;
+    line-height: 28px;
+  }
+  .wed-both {
+    width: 44%;
+  }
+  .groom-left-agile {
+    right: 35px;
+    width: 44%;
+  }
+  .social-media ul li span {
+    font-size: 14px;
+  }
+  .gallery-grids {
+    width: 69%;
+  }
+  h1.bootstrap-heading {
+    font-size: 23px;
+  }
+  h2.bootstrap-heading {
+    font-size: 20px;
+  }
+  .table h3 {
+    font-size: 19px;
+  }
+}
+
+@media(max-width:440px) {
+  .banner-bride-name h4 {
+    font-size: 38px;
+  }
+  .news-date ul li a {
+    letter-spacing: 1px;
+  }
+  .blog-grid-flex {
+    width: 100%;
+  }
+  .title {
+    font-size: 37px
+  }
+  .inner_page-banner {
+    min-height: 187px;
+  }
+  .vtimeline-block {
+    width: 93%;
+  }
+  .simply-countdown>.simply-section {
+    width: 89px;
+    height: 96px;
+  }
+  .wed-both {
+    width: 47%;
+  }
+  .groom-left-agile {
+    width: 47%;
+  }
+}
+
+@media(max-width:414px) {
+  .header-outs {
+    min-height: 387px;
+  }
+  .banner-groom-name h4 {
+    letter-spacing: 2px;
+    font-size: 2.7em;
+    margin-top: 3px;
+  }
+  .banner-slide-img {
+    padding-top: 9.5em;
+  }
+  .jst-wthree-text h2 {
+    font-size: 26px;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    font-size: 40px;
+  }
+  .examples {
+    width: 100%;
+  }
+  .simply-countdown>.simply-section {
+    width: 90px;
+  }
+  .wed-both {
+    width: 52%;
+  }
+  .groom-left-agile {
+    width: 52%;
+  }
+  .title {
+    font-size: 35px;
+  }
+  .vtimeline-content {
+    padding: 1em .7em;
+  }
+  .gallery-grids {
+    width: 76%;
+  }
+  .contact-forms textarea {
+    height: 7em;
+  }
+}
+
+@media(max-width:384px) {
+  .navbar-light .navbar-nav .nav-link {
+    padding: 9px 15px;
+  }
+  h1 a.navbar-brand {
+    font-size: 24px;
+  }
+  .wed-both {
+    top: 127px;
+    left: 8px;
+  }
+  .groom-left-agile {
+    top: 138px;
+  }
+  .simply-countdown>.simply-section .simply-amount {
+    font-size: 37px;
+  }
+  .simply-countdown>.simply-section .simply-word {
+    letter-spacing: 1px;
+  }
+  .simply-countdown>.simply-section {
+    width: 84px;
+    height: 99px;
+  }
+  .bride-image-w3layouts,
+  .groom-image-w3layouts {
+    min-height: 260px;
+  }
+  .gallery-grids {
+    width: 80%;
+  }
+  .address_mail_footer_grids iframe {
+    height: 10em;
+  }
+}
+
+@media(max-width:375px) {
+  .header-outs {
+    min-height: 355px;
+  }
+  .banner-slide-img {
+    padding-top: 8.5em;
+  }
+  .banner-groom-name h4 {
+    letter-spacing: 2px;
+    font-size: 2.4em;
+  }
+  .jst-wthree-text h2 {
+    font-size: 24px;
+  }
+  .wed-both {
+    top: 128px;
+    left: 14px;
+  }
+  .simply-countdown>.simply-section .simply-word {
+    font-size: 13px;
+  }
+  .simply-countdown>.simply-section {
+    width: 80px;
+  }
+  .title {
+    font-size: 33px;
+  }
+  .gallery-grids {
+    width: 85%;
+  }
+}
+
+@media(max-width:320px) {
+  .banner-groom-name h4 {
+    letter-spacing: 1px;
+    font-size: 2.2em;
+  }
+  h1 a.navbar-brand {
+    font-size: 23px;
+  }
+  h1 a.navbar-brand span {
+    margin: 0px 24px;
+  }
+  .navbar-light .navbar-nav .nav-link {
+    letter-spacing: 1px
+  }
+  .groom-left-agile {
+    right: 16px;
+    width: 67%;
+  }
+  .wed-both {
+    left: 10px;
+    width: 67%;
+  }
+  .simply-countdown>.simply-section {
+    width: 67px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .icons-footer ul li a span {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+  .outs_more-buttn a {
+    padding: 7px 19px;
+  }
+  .bride-image-w3layouts,
+  .groom-image-w3layouts {
+    min-height: 220px;
+  }
+  .gallery-grids {
+    width: 92%;
+  }
+}
+
+
+/*--//responsive--*/
