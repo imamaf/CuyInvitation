@@ -390,7 +390,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 bag1 text-center">
                     <div class="judul-1" data-sal="flip-up" data-sal-duration="800">Save The Date</div>
                     <div class="judul-2" data-sal="flip-up" data-sal-duration="800" data-sal-delay="200">wedding of</div>
-                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">Henry Fernandez &amp; Laura Basuki Kirana</div>
+                    <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">{{ empty($tmplt_custr) ? "Henry Fernandez" : $tmplt_custr->nama_mempelai_pria }} &amp; {{ empty($tmplt_custr) ? "Laura Basuki Kirana" : $tmplt_custr->nama_mempelai_wanita }}</div>
                     <div class="judul-3" data-sal="flip-up" data-sal-duration="800" data-sal-delay="600">On February 02, 2020</div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pad-nol">
@@ -403,23 +403,23 @@
         <div class="row align-items-center">
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-left" data-sal="slide-right" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai pria</div>
-                    <div class="bag2-judul2"> Henry Fernandez</div>
-                    <div class="bag2-judul3">Putra Pertama Bpk. Ahmad Suryadi  &amp; Ibu Mislawati </div>
+                    <div class="bag2-judul2"> {{ empty($tmplt_custr) ? "Henry Fernandez" : $tmplt_custr->nama_mempelai_pria }}</div>
+                    <div class="bag2-judul3">Putra Pertama Bpk. {{ empty($tmplt_custr) ? "Ahmad Suryadi" : $tmplt_custr->nama_orang_tua_pria_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_pria_ibu }} </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-left" data-sal-duration="800">
-                <img src="{{url('assets/images/designc01/male.png') }}"alt="">
+                <img src="<?php echo empty($tmplt_custr) ? url('assets/images/designc01/male.png') : url('storage' , $tmplt_custr->path_foto_pria)  ?>" alt="">
             </div>
         </div>
     </div>
     <div class="bag2">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 text-center" data-sal="slide-right" data-sal-duration="800">
-                <img src="{{ url('assets/images/designc01/female.png') }}" alt="">
+                <img src="<?php echo empty($tmplt_custr) ? url('assets/images/designc01/female.png') : url('storage' , $tmplt_custr->path_foto_wanita)  ?>" alt="">
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 text-right" data-sal="slide-left" data-sal-duration="800">
                     <div class="bag2-judul1 text-uppercase">mempelai wanita</div>
-                    <div class="bag2-judul2">Laura Basuki Kirana</div>
-                    <div class="bag2-judul3">Putri Pertama Bpk. Taufik Romadhon &amp; Ibu Gina Rizka</div>
+                    <div class="bag2-judul2">{{ empty($tmplt_custr) ? "Laura Basuki Kirana" : $tmplt_custr->nama_mempelai_wanita }}</div>
+                    <div class="bag2-judul3">Putri Pertama Bpk. {{ empty($tmplt_custr) ? "Taufik Romadhon" : $tmplt_custr->nama_orang_tua_wanita_bapak }} &amp; {{ empty($tmplt_custr) ? "Ibu Gina Rizka" : "Ibu ".$tmplt_custr->nama_orang_tua_wanita_ibu }}</div>
             </div>
             
         </div>
@@ -514,6 +514,8 @@
     <div class="bag7">
         <h1 class="judul-bag4">Galeri</h1> <br> <br>
         <div class="row text-center padcol">
+        @if(empty($gallerys))
+         <!-- KONDISI TIDAK ADA DATA  -->
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <img src="{{url('assets/images/designc01/galeri-1.jpg')}}" alt="">
             </div>
@@ -541,6 +543,15 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <img src="{{url('assets/images/designc01/galeri-9.jpg')}}" alt="">
             </div>
+            @endif
+            @if(!empty($gallerys))
+            <!-- KONDISI ADA DATA  -->
+                    @foreach($gallerys as $glr)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <img src="<?php echo url('storage' , $glr->path_foto)?>" alt="">
+                    </div>
+                 @endforeach
+            @endif
         </div>
     </div>
     <div class="bag8bg">
@@ -554,9 +565,9 @@
         </div>
     </div>
     <div class="penutup">
-        Hendry
+    {{ empty($tmplt_custr) ? "Henry" : $tmplt_custr->nama_mempelai_pria }}
          &amp;
-        Laura
+    {{ empty($tmplt_custr) ? "Laura" : $tmplt_custr->nama_mempelai_wanita }}
     </div>
     <div id = "map" style = "width:100%; height:600px;"></div>
 </body>
@@ -582,7 +593,7 @@
 
 <script>
 // Set the date we're counting down to
-var dataDate = new Date(new Date().getTime() + 948 * 120 * 120 * 2000);
+var dataDate =  <?php echo !empty($tmplt_custr) ? json_encode($tmplt_custr->tgl_akad) : json_encode("Jan 5, 2021 15:37:25") ?>;
 console.log('data date' , dataDate);
 var countDownDate = new Date(dataDate).getTime();
 

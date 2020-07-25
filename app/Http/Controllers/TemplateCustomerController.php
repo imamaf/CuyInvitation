@@ -21,7 +21,7 @@ class TemplateCustomerController extends Controller
         }
         $data =['tmplt_custr' => $tmplt_custr ,'gallerys' => $gallerys ];
 
-        return !is_null($gallerys) ? view('product_design.design_C01' , $data ) : view('product_design.design_C01' , $data );
+        return !is_null($gallerys) ? view('product_cust_design.design_C01' , $data ) : view('product_cust_design.design_C01' , $data );
     }
     
     public function index_tempalet_2(){
@@ -39,7 +39,7 @@ class TemplateCustomerController extends Controller
         }
         $data =['tmplt_custr' => $tmplt_custr ,'gallerys' => $gallerys , 'komentars' => $komentars ];
 
-        return !is_null($gallerys) ? view('product_design.design_C02' , $data ) : view('product_design.design_C02' , $data );
+        return !is_null($gallerys) ? view('product_cust_design.design_C02', $data ) : view('product_cust_design.design_C02', $data );
     }
 
     public function index_tempalet_3(){

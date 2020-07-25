@@ -134,15 +134,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="col-md-6 team-grid">
 										<!-- normal -->
 										<div class="ih-item circle effect10 bottom_to_top">
-											<div class="img"><img src="{{ url('assets/images/designc02/a1.jpg')}}" alt="img" /></div>
+											<div class="img"><img src="{{  empty($tmplt_custr) ? url('assets/images/designc02/a1.jpg') : url('storage' , $tmplt_custr->path_foto_pria) }}" alt="img" /></div>
 											<div class="info">
-												<h3>Groom</h3>
+												<h3>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h3>
 												
 											</div>
 										</div>
 										<!-- end normal -->
-										  <h4>Groom</h4>
-										  <h1>Putra dari Bpk. Albert  &amp; Ibu Jesica </h1>
+										  <h4>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h4>
+										  <h1>Putra dari Bpk. {{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_orang_tua_pria_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_pria_ibu }} </h1>
 										  <div class="icons">
 													<ul>
 														<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -156,13 +156,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="ih-item circle effect10 bottom_to_top">
 											<div class="img"><img src="{{ empty($tmplt_custr) ? url('assets/images/designc02/a2.jpg') : url('storage' , $tmplt_custr->path_foto_wanita)}}" alt="img" /></div>
 											<div class="info">
-												<h3>Groom</h3>
+												<h3>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_wanita }}</h3>
 												
 											</div>
 										</div>
 										<!-- end normal -->
-										 <h4>Bride</h4>
-										<h1>Putri dari Bpk. Albert  &amp; Jesica </h1>
+										 <h4>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h4>
+										<h1>Putri dari Bpk. {{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_orang_tua_wanita_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_ibu }} </h1>
 										  <div class="icons">
 													<ul>
 														<li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -213,7 +213,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="modal-body">
 		<form action="{{url('/add-komentar')}}" method="POST" enctype="multipart/form-data">
 		@csrf
-		<input type="text" class="form-control" id="template_id" value="" style="display:none" name="template_id">
+		<input type="text" class="form-control" id="template_id" value="{{ empty($tmplt_custr) ? '' : $tmplt_custr->id }}" style="display:none" name="template_id">
 		<div class="form-group">
 			<label>Masukan Foto anda</label>
 			<div class="input-group">
@@ -257,89 +257,92 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="inner_w3l_agile_grids">
 								<div class="sreen-gallery-cursual">
 						       <div id="owl-demo" class="owl-carousel">
+								@if(!empty($komentars))
+								 @foreach ($komentars as $k)
+							      <div class="item-owl">
+										<div class="test-review">
+											<img src="{{url('storage' , $k->path_foto) }}" class="img-responsive" alt=""/>
+											<h5>{{ $k->nama }}</h5>
+											<p>{{ $k->deskripsi }}</p>
+										</div>
+					                </div>
+								 @endforeach
+								@endif
+								@if(empty($komentars))
 							      <div class="item-owl">
 					                		<div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s1.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Groom</h5>
-											  	 <p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h5>
 					                	    </div>
 					                </div>
 					                 <div class="item-owl">
 					                	<div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s2.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Bride</h5>
-											  	 <p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h5>
 					                	    </div>
 					                </div>
 					                 <div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s3.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Groom</h5>
-											  	 <p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h5>
 					                	    </div>
 					                </div>
 									 <div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s4.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Bride</h5>
-											  	 <p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h5>
 					                	    </div>
 					                </div>
 									<div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s1.jpg') }}" class="img-responsive" alt=""/>
-											 <h5>Groom</h5>
-											 	 <p>Selamat Menumpuh Hidup Baru</p>
+											 <h5>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h5>
 					                	    </div>
 					                </div>
 					                 <div class="item-owl">
 					                		<div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s5.jpg') }}" class="img-responsive" alt=""/>
-											   <h5>Bride</h5>
-											   	 <p>Selamat Menumpuh Hidup Baru</p>
+											   <h5>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h5>
 					                	    </div>
 					                </div>
 									 <div class="item-owl">
 					                		<div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s3.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Groom</h5>
-											  	 <p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h5>
 					                	    </div>
 					                </div>
 					                 <div class="item-owl">
 					                	<div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s4.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Bride</h5>
+											  <h5>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h5>
 					                	    </div>
 					                </div>
 					                 <div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s1.jpg') }}" class="img-responsive" alt=""/>
-											 <h5>Groom</h5>
-											 	 <p>Selamat Menumpuh Hidup Baru</p>
+											 <h5>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h5>
 					                	    </div>
 					                </div>
 									 <div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s2.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Bride</h5>
-											  	 <p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h5>
 					                	    </div>
 					                </div>
 									 <div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s3.jpg') }}" class="img-responsive" alt=""/>
-											  <h5>Groom</h5>
-											  	<p>Selamat Menumpuh Hidup Baru</p>
+											  <h5>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h5>
 					                	    </div>
 					                </div>
 									 <div class="item-owl">
 					                	    <div class="test-review">
 						                	  <img src="{{ asset('assets/images/designc02/s5.jpg') }}" class="img-responsive" alt=""/>
-											 <h5>Bride</h5>
-											 <p>Selamat Menumpuh Hidup Baru</p>
+											 <h5>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h5>
+											 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi veritatis dignissimos consequuntur cumque voluptatem laborum. At, sint facere repellendus amet a labore earum quam porro iste tenetur, rerum tempore eaque.</p>
 					                	    </div>
 									</div>
+								@endif
 				              </div>
 						<!--//screen-gallery-->
 				</div>
@@ -360,10 +363,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 home-agile-text">
 				   <h4>Akad Nikah</h4>
-				   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad voluptatum nobis quas possimus fugiat porro non magnam, architecto similique in cupiditate harum ut consectetur quod, ex deleniti cumque. A, corrupti?</p>
+				   <p>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->deskripsi }}</p>
 				    <div class="date">
-					   <h5><i class="fa fa-calendar" aria-hidden="true"></i> March 20 2021 </h5>
-					   <h5><i class="fa fa-clock-o" aria-hidden="true"></i>  12.00pm to s/d to s/d</h5>
+					   <h5><i class="fa fa-calendar" aria-hidden="true"></i> <?= empty($tmplt_custr) ? 'March 20 2021' :  date('d F Y', strtotime($tmplt_custr->tgl_akad))?></h5>
+					   <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <?= empty($tmplt_custr) ? '12.00pm to s/d':  date('H:i', strtotime($tmplt_custr->tgl_akad))?> to s/d</h5>
 				   </div>
 						<div class="icon_wthree"><img src="{{ asset('assets/images/designc02/ring.png') }}" alt="" /></div>
 				</div>
@@ -371,10 +374,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 
 				<div class="col-md-6 home-agile-text">
 				   <h4>Resepsi Nikah</h4>
-				   	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad voluptatum nobis quas possimus fugiat porro non magnam, architecto similique in cupiditate harum ut consectetur quod, ex deleniti cumque. A, corrupti?</p>
+				   	<p>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->deskripsi }}</p>
 				   <div class="date">
-					   <h5><i class="fa fa-calendar" aria-hidden="true"></i> March 20 2021</h5>
-					   <h5><i class="fa fa-clock-o" aria-hidden="true"></i> 12.00pm to s/d to s/d</h5>
+					   <h5><i class="fa fa-calendar" aria-hidden="true"></i> <?= empty($tmplt_custr) ? '12.00pm to s/d':  date('d F Y', strtotime($tmplt_custr->tgl_resepsi))?></h5>
+					   <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <?= empty($tmplt_custr) ? '12.00pm to s/d':  date('H:i', strtotime($tmplt_custr->tgl_resepsi))?> to s/d</h5>
 				   </div>
 				   <div class="icon_wthree"><i class="fa fa-cutlery" aria-hidden="true"></i></div>
 
@@ -497,6 +500,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p class="sub_para">WE ARE GETTING MARRIED</p>
 
     <div class="inner_w3l_agile_grids">
+	@if(!empty($gallerys))
+	 @foreach($gallerys as $glr)
+	    <div class="col-md-4 w3_tabs_grid">
+            <div class="grid">
+                <a href="{{  url('storage' , $glr->path_foto) }}" class="lsb-preview" data-lsb-group="header">
+                    <figure class="effect-winston">
+                        <img src="{{  url('storage' , $glr->path_foto) }}" style="max-width : 400px; margin-top:20px" class="img-responsive" alt=" " />
+                        <figcaption>
+                            <p>
+                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            </p>
+                        </figcaption>			
+                    </figure>
+                </a>
+            </div>
+		</div>
+	 @endforeach
+	@endif
+	@if(empty($gallerys))
         <div class="col-md-4 w3_tabs_grid">
             <div class="grid">
                 <a href="{{ asset('assets/images/designc02/g1.jpg') }}" class="lsb-preview" data-lsb-group="header">
@@ -641,6 +665,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </a>
             </div>
 		</div>
+	@endif
         <div class="clearfix"> </div>
 
     </div>
@@ -662,7 +687,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
   <div class="agile-w3l-sec">
               <h3>The best gift will be your participation, thanks to all</h3>
-			  <p>Groom <span>&</span> Bride</p>
+			  <p>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }} <span>&</span> {{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</p>
 			  <div class="banner-mid-wthree"> <a href="index.html" class="hvr-buzz"> <i class="fa fa-heart-o" aria-hidden="true"></i></a> </div>
   	</div>
 
@@ -694,18 +719,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 
 			<div class="copy-right">
-				<p>© 2020 Wedding Proposer. All rights reserved | Design by <a href="/">CuyInvitation</a></p>
+				<p>© 2017 Wedding Proposer. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 			</div>
 		</div>
 	</div>
 	<input type="text" id="time" style="display:none" value="{{ empty($tmplt_custr) ? '' : $tmplt_custr->tgl_akad }}" name="lname"/>
 	<!-- //footer -->
-
+	
+	<?= 
+	$banner = '/assets/images/designc02/22.jpg';
+	if(!empty($tmplt_custr)){
+		$banner = '/storage/'.$tmplt_custr->banner;
+	}
+	?> 
 	<style>
 
 	/*-- /header --*/
 	.w3ls_banner_section {
-		background: url( '/assets/images/designc02/22.jpg') no-repeat 0px 0px;
+		background: url(<?= $banner ?>) no-repeat 0px 0px;
 		background-size: cover;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
