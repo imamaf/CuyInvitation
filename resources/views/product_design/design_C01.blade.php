@@ -11,6 +11,19 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
     <link rel="stylesheet" type="text/css" href="{{ asset('/js/sal.js/dist/sal.css') }}">
 
+
+
+
+
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link href="{{ asset('css/maps.css') }}" rel="stylesheet" >
+
+
+
+
+
+
+
 	<script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- google fonts -->
@@ -556,12 +569,22 @@
          &amp;
     {{ empty($tmplt_custr) ? "Laura" : $tmplt_custr->nama_mempelai_wanita }}
     </div>
+    <div id = "map" style = "width:100%; height:600px;"></div>
 </body>
 </html>
 <script src="{{asset('js/bootstrap.min.js') }}"></script>
 <script src="{{asset('js/jQuery.scrollSpeed.js')}}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 <script src="{{asset('js/sal.js/dist/sal.js')}}"></script>
+
+
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<script src="js/maps.js"></script>
+<script type ='text/javascript'>setCoords(-6.251,106.586444)</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfAXqhEhpD17LucNYl4pDXEeqEBQTXoyQ&callback=initMap">
+</script>
 <script>
     sal({
         once: false
