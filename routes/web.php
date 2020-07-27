@@ -72,10 +72,11 @@ Route::get('/template-customer','AdminTemplateCustomerController@viewTemplateCus
 //GET BY ID
 Route::get('/getTemplateCustomerById/{id}', 'AdminTemplateCustomerController@getTemplateCustomerByIndex');
 //GET FOTO GALLERY BY ID
-Route::get('/getFotoGalleryById/{id}', 'AdminTemplateCustomerController@getFotoGalleryByIndex');
+Route::get('/getFotoGalleryById/{id}', 'GalleryController@getGalleryByTemplateId');
 // UPDATE  TEMPLATE CUSTOMER
-Route::put('/update-template-customer/{template_customer}','AdminTemplateCustomerController@updateTemplateCustomer');
+Route::post('/update-template-customer/{template_customer}','AdminTemplateCustomerController@updateTemplateCustomer');
 Route::post('/add/template-customer','AdminTemplateCustomerController@addTemplateCustomer');
+Route::delete('/delete-template-customer/{template_customer}', 'AdminTemplateCustomerController@deleteTempateCustomer');
 
 // ---------------------------- SEARCH ------------------
 Route::get('/cari/{pathSearch}','DashboardController@Search');

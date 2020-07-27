@@ -55,8 +55,9 @@
             color: #9d7b48;
         }
         .headbg {
-            width: 100%;
-            background: url("{{ asset('/assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
+            width: 100%;           
+             background: url("{{ asset('/assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
+
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -128,7 +129,7 @@
             text-align: center;
             margin: 70px 100px;
             /* width: 100%; */
-            background: url("{{ asset('assets/images/designc01/image-kehadiran.png')}}")no-repeat center;
+            /* background: url("{{ asset('assets/images/designc01/image-kehadiran.png')}}")no-repeat center; */
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -240,7 +241,13 @@
         }
         @media (max-width: 575px) {
             .headbg {
-                background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center;
+             background: url("{{ asset('/assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            background-size: cover;
+                /* background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center; */
             }
             .overlay {
                 background-color: #00000085;

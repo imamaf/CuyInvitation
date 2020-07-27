@@ -142,7 +142,7 @@ ul li {
 
 /*-- header --*/
 
-.header-outs {
+/* .header-outs {
   position: relative;
   background: url(../../images/designc03/b4.jpg) no-repeat 0px 0px;
   -webkit-background-size: cover;
@@ -150,7 +150,7 @@ ul li {
   -o-background-size: cover;
   -ms-background-size: cover;
   min-height: 800px;
-}
+} */
 
 h1 a.navbar-brand {
   padding: 21px 0px 0px;

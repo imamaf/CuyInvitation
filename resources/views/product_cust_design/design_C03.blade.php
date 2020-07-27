@@ -40,6 +40,32 @@
     <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600" rel="stylesheet">
+    
+    <style>
+    .header-outs {
+      position: relative;
+      background: url(<?= '/storage/'.$tmplt_custr->banner ?>) no-repeat 0px 0px;
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      -ms-background-size: cover;
+      min-height:710px;
+    }
+      @media (max-width: 575px) {
+      .header-outs {
+          /* background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center; */
+      width: 100%;
+      background: url(<?= '/storage/'.$tmplt_custr->banner ?>)no-repeat center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      -ms-background-size: cover;
+      background-size: cover;
+      min-height:400px;
+      }
+    }
+    </style>
 
   </head>
   <body>

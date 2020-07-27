@@ -13,6 +13,8 @@
         @method('delete')
         @csrf
         Apakah ada yakin ingin @yield('message') ?
+
+        <div class="form-body" id="command_delete"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

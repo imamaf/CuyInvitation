@@ -56,7 +56,7 @@
         }
         .headbg {
             width: 100%;
-            background: url("{{ asset('/assets/images/designc01/banner-temp-1.png')}}")no-repeat center;
+            background: url(<?= '/storage/'.$tmplt_custr->banner ?>)no-repeat center;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -240,7 +240,14 @@
         }
         @media (max-width: 575px) {
             .headbg {
-                background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center;
+                /* background: url("{{ asset('assets/images/designc01/banner-p.png')}}")no-repeat center; */
+            width: 100%;
+            background: url(<?= '/storage/'.$tmplt_custr->banner ?>)no-repeat center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+            background-size: cover;
             }
             .overlay {
                 background-color: #00000085;

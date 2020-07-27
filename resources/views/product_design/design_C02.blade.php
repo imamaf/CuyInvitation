@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<title>Wedding Proposer  a Wedding Category Bootstrap Responsive Website Template | Home :: w3layouts</title>    
+<title>Wedding Proposer  a Wedding Category </title>    
 <link href="{{ asset('assets/designC02/css/font-awesome.css') }}" rel="stylesheet" type="text/css" media="all" /><!-- fontawesome css -->     
 <link href="{{ asset('assets/designC02/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" /><!-- Bootstrap stylesheet -->
 <link href="{{ asset('assets/designC02/css/snow.css') }}" rel="stylesheet" type="text/css" media="all" /><!-- stylesheet -->
@@ -41,9 +41,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				  </button>
-				<div class="logo">
-					<h1><a href="index.html"><span>WP</span> <div class="logo-img"><img src="{{ asset('assets/images/designc02/in-love.png') }}" alt="img09"/></div><p class="sub_title">Wedding Proposer</p> </a></h1>
-				</div>	
+				{{-- <div class="logo"> --}}
+						<h1><a href="{{ url('/') }}"><span class="fa fa-gift" style="color: #FF3E75"></span> CuyInvitation </a></h1>
+				{{-- </div>	 --}}
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="/">Home</a></li>
 							<li><a href="about.html">About</a></li>
-							<li><a href="gallery.html">Wedding Albums</a></li>
+							<li><a href="#gallery">Gallery</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
 								<ul class="dropdown-menu agile_short_dropdown">
@@ -487,7 +487,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!-- //Events--> --}}
             
     <!--/story-->
-        <div class="w3l_inner_section">
+        <div class="w3l_inner_section" id="gallery">
             <div class="container">
                     <div class="wthree_title_agile">
                         <h2>Wedding  <span>Albums</span></h2>

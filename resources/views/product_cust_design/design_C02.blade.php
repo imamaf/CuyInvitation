@@ -41,9 +41,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				  </button>
-				<div class="logo">
-					<h1><a href="index.html"><span>WP</span> <div class="logo-img"><img src="{{ asset('assets/images/designc02/in-love.png') }}" alt="img09"/></div><p class="sub_title">Wedding Proposer</p> </a></h1>
-				</div>	
+				{{-- <div class="logo"> --}}
+					<h1><a href="{{ url('/') }}"><span class="fa fa-gift" style="color: #FF3E75"></span> CuyInvitation </a></h1>
+				{{-- </div>	 --}}
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -719,24 +719,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 
 			<div class="copy-right">
-				<p>© 2017 Wedding Proposer. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+				<p>© 2020 Wedding Proposer. All rights reserved | Design by <a href="/">CuyInvitation</a></p>
 			</div>
 		</div>
 	</div>
 	<input type="text" id="time" style="display:none" value="{{ empty($tmplt_custr) ? '' : $tmplt_custr->tgl_akad }}" name="lname"/>
 	<!-- //footer -->
 	
-	<?= 
-	$banner = '/assets/images/designc02/22.jpg';
-	if(!empty($tmplt_custr)){
-		$banner = '/storage/'.$tmplt_custr->banner;
-	}
-	?> 
 	<style>
 
 	/*-- /header --*/
 	.w3ls_banner_section {
-		background: url(<?= $banner ?>) no-repeat 0px 0px;
+		background: url(<?= '/storage/'.$tmplt_custr->banner ?>) no-repeat 0px 0px;
 		background-size: cover;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;

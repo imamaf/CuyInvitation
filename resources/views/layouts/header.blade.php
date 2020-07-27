@@ -42,7 +42,7 @@
 		<!-- nav -->
 		<nav class="py-3 d-lg-flex">
 			<div id="logo">
-				<h1><a href="index.html"><span class="fa fa-gift" style="color: #FF3E75"></span> CuyInvitation </a></h1>
+				<h1><a href="{{ url('/') }}"><span class="fa fa-gift" style="color: #FF3E75"></span> CuyInvitation </a></h1>
 			</div>
 			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
 			<input type="checkbox" id="drop" />
