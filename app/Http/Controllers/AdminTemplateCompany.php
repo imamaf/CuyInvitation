@@ -42,7 +42,7 @@ class AdminTemplateCompany extends Controller
         $path_banner = '';
         $dataFind = TemplateCompany::where('id', $request->id);
         if ($request_banner != null) {
-            $path_banner = $request_banner->store('public/banner');
+            $path_banner = $request_banner->store('template_company');
             Storage::delete($dataFind->get()->first()->url_gambar);
         } else {
             $path_banner = $dataFind->get()->first()->url_gambar;
@@ -58,7 +58,7 @@ class AdminTemplateCompany extends Controller
     }
 
     public function addTemplate(Request $request) {
-        $path_banner = $request->file('banner_1_add')->store('public/banner');
+        $path_banner = $request->file('banner_1_add')->store('template_company');
         $data = TemplateCompany::create([
             'nama_template' => $request->templateNameAdd,
             'url_gambar' => $path_banner,

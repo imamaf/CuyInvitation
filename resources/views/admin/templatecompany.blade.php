@@ -231,7 +231,8 @@
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', false);
                 $('#priceModal').val(data.harga_template).prop('disabled', false);
                 $('#linkModal').val(data.link).prop('disabled', false);
-                $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', false);
+                $('#img-upload-edit').attr('src', 'storage/' + data.url_gambar);
+                // $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', false);
                 $('#imageModalEdit').prop('disabled', false);
                 $('#imageGroupEdit').prop('hidden', false);
                 $('#btn-save-edit').val("update").prop('hidden', false);
@@ -249,7 +250,8 @@
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', true);
                 $('#priceModal').val(data.harga_template).prop('disabled', true);
                 $('#linkModal').val(data.link).prop('disabled', true);
-                $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', true);
+                 $('#img-upload-edit').attr('src', 'storage/' + data.url_gambar);
+                // $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', true);
                 $('#imageModalEdit').prop('disabled', true);
                 $('#imageGroupEdit').prop('hidden', true);
                 $('#btn-save-edit').val("update").prop('hidden', true);
