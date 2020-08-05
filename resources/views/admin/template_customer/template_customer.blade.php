@@ -175,13 +175,17 @@ Template Customer
                                 <option value="C03">C03 - Template 3</option>
                             </select>
                         </div>
-                        <label for="tgl_akad">Tanggal Akad</label>
-                        <div class="form-group">
-                            <input type="text" name="tgl_akad" class="form-control" id="tgl_akad" style="background-color:white"/>
-                                <script>
-                                    $('#tgl_akad').datetimepicker({ footer: true, modal: true, format:"yyyy-mm-dd HH:MM:ss", });
-                            </script>
-                          </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                            <label for="tgl_akad">Tanggal Akad</label>
+                            <div class="form-group">
+                                <input type="text" name="tgl_akad" class="form-control" id="tgl_akad" style="background-color:white"/>
+                                    <script>
+                                        $('#tgl_akad').datetimepicker({ footer: true, modal: true, format:"yyyy-mm-dd HH:MM:ss", });
+                                </script>
+                              </div>
+                        </div>
+                        <div class="col-md-6">
                         <label for="npm">Tanggal Resepsi</label>
                         <div class="form-group">
                             <input type="text" name="tgl_resepsi" class="form-control" id="tgl_resepsi" style="background-color:white"/>
@@ -189,6 +193,16 @@ Template Customer
                                     $('#tgl_resepsi').datetimepicker({ footer: true, modal: true, format:"yyyy-mm-dd HH:MM:ss", });
                             </script>
                           </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="latitude" placeholder="Latitude" name="latitude">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="longitude" placeholder="Longitude" name="longitude">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>Keterangan</label>
                             <textarea name="deskripsi" id="deskripsi"> </textarea>
@@ -234,10 +248,10 @@ Template Customer
                             <input type="text" class="form-control" id="nama_mempelai_pria" placeholder="Nama Lengkap" name="nama_mempelai_pria">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_pria_bapak" placeholder="Nama Orang Tua" name="nama_orang_tua_pria_bapak">
+                            <input type="text" class="form-control" id="nama_orang_tua_pria_bapak" placeholder="Nama Bapak" name="nama_orang_tua_pria_bapak">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_pria_ibu" placeholder="Nama Orang Tua Pria" name="nama_orang_tua_pria_ibu">
+                            <input type="text" class="form-control" id="nama_orang_tua_pria_ibu" placeholder="Nama Ibu" name="nama_orang_tua_pria_ibu">
                         </div>
                     <button type="button" class="btn btn-previous btn-prev">Previous</button>
                      <button type="button" class="btn btn-next">Next</button>
@@ -281,10 +295,10 @@ Template Customer
                             <input type="text" class="form-control" id="nama_mempelai_wanita" placeholder="Nama Lengkap" name="nama_mempelai_wanita">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_wanita_bapak" placeholder="Nama Orang Tua" name="nama_orang_tua_wanita_bapak">
+                            <input type="text" class="form-control" id="nama_orang_tua_wanita_bapak" placeholder="Nama Bapak" name="nama_orang_tua_wanita_bapak">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nama_orang_tua_wanita_ibu" placeholder="Nama Orang Tua Wanita" name="nama_orang_tua_wanita_ibu">
+                            <input type="text" class="form-control" id="nama_orang_tua_wanita_ibu" placeholder="Nama Ibu" name="nama_orang_tua_wanita_ibu">
                         </div>
                     <button type="button" class="btn btn-previous btn-prev">Previous</button>
                      <button type="button" class="btn btn-next">Next</button>
@@ -622,10 +636,13 @@ CKEDITOR.replace("deskripsi");
    function resetForm(){
        this.resetFormGallery();
             console.log('resetForm')
-                $('#imgInp3').val('');
+                $('#img-upload1').attr('src', '');
+                $('#img-upload2').attr('src', '');
+                $('#img-upload3').attr('src', '');
                 $('#links').val('');
                 $('#user_id').val('');
                 $('#kode_template').val('');
+                $('#nama_panggilan_pria').val('');
                 $('#nama_panggilan_wanita').val('');
                 $('#nama_mempelai_pria').val('');
                 $('#nama_mempelai_wanita').val('');
@@ -637,6 +654,8 @@ CKEDITOR.replace("deskripsi");
                 $('#tgl_akad').val('');
                 $('#tgl_resepsi').val('');
                 $('#deskripsi').val('');
+                $('#latitude').val('');
+                $('#longitude').val('');
                 $('#actionAddTemplateCustomer').attr('action' , '/add/template-customer/');
             }
             function resetFormGallery(){
@@ -786,6 +805,8 @@ CKEDITOR.replace("deskripsi");
                 $('#nama_orang_tua_wanita_bapak').val(data.nama_orang_tua_wanita_bapak);
                 $('#nama_orang_tua_wanita_ibu').val(data.nama_orang_tua_wanita_ibu);
                 $('#lokasi_akad').val(data.lokasi_akad);
+                $('#latitude').val(data.latitude);
+                $('#longitude').val(data.longitude);
                 $('#tgl_akad').val(data.tgl_akad);
                 $('#tgl_resepsi').val(data.tgl_resepsi);
                 var editor = CKEDITOR.instances['deskripsi'];  

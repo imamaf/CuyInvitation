@@ -363,7 +363,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 home-agile-text">
 				   <h4>Akad Nikah</h4>
-				   <p>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->deskripsi }}</p>
+				   <p><?php echo  $tmplt_custr->deskripsi ?></p>
 				    <div class="date">
 					   <h5><i class="fa fa-calendar" aria-hidden="true"></i> <?= empty($tmplt_custr) ? 'March 20 2021' :  date('d F Y', strtotime($tmplt_custr->tgl_akad))?></h5>
 					   <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <?= empty($tmplt_custr) ? '12.00pm to s/d':  date('H:i', strtotime($tmplt_custr->tgl_akad))?> to s/d</h5>
@@ -374,7 +374,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 
 				<div class="col-md-6 home-agile-text">
 				   <h4>Resepsi Nikah</h4>
-				   	<p>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->deskripsi }}</p>
+				   	<p><?php echo  $tmplt_custr->deskripsi ?></p>
 				   <div class="date">
 					   <h5><i class="fa fa-calendar" aria-hidden="true"></i> <?= empty($tmplt_custr) ? '12.00pm to s/d':  date('d F Y', strtotime($tmplt_custr->tgl_resepsi))?></h5>
 					   <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <?= empty($tmplt_custr) ? '12.00pm to s/d':  date('H:i', strtotime($tmplt_custr->tgl_resepsi))?> to s/d</h5>
@@ -394,102 +394,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"></div>	
      </div>
 </div>
-<!-- //property-grids -->
-{{-- 
-<!-- /Events-->
-			<div class="wthree-news text-center">
-				<div class="container">
-					<div class="wthree_title_agile">
-						        <h3>Our <span>Events</span></h3>
-								<p><i class="fa fa-heart-o" aria-hidden="true"></i></p>
-								
-							</div>
-						 <p class="sub_para">OUR WEDDING EVENTS</p>
-						 <div class="inner_w3l_agile_grids">
-					<div class="col-md-6 wthree-right">
-						<div class="w3-agile-left">
-							<div class="work-left">
-								<h4>22 july</h4>
-							</div>
-							<div class="agileits-right text-left">
-								<a href="single.html">News post-1</a>
-								<p>Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu 
-									fugiat nulla pariatur.</p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="wel-right">
-							<div class="content-item item-image1">
-								<a href="single.html"><img src="{{ asset('assets/images/designc02/e1.jpg') }}" alt="" /></a>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-6 wthree-right no-marg">
-						<div class="wel-right2">
-							<div class="content-item item-image2">
-								<a href="single.html"><img src="{{ asset('assets/images/designc02/e2.jpg') }}" alt="" /></a>
-							</div>
-						</div>
-						<div class="w3-agile-left2">
-							<div class="work-left">
-								<h4>02 Aug</h4>
-							</div>
-							<div class="agileits-right text-left">
-								<a href="single.html">News post-2</a>
-								<p>Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu 
-									fugiat nulla pariatur.</p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
-					<div class="col-md-6 wthree-right">
-						<div class="w3-agile-left">
-							<div class="work-left">
-								<h4>12 Sep</h4>
-							</div>
-							<div class="agileits-right text-left">
-								<a href="single.html">News post-3</a>
-								<p>Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu 
-									fugiat nulla pariatur. </p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="wel-right ">
-							<div class="content-item item-image1">
-								<a href="single.html"><img src="{{ asset('assets/images/designc02/e3.jpg') }}" alt="" /></a>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-6 wthree-right no-marg">
-						<div class="wel-right2">
-							<div class="content-item item-image2">
-								<a href="single.html"><img src="{{ asset('assets/images/designc02/e4.jpg') }}" alt="" /></a>
-							</div>
-						</div>
-						<div class="w3-agile-left2">
-							<div class="work-left">
-								<h4>15 Nov</h4>
-							</div>
-							<div class="agileits-right text-left">
-								<a href="single.html">News post-4</a>
-								<p>Duis aute irure dolor reprehenderit in voluptate velit esse cillum dolore eu 
-									fugiat nulla pariatur.</p>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-            <!-- //Events--> --}}
-            
-    <!--/story-->
+
+    {{-- MAPS  --}}
+    <div class="row" style="margin-top:1em">
+
+        <div id = "googleMap" style = "width:100%; height:600px;"></div>
+    </div>
+    {{-- END MAPS  --}}
+
+
         <div class="w3l_inner_section">
             <div class="container">
                     <div class="wthree_title_agile">
@@ -890,6 +803,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		readURL(this , "img2");
 	});
 	</script>
+
+
+{{-- JS GOOGLE MAPS  --}}
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+    var latitude =  <?= json_encode($tmplt_custr->latitude)  ?>;
+    var longitude =  <?= json_encode($tmplt_custr->longitude)  ?>;
+        // console.log('lsnggggg , ' , latitude)
+function initialize() {
+  var propertiPeta = {
+    center:new google.maps.LatLng(latitude,longitude),
+    zoom:15,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  
+  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+  
+  // membuat Marker
+  var marker=new google.maps.Marker({
+      position: new google.maps.LatLng(latitude,longitude),
+      map: peta
+  });
+
+}
+
+// event jendela di-load  
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
     
 
 </body>

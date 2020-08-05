@@ -518,6 +518,13 @@
             </div>
         </div>
     </div>
+    {{-- MAPS  --}}
+    <div class="row" style="margin-top:1em">
+
+        <div id = "googleMap" style = "width:100%; height:600px;"></div>
+    </div>
+    {{-- END MAPS  --}}
+
     <div class="bag7">
         <h1 class="judul-bag4">Galeri</h1> <br> <br>
         <div class="row text-center padcol">
@@ -576,7 +583,6 @@
          &amp;
     {{ empty($tmplt_custr) ? "Laura" : $tmplt_custr->nama_mempelai_wanita }}
     </div>
-    <div id = "map" style = "width:100%; height:600px;"></div>
 </body>
 </html>
 <script src="{{asset('js/bootstrap.min.js') }}"></script>
@@ -587,16 +593,44 @@
 
 <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-<script src="js/maps.js"></script>
-<script type ='text/javascript'>setCoords(-6.251,106.586444)</script>
+{{-- <script src="js/maps.js"></script> --}}
+{{-- <script type ='text/javascript'>setCoords(-6.251,106.586444)</script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfAXqhEhpD17LucNYl4pDXEeqEBQTXoyQ&callback=initMap">
-</script>
+</script> --}}
 <script>
     sal({
         once: false
     });
 </script>
+
+{{-- JS GOOGLE MAPS  --}}
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+    var latitude =  <?= json_encode($tmplt_custr->latitude)  ?>;
+    var longitude =  <?= json_encode($tmplt_custr->longitude)  ?>;
+        // console.log('lsnggggg , ' , latitude)
+function initialize() {
+  var propertiPeta = {
+    center:new google.maps.LatLng(latitude,longitude),
+    zoom:15,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  
+  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+  
+  // membuat Marker
+  var marker=new google.maps.Marker({
+      position: new google.maps.LatLng(latitude,longitude),
+      map: peta
+  });
+
+}
+
+// event jendela di-load  
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+// END JS GOOGLE MAPS 
 
 <script>
 // Set the date we're counting down to
