@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\TemplateCompany;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 use Storage;
 
 class AdminTemplateCompany extends Controller
@@ -26,10 +28,23 @@ class AdminTemplateCompany extends Controller
             });
     }
 
-    public function index() {
-        $data = TemplateCompany::all();
-        return view('admin.templatecompany', ['template_company' => $data]);
-    }
+        public function index()
+        {
+        if(request()->ajax())
+        {
+            $query = DB::table('template_company');
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'" class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+        return view('admin.templatecompany');
+        //
+         }
 
     public function getTemplateById(Request $request) {
         $data = TemplateCompany::find($request->id);

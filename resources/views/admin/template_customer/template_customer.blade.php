@@ -4,7 +4,6 @@
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-
 @section('title')
 Template Customer | CuyInvitation
 @endsection
@@ -40,33 +39,18 @@ Template Customer
                 @endif  
                 <button data-toggle="modal" data-target="#myModalAdd1" type="button" onclick="resetForm()" class="btn btn-primary">Tambah</button>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover scroll-horizontal-vertical w-100" id="datatables">
                         <thead class=" text-primary">
-                            <th>No</th>
-                            <th>Kode Template</th>
-                            <th>Nama Pria</th>
-                            <th>Nama Wanita</th>
+                            {{-- <th>No</th> --}}
+                            <th>Kode</th>
+                            <th>Nama Mempelai Pria</th>
+                            <th>Nama Mempelai Wanita</th>
                             <th>Links Preview</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            @foreach($template_customer as $result => $tmplt_cst)
-                            <tr>
-                                <td>{{$result + $template_customer->firstitem()}}</td>
-                                <td>{{$tmplt_cst->kode_template}}</td>
-                                <td>{{$tmplt_cst->nama_mempelai_pria}}</td>
-                                <td>{{$tmplt_cst->nama_mempelai_wanita}}</td>
-                                <td><a href="{{$tmplt_cst->links}}">{{$tmplt_cst->links}}</a></td>
-                                <td>
-                                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$tmplt_cst->id}}"><i class="far fa-eye"></i><a>
-                                    <a data-toggle="modal" value="{{$tmplt_cst->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
-                                    <a data-toggle="modal" href="#" value="{{$tmplt_cst->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
-                                </td>
-                            </tr>
-                            @endforeach
                         </tbody>
                     </table>
-                    {{ $template_customer->links() }}
                 </div>
             </div>
         </div>
@@ -626,6 +610,35 @@ i.material-icons {
 
 @endsection
 @section('scripts')
+<script>
+    var datatable = $('#datatables').DataTable({
+        processing: true,
+        serverSide: true,
+         ordering   : true,
+        ajax : {
+                url : '{!! url()->current()  !!}'    
+        },
+        columns: [
+            { data: 'kode_template', name: 'kode_template' ,  width : '10%' },
+            { data: 'nama_mempelai_pria', name: 'nama_mempelai_pria', width : '20%' },
+            { data: 'nama_mempelai_wanita', name: 'nama_mempelai_wanita',  width : '20%' },
+            {
+             data: 'links_preview',
+             name: 'links_preview',
+             orderable: false, 
+             searchable: false
+              },
+            { 
+                data: 'action',
+                name: 'action' ,
+                orderble : false,
+                searcable : false ,
+            },
+
+        ]
+    });
+</script>
+
 <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
 CKEDITOR.replace("deskripsi");
@@ -1025,6 +1038,7 @@ function initDropEffect(box){
     
   }
 }
+
     
 </script>
 

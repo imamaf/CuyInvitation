@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
     <!-- CSS Files -->
     <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -105,7 +106,7 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        <form action="/cari/@yield('cari')" method="GET">
+                        {{-- <form action="/cari/@yield('cari')" method="GET">
                             <div class="input-group no-border">
                                 <input type="text" name="cari" value="{{ old('cari') }}" class="form-control" placeholder="Search...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -113,7 +114,7 @@
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
-                        </form>
+                        </form> --}}
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="javascript:;">
@@ -246,6 +247,7 @@
     <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
+    
     <script>
         $(document).ready(function() {
             $().ready(function() {
@@ -380,6 +382,15 @@
             });
         });
     </script>
+
+          <!-- jQuery -->
+        {{-- <script src="//code.jquery.com/jquery.js"></script> --}}
+        <!-- DataTables -->
+        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
+        <!-- App scripts -->
+        @stack('scripts')
     @yield('scripts')
 
 </body>

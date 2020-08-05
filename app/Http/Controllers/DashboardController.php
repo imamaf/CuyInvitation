@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\User;
 use App\Company;
 use App\Testimoni;
 use App\User_attribut;
 use App\Role;
-use App\Template_customer;
-use App\Foto_gallery;
+use Yajra\DataTables\DataTables;
 use Auth;
 
 class DashboardController extends Controller
@@ -155,10 +153,23 @@ class DashboardController extends Controller
 // --------------------- CONTROLLER PAGE TESTIMONI ADMIN DASHBOARD  ----------------------
 
      // DATATABLE TESTIMONI
-    public function viewTestimoni()
-    {
-        $testimonis = Testimoni::paginate(5);
-        return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
+
+     public function viewTestimoni()
+        {
+        if(request()->ajax())
+        {
+            $query = DB::table('testimoni');
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'" class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+        return view('admin.testimoni.testimoni');
+        //
     }
 
     // GET COMPANY BY ID

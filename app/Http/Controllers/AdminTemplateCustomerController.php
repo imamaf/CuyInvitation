@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Foto_gallery;
 use App\Template_customer;
 use App\User;
+use Illuminate\Support\Facades\DB;
+use DataTables;
 use Illuminate\Support\Facades\Storage;
 
 class AdminTemplateCustomerController extends Controller
@@ -13,15 +15,32 @@ class AdminTemplateCustomerController extends Controller
 
     //   --------------------  CONTROLLER TEMPLATE CUSTOMER --------------
          // DATATABLE Template Customer
-         public function viewTemplateCustomer()
-         {
-            $userDropdown = User::whereHas('role', function($query){
+          public function viewTemplateCustomer()
+        {
+        if(request()->ajax())
+        {
+            $query = DB::table('template_customer');
+            return Datatables::of($query)
+                ->addColumn('links_preview', function($query) {
+                    return '
+                    <a href="'.$query->links.'" >'.$query->links.'</a>
+                    ' ;
+                })
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'" class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+           $userDropdown = User::whereHas('role', function($query){
                 $query->where('kode_role', '=', 'CSR');
             })->get();
              $template_customer = Template_customer::paginate(5);       
-             return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer , 'userDropdown' => $userDropdown] );
+        return view('admin.template_customer.template_customer', ['template_customer' => $template_customer , 'userDropdown' => $userDropdown] );
+        //
          }
-         // GET TEMPLATE CLIENT BY ID
         public function getTemplateCustomerByIndex(Request $request)
         {
             $data = Template_customer::find($request->id);
