@@ -55,12 +55,15 @@ class AdminTemplateCustomerController extends Controller
                 'path_foto_wanita'=> $dir_foto_wanita,
                 'path_video'=> $request->path_video,
                 'deskripsi'=> $request->deskripsi,
+                'latitude'=> $request->latitude,
+                'longitude'=> $request->longitude,
+                'aktif_flag'=> 'Y',
             ]);
             $files = $request->file('path_foto');
             if($request->file('path_foto'))
             {
                 foreach ($files as $file) {
-                   $image =  $file->store('template_customer');
+                   $image =  $file->store('template_customer_gallery');
                     Foto_gallery::create([
                         'user_id' => $template_customer->user_id,
                         'template_id' => $template_customer->id,
@@ -110,10 +113,10 @@ class AdminTemplateCustomerController extends Controller
                 'lokasi_akad'=> $request->lokasi_akad,
                 'tgl_akad'=> $request->tgl_akad,
                 'tgl_resepsi'=> $request->tgl_resepsi,
-
-                
                 'path_video'=> $request->path_video,
-                'deskripsi'=> $request->deskripsi,      
+                'deskripsi'=> $request->deskripsi,  
+                'latitude'=> $request->latitude,
+                'longitude'=> $request->longitude,    
             ]);
             $filesUpdate = $request->file('path_foto_update');
             // dd($filesUpdate);
@@ -130,7 +133,7 @@ class AdminTemplateCustomerController extends Controller
                                Foto_gallery::where('id' , $gallleryId[0])->update([
                                 'user_id' => $template_customer->user_id,
                                'template_id' => $template_customer->id,
-                               'path_foto'=> $filesUpdate[0]->store('template_customer') ,
+                               'path_foto'=> $filesUpdate[0]->store('template_customer_gallery') ,
            
                                ]);
                                }
@@ -141,7 +144,7 @@ class AdminTemplateCustomerController extends Controller
                                Foto_gallery::where('id' , $gallleryId[1])->update([
                                 'user_id' => $template_customer->user_id,
                                'template_id' => $template_customer->id,
-                               'path_foto'=> $filesUpdate[1]->store('template_customer')  ,
+                               'path_foto'=> $filesUpdate[1]->store('template_customer_gallery')  ,
            
                                ]);
                            } 
