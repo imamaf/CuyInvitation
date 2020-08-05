@@ -356,4 +356,8 @@
 	</section>
 	<!-- //subscribe -->
 
+	<a href="https://wa.me/6281368922122?text=Hi *Cuy Invitation* agent, saya baru saja melihat website cuyinvitation.com" data-action="share/whatsapp/share" class="back-to-top page-scroll" style="display: inline;">
+        <i class="fa fa-whatsapp" style="font-size:40px;"></i>
+    </a>
+
 @endsection

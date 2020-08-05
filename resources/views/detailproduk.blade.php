@@ -31,7 +31,7 @@
                         <a href="{{ url($templateDetail->link) }}" class="btn-detail">Preview</a>
                     </div>
                     <div class="float-right">
-                        <a href="#" class="btn-detail">add to cart</a>
+                        <a href="https://wa.me/6281368922122?text=Hi *Cuy Invitation* agent, saya baru saja melihat website cuyinvitation.com" data-action="share/whatsapp/share"" class="btn-detail">add to cart</a>
                     </div>
                     <div class="produk-share">
                         <h3>Share this product</h3>

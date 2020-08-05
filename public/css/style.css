@@ -315,3 +315,15 @@ background: #00aaff;
     text-align: center;
     text-transform: uppercase;
 }
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: #FF3E75;
+    color: #fff;
+    padding: 6px 12px 9px 12px;
+    font-size: 16px;
+    border-radius: 2px;
+    right: 15px;
+    bottom: 15px;
+    transition: background 0.5s;
+}

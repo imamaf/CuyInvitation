@@ -8,13 +8,13 @@
     #owl-demo .item img{
         height: auto;
     margin: 0 auto;
-	    text-align: center;
+	text-align: center;
     margin: 0 auto;
-   
+
     }
 
 .owl-theme .owl-controls{
-	    margin: 4em 0 0 0em;
+	margin: 4em 0 0 0em;
     text-align: center;
 }
 
@@ -67,7 +67,7 @@ display: block;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-    background: #0b67d4;
+    background: #FF3E75;
 }
 
 .owl-theme .owl-controls .owl-page.active span,

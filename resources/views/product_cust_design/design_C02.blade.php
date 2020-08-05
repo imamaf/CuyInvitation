@@ -736,9 +736,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		-ms-background-size: cover;
-		min-height:710px;
+		/*min-height: 710px; */
 		position: relative;
 		text-align: center;
+		margin-top: -100px;
+		z-index: -2;
 	}
 	</style>
     
