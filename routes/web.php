@@ -82,6 +82,7 @@ Route::delete('/delete-template-customer/{template_customer}', 'AdminTemplateCus
 Route::get('/cari/{pathSearch}','DashboardController@Search');
 
 Route::get('/templatecompany', 'AdminTemplateCompany@index');
+Route::get('/filter-design', 'CompanyController@filterDesign');
 
 // ------------------------- TEMPLATE CLIENT ----------------
 

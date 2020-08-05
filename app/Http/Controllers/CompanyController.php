@@ -23,5 +23,10 @@ class CompanyController extends Controller
         $data = Company::find($request->id);
         return $data;
     }
+
+    public function filterDesign(Request $request) {
+        dd($request);
+        return ;
+    }
     //
 }

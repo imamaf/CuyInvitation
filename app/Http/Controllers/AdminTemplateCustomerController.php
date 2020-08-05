@@ -23,7 +23,7 @@ class AdminTemplateCustomerController extends Controller
             return Datatables::of($query)
                 ->addColumn('links_preview', function($query) {
                     return '
-                    <a href="'.$query->links.'" >'.$query->links.'</a>
+                <a href="'.$query->links.'" >'.$query->links.'</a>
                     ' ;
                 })
                 ->addColumn('action', function($query) {

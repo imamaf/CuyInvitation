@@ -628,6 +628,7 @@ i.material-icons {
              orderable: false, 
              searchable: false
               },
+            // {data:'',defaultContent:nama_mempelai_wanita},
             { 
                 data: 'action',
                 name: 'action' ,

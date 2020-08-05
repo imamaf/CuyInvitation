@@ -56,10 +56,28 @@ class DashboardController extends Controller
     }
 // --------------------- CONTROLLER PAGE USER ADMIN DASHBOARD  ----------------------
 
-    public function viewListUser()
-    {
-        $users = User::with(['user_attribut' , 'role'])->paginate(5);
-        return view('admin.user-profil.list-member-user', ['users' => $users]);
+    // public function viewListUser()
+    // {
+    //     $users = User::with(['user_attribut' , 'role'])->paginate(5);
+    //     return view('admin.user-profil.list-member-user', ['users' => $users]);
+    // }
+
+         public function viewListUser()
+        {
+        if(request()->ajax())
+        {
+            $query = User::with(['user_attribut' , 'role'])->get();
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a href="#" value="'.$query->id.'" class="btn btn-view open_modal_view"><i class="far fa-eye"></i></a>
+                    <a id="editButton" data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open-update"><i class="far fa-edit"></i></a>
+                    <a  data-toggle="modal" href="#" value="'.$query->id.'"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+       return view('admin.user-profil.list-member-user');
+        //
     }
 
     //GET USER BY ID
