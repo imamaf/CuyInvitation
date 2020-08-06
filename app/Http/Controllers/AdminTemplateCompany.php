@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TemplateCompany;
 use App\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
-use Storage;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminTemplateCompany extends Controller
 {
@@ -71,7 +72,8 @@ class AdminTemplateCompany extends Controller
             'link' => $request->linkModal,
             'deskripsi_template' => $request->descriptionModal
         ]);
-        return redirect('/templatecompany')->with('status' , 'Data berhasil diupdate');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/templatecompany');
     }
 
     public function addTemplate(Request $request) {
@@ -83,13 +85,15 @@ class AdminTemplateCompany extends Controller
             'link' => $request->link,
             'deskripsi_template' => $request->descriptionAdd
         ]);
-        return redirect('/templatecompany')->with('status' , 'Data berhasil ditambah');
+        Alert::success('Berhasil' , 'Data Berhasil Ditambahkan' );
+        return redirect('/templatecompany');
     }
 
     public function deleteTemplate(TemplateCompany $templateCompany){
         Storage::delete($templateCompany->url_gambar);
         $templateCompany->delete();
-        return redirect('/templatecompany')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/templatecompany');
     }
     //
 }

@@ -187,7 +187,7 @@ Komentar Ucapan
 @endsection
 
 @section('url')
- /delete-user/
+ /delete-komentar/
 @endsection
 @include('layouts.modal-info.modal-info')
 <!-- END -->
@@ -196,6 +196,53 @@ Komentar Ucapan
 
 <style>
 
+    .onoffswitch {
+        position: relative; width: 90px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .onoffswitch-label {
+        display: block; overflow: hidden; cursor: pointer;
+        border: 2px solid #999999; border-radius: 20px;
+    }
+    .onoffswitch-inner {
+        display: block; width: 200%; margin-left: -100%;
+        transition: margin 0.1s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+        display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+        font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+        box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+        content: "ON";
+        padding-left: 10px;
+        background-color: #34A7C1; color: #FFFFFF;
+    }
+    .onoffswitch-inner:after {
+        content: "OFF";
+        padding-right: 10px;
+        background-color: #EEEEEE; color: #999999;
+        text-align: right;
+    }
+    .onoffswitch-switch {
+        display: block; width: 18px; margin: 6px;
+        background: #FFFFFF;
+        position: absolute; top: 0; bottom: 0;
+        right: 56px;
+        border: 2px solid #999999; border-radius: 20px;
+        transition: all 0.1s ease-in 0s; 
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px; 
+    }
     
 </style>
 
@@ -230,82 +277,20 @@ Komentar Ucapan
 
 <script>
     $(document).ready(function() {
-        $(document).on('change', '.btn-file :file', function() {
-            var input = $(this),
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [label]);
-        });
-
-        $('.btn-file :file').on('fileselect', function(event, label) {
-
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
-
-            if (input.length) {
-                input.val(log);
-            } else {
-                if (log) alert(log);
-            }
-
-        });
-
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#img-upload2').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $("#imgInp2").change(function() {
-            readURL(this);
-        });
-
-        $(document).on('click', '.open_modal_update', function() {
-            var url = "/getCompanyById";
-            var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
-            $.get(url + '/' + tour_id, function(data) {
-                //success data
-                console.log('data : ', data);
-                console.log("$('#links')", $('#linksModal'));
-                $('#action').attr('action' , '/update-web-company/' + tour_id);
-                $('#telepon_Modal').val(data.telepon);
-                $('#links_Modal').val(data.links);
-                $('#email_Modal').val(data.email);
-                $('#aktif_flagModal').val(data.aktif_flag);
-                $('#btn-save').val("update");
-                $('#modalEdit').modal('show');
-            })
-        });
-
         $(document).on('click', '.open_modal-delete', function() {
         var tour_id = $(this).attr("value");
             console.log('id : ', tour_id);
 
-            $('#action-info').attr('action' , '/delete-web-company/' + tour_id);
+            $('#action-info').attr('action' , '/delete-komentar/' + tour_id);
 
             $('#modal-info').modal('show');
-         });
+            });
+
+        function submit() {
+            $( "#target" ).submit();
+        }
     });
-    $(document).on('click', '.open_modal_view', function() {
-            var url = "/getCompanyById";
-            var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
-            $.get(url + '/' + tour_id, function(data) {
-                //success data
-                console.log('data : ', data);
-                $('#teleponModal').val(data.telepon);
-                $('#linksModal').val(data.links);
-                $('#emailModal').val(data.email);
-                $('#aktif_flagModal').val(data.aktif_flag);
-                $('#btn-save').val("update");
-                $('#modalView').modal('show');
-            })
-        });
+
     
 </script>
 

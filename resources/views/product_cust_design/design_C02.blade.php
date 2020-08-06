@@ -27,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//fonts-->
 </head>
 <body>
+
+	@include('sweetalert::alert')
 <!-- header -->
 	<header>
 		<div class="container">
@@ -232,7 +234,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="form-group">
 			<label>Ucapan</label>
-			<input type="text" class="form-control" id="deskripsi" placeholder="Silahkan diisi" name="deskripsi" required>
+			<input type="text" class="form-control" id="deskripsi" maxlength="100" placeholder="Silahkan diisi" name="deskripsi" required>
 		</div>
       </div>
       <div class="modal-footer">

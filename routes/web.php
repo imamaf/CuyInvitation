@@ -13,6 +13,7 @@
 //INDEX PAGE
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/','CompanyController@index');
 
@@ -79,9 +80,6 @@ Route::post('/add/template-customer','AdminTemplateCustomerController@addTemplat
 Route::delete('/delete-template-customer/{template_customer}', 'AdminTemplateCustomerController@deleteTempateCustomer');
 
 // ---------------------------- SEARCH ------------------
-Route::get('/cari/{pathSearch}','DashboardController@Search');
-
-Route::get('/templatecompany', 'AdminTemplateCompany@index');
 Route::get('/filter-design', 'CompanyController@filterDesign');
 
 // ------------------------- TEMPLATE CLIENT ----------------
@@ -96,6 +94,9 @@ Route::get('/design_C03/{search_cust_pria}-{search_cust_wanita}', 'TemplateCusto
 // KOMENTAR
 Route::get('/komentar-ucapan','KomentarController@datatable');
 Route::post('/add-komentar', 'KomentarController@addKomentar');
+Route::get('/approve-komentar', 'KomentarController@approveKomentar');
+Route::delete('/delete-komentar/{komentar}', 'KomentarController@deleteKomentar');
+
 // Route::get('/design_C02', function () {
 //     return view('product_design.design_C02');
 // });

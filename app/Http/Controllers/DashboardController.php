@@ -9,7 +9,8 @@ use App\Testimoni;
 use App\User_attribut;
 use App\Role;
 use Yajra\DataTables\DataTables;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
@@ -97,8 +98,8 @@ class DashboardController extends Controller
         Role::where('user_id' , $user->id )->update([
             'kode_role' => $request->role_Modal,
         ]);
-
-        return redirect('/list-user')->with('status' , 'Data berhasil di update');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/list-user');
     }
 
     //Delete List User
@@ -107,7 +108,8 @@ class DashboardController extends Controller
         User_attribut::where('user_id', $user->id)->delete();
         Role::where('user_id', $user->id)->delete();
         $user->delete();
-        return redirect('/list-user')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/list-user');
     }
 
     public function viewUserDetail()
@@ -148,7 +150,8 @@ class DashboardController extends Controller
             'banner_1'=>$path_banner_1,
             'aktif_flag' =>'T',
         ]);
-        return redirect('/web-company')->with('status' , 'Data berhasil di tambah');
+        Alert::success('Berhasil' , 'Data Berhasil Ditambahkan' );
+        return redirect('/web-company');
     }
 
     public function updateWebCompany(Request $request , Company $company)
@@ -161,7 +164,8 @@ class DashboardController extends Controller
             'banner_1'=>$path_banner_1,
             'aktif_flag' => $request->aktif_flagModal,
         ]);
-        return redirect('/web-company')->with('status' , 'Data berhasil di update');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/web-company');
     }
 
     // GET COMPANY BY ID
@@ -174,7 +178,8 @@ class DashboardController extends Controller
     //Delete List User
     public function deleteWebCompany(Company $company) {
         $company->delete();
-        return redirect('/web-company')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/web-company');
     }
 
     
@@ -217,14 +222,16 @@ class DashboardController extends Controller
             'deskripsi'=> $request->deskripsi_Modal ,
             'rating'=> $request->rating_Modal,
         ]);
-        return redirect('/testimoni')->with('status' , 'Data berhasil di update');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/testimoni');
     }
 
     //Delete List User
     public function deleteTestimoni(Testimoni $testimoni) 
     {
         $testimoni->delete();
-        return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/testimoni');
     }
     
 }
