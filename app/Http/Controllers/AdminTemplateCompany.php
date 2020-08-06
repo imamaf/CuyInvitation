@@ -30,6 +30,8 @@ class AdminTemplateCompany extends Controller
 
         public function index()
         {
+        $id = auth()->user()->id;
+        $user = User::with(['role'])->where('id' , $id)->get();
         if(request()->ajax())
         {
             $query = DB::table('template_company');
@@ -42,7 +44,7 @@ class AdminTemplateCompany extends Controller
                     ' ;
                 })->make();
         }
-        return view('admin.templatecompany');
+        return view('admin.templatecompany' , ['user' => $user]);
         //
          }
 

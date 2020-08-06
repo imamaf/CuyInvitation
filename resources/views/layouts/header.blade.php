@@ -52,19 +52,38 @@
 				<li class="nav-item"><a href="#stats">Stats</a></li>
 				<li class="nav-item"><a href="#design">Design</a></li>
 				<li class="nav-item"><a href="#testi">Testimonials</a></li>
-				<li class="nav-item"><a href="#subscribe">Subscribe</a></li>
 				@if(Auth::user())
-				<li class="nav-item dropdown">
-					<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        Hi {{ Auth::user()->name}}
-					</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
-						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-							@csrf
-						</form>
-					</div>
-				</li>
+					@if(Auth::user()->role->kode_role == 'SA')
+						<li class="nav-item dropdown">
+							<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+								Hi {{ Auth::user()->name}}
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard Admin </a>
+								<a class="dropdown-item"  href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</div>
+						</li>
+					@endif
+				@endif
+				@if(Auth::user())
+					@if(Auth::user()->role->kode_role == 'CSR')
+						<li class="nav-item dropdown">
+							<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+								Hi {{ Auth::user()->name}}
+								<span class="fa fa-envelope-open"></span>11</a>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ url('/komentar-ucapan') }}">Pemberitahuan <span style="color:red">11</span></a>
+								<a class="dropdown-item"  href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</div>
+						</li>
+					@endif
 				@endif
 			</ul>
 		</nav>

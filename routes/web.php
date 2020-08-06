@@ -93,6 +93,8 @@ Route::get('/design_C02/{search_cust_pria}-{search_cust_wanita}', 'TemplateCusto
 Route::get('/design_C03', 'TemplateCustomerController@index_tempalet_3');
 Route::get('/design_C03/{search_cust_pria}-{search_cust_wanita}', 'TemplateCustomerController@get_template_3');
 
+// KOMENTAR
+Route::get('/komentar-ucapan','KomentarController@datatable');
 Route::post('/add-komentar', 'KomentarController@addKomentar');
 // Route::get('/design_C02', function () {
 //     return view('product_design.design_C02');

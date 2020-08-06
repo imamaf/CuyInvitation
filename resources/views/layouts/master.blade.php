@@ -33,43 +33,49 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item {{ 'dashboard' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'dashboard' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="/dashboard">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'list-user' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'list-user' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('list-user')}}">
                             <i class="material-icons">person</i>
                             <p>User</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'web-company' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'web-company' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('web-company')}}">
                             <i class="material-icons">bubble_chart</i>
                             <p>Web Company</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'templatecompany' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'templatecompany' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('/templatecompany')}}">
                             <i class="material-icons">library_books</i>
                             <p>Template - Company</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'template-customer' == request()->path() ? 'active' : '' }} ">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>"  class="nav-item {{ 'template-customer' == request()->path() ? 'active' : '' }} ">
                         <a class="nav-link" href="{{url('/template-customer')}}">
                             <i class="material-icons">library_books</i>
                             <p>Template - Customer</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'testimoni' == request()->path() ? 'active' : '' }} ">
+                    <li class="nav-item {{ 'komentar-ucapan' == request()->path() ? 'active' : '' }} ">
+                        <a class="nav-link" href="{{url('/komentar-ucapan')}}">
+                            <i class="material-icons">library_books</i>
+                            <p>Komentar Ucapan</p>
+                        </a>
+                    </li>
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'testimoni' == request()->path() ? 'active' : '' }} ">
                         <a class="nav-link" href="{{url('testimoni')}}">
                             <i class="material-icons">library_books</i>
                             <p>Testimoni</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item ">
                         <a class="nav-link" href="#">
                             <i class="material-icons">credit_card</i>
                             <p>Transaksi</p>

@@ -55,15 +55,11 @@ class DashboardController extends Controller
         }
     }
 // --------------------- CONTROLLER PAGE USER ADMIN DASHBOARD  ----------------------
-
-    // public function viewListUser()
-    // {
-    //     $users = User::with(['user_attribut' , 'role'])->paginate(5);
-    //     return view('admin.user-profil.list-member-user', ['users' => $users]);
-    // }
-
-         public function viewListUser()
-        {
+        // DATATABLE USERS 
+    public function viewListUser()
+    {
+    $id = auth()->user()->id;
+    $user = User::with(['role'])->where('id' , $id)->get();
         if(request()->ajax())
         {
             $query = User::with(['user_attribut' , 'role'])->get();
@@ -76,7 +72,7 @@ class DashboardController extends Controller
                     ' ;
                 })->make();
         }
-       return view('admin.user-profil.list-member-user');
+       return view('admin.user-profil.list-member-user' , ['user' => $user]);
         //
     }
 
@@ -124,8 +120,22 @@ class DashboardController extends Controller
     //DATATABLE COMPANY
     public function viewWebCompany()
     {
-        $companys = Company::paginate(5);
-        return view('admin.web-company.web-company' , ['companys' => $companys]);
+    $id = auth()->user()->id;
+    $user = User::with(['role'])->where('id' , $id)->get();
+        if(request()->ajax())
+        {
+            $query = Company::all();
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+       return view('admin.web-company.web-company' , ['user' => $user]);
+        //
     }
 
     public function createWebCompany(Request $request)
@@ -173,7 +183,9 @@ class DashboardController extends Controller
      // DATATABLE TESTIMONI
 
      public function viewTestimoni()
-        {
+    {
+    $id = auth()->user()->id;
+    $user = User::with(['role'])->where('id' , $id)->get();
         if(request()->ajax())
         {
             $query = DB::table('testimoni');
@@ -186,7 +198,7 @@ class DashboardController extends Controller
                     ' ;
                 })->make();
         }
-        return view('admin.testimoni.testimoni');
+        return view('admin.testimoni.testimoni' , ['user' => $user]);
         //
     }
 
@@ -213,39 +225,6 @@ class DashboardController extends Controller
     {
         $testimoni->delete();
         return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
-    }
-
- // ---------------------  CONTROLLER SEARCH -------------
-    public function Search(Request $request , string $pathSearch){
-        $cari = $request->cari;
-        $id = auth()->user()->id;
-        //SEARCH USER
-        if($pathSearch == 'User'){
-            $users = User::with(['user_attribut' , 'role'])->where('name' , 'LIKE' ,"%".$cari."%")->paginate(5);
-            if(count($users) == 0) {
-                //MESSAGE DATA TIDAK DITEMUKAN
-                return view('admin.user-profil.list-member-user', ['users' => $users])->with('notFound','Data Tidak ditemukan');
-            }
-            return view('admin.user-profil.list-member-user', ['users' => $users]);
-        }
-        // SEARCH WEB COMPANY
-         else if ($pathSearch == 'Web Company') {
-            $companys = Company::where('links' , 'LIKE' ,"%".$cari."%")->paginate(5);
-            if(count($companys) == 0) {
-                //MESSAGE DATA TIDAK DITEMUKAN
-                return view('admin.web-company.web-company' , ['companys' => $companys])->with('notFound','Data Tidak ditemukan');
-            }
-            return view('admin.web-company.web-company' , ['companys' => $companys]);
-        } 
-        // SEARCH TESTIMONI
-        else if ($pathSearch == 'Testimoni') {
-            $testimonis = Testimoni::where('nama' , 'LIKE' ,"%".$cari."%")->paginate(5);
-            if(count($testimonis) == 0) {
-                //MESSAGE DATA TIDAK DITEMUKAN
-                return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis])->with('notFound','Data Tidak ditemukan');
-            }
-            return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
-        }
     }
     
 }

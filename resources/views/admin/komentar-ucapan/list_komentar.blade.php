@@ -2,15 +2,15 @@
 
 
 @section('title')
-Web Company | CuyInvitation
+Komentar Ucapan | CuyInvitation
 @endsection
 
 @section('header')
-Web Company
+Komentar Ucapan
 @endsection
 
 @section('cari')
-Web Company
+Komentar Ucapan
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@ Web Company
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Data (Web Company)</h4>
+                <h4 class="card-title ">Data (Komentar Ucapan)</h4>
                 <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
             </div>
             <div class="card-body">
@@ -33,32 +33,19 @@ Web Company
                     <?php echo !empty($error) ? $error:$notFound ?>
                 </p>
                 @endif  
-                <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
+                {{-- <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button> --}}
                 <div class="table-responsive">
                     <table class="table table-hover scroll-horizontal-vertical w-100" id="datatables">
                         <thead class=" text-primary">
                             {{-- <th>No</th>9 --}}
-                            <th>Link</th>
-                            <th>Telepon</th>
-                            <th>Email</th>
+                            <th>Acara Pernikahan</th>
+                            <th>Nama</th>
+                            <th>Foto</th>
+                            <th>Ucapan</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            {{-- @foreach($companys as $result => $cmp)
-                            <tr>
-                                <td>{{$result + $companys->firstitem()}}</td>
-                                <td>{{$cmp->links}}</td>
-                                <td>{{$cmp->telepon}}</td>
-                                <td>{{$cmp->email}}</td>
-                                <td>{{$cmp->aktif_flag == 'Y' ? 'Aktif' : 'Tidak Aktif'}}</td>
-                                <td>
-                                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$cmp->id}}"><i class="far fa-eye"></i><a>
-                                    <a data-toggle="modal" value="{{$cmp->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
-                                    <a data-toggle="modal" href="#" value="{{$cmp->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
-                                </td>
-                            </tr>
-                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -207,6 +194,11 @@ Web Company
 
 @endsection
 
+<style>
+
+    
+</style>
+
 
 @section('scripts')
 
@@ -219,10 +211,11 @@ Web Company
                 url : '{!! url()->current()  !!}'    
         },
         columns: [
-            { data: 'links', name: 'links' ,  width : '10%' },
-            { data: 'telepon', name: 'telepon',  width : '20%' },
-            { data: 'email', name: 'email', width : '20%' },
-            {data:'aktif_flag',name:'aktif_flag'},
+            { data: 'nama_pasangan', name: 'nama_pasangan', width : '20%' },
+            { data: 'nama', name: 'nama' ,  width : '10%' },
+            { data: 'path_foto', name: 'path_foto',  width : '20%' },
+            { data: 'deskripsi', name: 'deskripsi', width : '20%' },
+            {data:'aktif_flag',name:'aktif_flag',orderble : false, searcable : false},
             { 
                 data: 'action',
                 name: 'action' ,

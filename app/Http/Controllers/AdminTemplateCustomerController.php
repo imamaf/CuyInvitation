@@ -15,8 +15,10 @@ class AdminTemplateCustomerController extends Controller
 
     //   --------------------  CONTROLLER TEMPLATE CUSTOMER --------------
          // DATATABLE Template Customer
-          public function viewTemplateCustomer()
+        public function viewTemplateCustomer()
         {
+        $id = auth()->user()->id;
+        $user = User::with(['role'])->where('id' , $id)->get();
         if(request()->ajax())
         {
             $query = DB::table('template_customer');
@@ -38,7 +40,7 @@ class AdminTemplateCustomerController extends Controller
                 $query->where('kode_role', '=', 'CSR');
             })->get();
              $template_customer = Template_customer::paginate(5);       
-        return view('admin.template_customer.template_customer', ['template_customer' => $template_customer , 'userDropdown' => $userDropdown] );
+        return view('admin.template_customer.template_customer', ['template_customer' => $template_customer , 'user' =>$user,  'userDropdown' => $userDropdown] );
         //
          }
         public function getTemplateCustomerByIndex(Request $request)
