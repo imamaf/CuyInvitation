@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\User;
 use App\Company;
 use App\Testimoni;
 use App\User_attribut;
 use App\Role;
-use App\Template_customer;
-use App\Foto_gallery;
-use Auth;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
@@ -57,11 +56,25 @@ class DashboardController extends Controller
         }
     }
 // --------------------- CONTROLLER PAGE USER ADMIN DASHBOARD  ----------------------
-
+        // DATATABLE USERS 
     public function viewListUser()
     {
-        $users = User::with(['user_attribut' , 'role'])->paginate(5);
-        return view('admin.user-profil.list-member-user', ['users' => $users]);
+    $id = auth()->user()->id;
+    $user = User::with(['role'])->where('id' , $id)->get();
+        if(request()->ajax())
+        {
+            $query = User::with(['user_attribut' , 'role'])->get();
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a href="#" value="'.$query->id.'" class="btn btn-view open_modal_view"><i class="far fa-eye"></i></a>
+                    <a id="editButton" data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open-update"><i class="far fa-edit"></i></a>
+                    <a  data-toggle="modal" href="#" value="'.$query->id.'"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+       return view('admin.user-profil.list-member-user' , ['user' => $user]);
+        //
     }
 
     //GET USER BY ID
@@ -85,8 +98,8 @@ class DashboardController extends Controller
         Role::where('user_id' , $user->id )->update([
             'kode_role' => $request->role_Modal,
         ]);
-
-        return redirect('/list-user')->with('status' , 'Data berhasil di update');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/list-user');
     }
 
     //Delete List User
@@ -95,7 +108,8 @@ class DashboardController extends Controller
         User_attribut::where('user_id', $user->id)->delete();
         Role::where('user_id', $user->id)->delete();
         $user->delete();
-        return redirect('/list-user')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/list-user');
     }
 
     public function viewUserDetail()
@@ -108,8 +122,22 @@ class DashboardController extends Controller
     //DATATABLE COMPANY
     public function viewWebCompany()
     {
-        $companys = Company::paginate(5);
-        return view('admin.web-company.web-company' , ['companys' => $companys]);
+    $id = auth()->user()->id;
+    $user = User::with(['role'])->where('id' , $id)->get();
+        if(request()->ajax())
+        {
+            $query = Company::all();
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+       return view('admin.web-company.web-company' , ['user' => $user]);
+        //
     }
 
     public function createWebCompany(Request $request)
@@ -122,7 +150,8 @@ class DashboardController extends Controller
             'banner_1'=>$path_banner_1,
             'aktif_flag' =>'T',
         ]);
-        return redirect('/web-company')->with('status' , 'Data berhasil di tambah');
+        Alert::success('Berhasil' , 'Data Berhasil Ditambahkan' );
+        return redirect('/web-company');
     }
 
     public function updateWebCompany(Request $request , Company $company)
@@ -135,7 +164,8 @@ class DashboardController extends Controller
             'banner_1'=>$path_banner_1,
             'aktif_flag' => $request->aktif_flagModal,
         ]);
-        return redirect('/web-company')->with('status' , 'Data berhasil di update');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/web-company');
     }
 
     // GET COMPANY BY ID
@@ -148,17 +178,33 @@ class DashboardController extends Controller
     //Delete List User
     public function deleteWebCompany(Company $company) {
         $company->delete();
-        return redirect('/web-company')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/web-company');
     }
 
     
 // --------------------- CONTROLLER PAGE TESTIMONI ADMIN DASHBOARD  ----------------------
 
      // DATATABLE TESTIMONI
-    public function viewTestimoni()
+
+     public function viewTestimoni()
     {
-        $testimonis = Testimoni::paginate(5);
-        return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
+    $id = auth()->user()->id;
+    $user = User::with(['role'])->where('id' , $id)->get();
+        if(request()->ajax())
+        {
+            $query = DB::table('testimoni');
+            return Datatables::of($query)
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'" class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->make();
+        }
+        return view('admin.testimoni.testimoni' , ['user' => $user]);
+        //
     }
 
     // GET COMPANY BY ID
@@ -176,47 +222,16 @@ class DashboardController extends Controller
             'deskripsi'=> $request->deskripsi_Modal ,
             'rating'=> $request->rating_Modal,
         ]);
-        return redirect('/testimoni')->with('status' , 'Data berhasil di update');
+        Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+        return redirect('/testimoni');
     }
 
     //Delete List User
     public function deleteTestimoni(Testimoni $testimoni) 
     {
         $testimoni->delete();
-        return redirect('/testimoni')->with('status' , 'Data berhasil dihapus');
-    }
-
- // ---------------------  CONTROLLER SEARCH -------------
-    public function Search(Request $request , string $pathSearch){
-        $cari = $request->cari;
-        $id = auth()->user()->id;
-        //SEARCH USER
-        if($pathSearch == 'User'){
-            $users = User::with(['user_attribut' , 'role'])->where('name' , 'LIKE' ,"%".$cari."%")->paginate(5);
-            if(count($users) == 0) {
-                //MESSAGE DATA TIDAK DITEMUKAN
-                return view('admin.user-profil.list-member-user', ['users' => $users])->with('notFound','Data Tidak ditemukan');
-            }
-            return view('admin.user-profil.list-member-user', ['users' => $users]);
-        }
-        // SEARCH WEB COMPANY
-         else if ($pathSearch == 'Web Company') {
-            $companys = Company::where('links' , 'LIKE' ,"%".$cari."%")->paginate(5);
-            if(count($companys) == 0) {
-                //MESSAGE DATA TIDAK DITEMUKAN
-                return view('admin.web-company.web-company' , ['companys' => $companys])->with('notFound','Data Tidak ditemukan');
-            }
-            return view('admin.web-company.web-company' , ['companys' => $companys]);
-        } 
-        // SEARCH TESTIMONI
-        else if ($pathSearch == 'Testimoni') {
-            $testimonis = Testimoni::where('nama' , 'LIKE' ,"%".$cari."%")->paginate(5);
-            if(count($testimonis) == 0) {
-                //MESSAGE DATA TIDAK DITEMUKAN
-                return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis])->with('notFound','Data Tidak ditemukan');
-            }
-            return view('admin.testimoni.testimoni' , ['testimonis' => $testimonis]);
-        }
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/testimoni');
     }
     
 }

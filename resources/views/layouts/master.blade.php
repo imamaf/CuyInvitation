@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
     <!-- CSS Files -->
     <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -19,56 +20,63 @@
 
 <body class="">
     <div class="wrapper ">
+        @include('sweetalert::alert')
         <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-3.jpg">
             <!--
                 Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
                 Tip 2: you can also add an image using data-image tag
             -->
             <div class="logo">
-                <a href="#" class="simple-text logo-normal">
+                <a href="{{ url('/') }}" class="simple-text logo-normal">
                     <i class="fas fa-gift" style="color:#FF3E75"></i>
                     Cuy Invitation
                 </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item {{ 'dashboard' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'dashboard' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="/dashboard">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'list-user' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'list-user' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('list-user')}}">
                             <i class="material-icons">person</i>
                             <p>User</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'web-company' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'web-company' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('web-company')}}">
                             <i class="material-icons">bubble_chart</i>
                             <p>Web Company</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'templatecompany' == request()->path() ? 'active' : '' }}">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'templatecompany' == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{url('/templatecompany')}}">
                             <i class="material-icons">library_books</i>
                             <p>Template - Company</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'template-customer' == request()->path() ? 'active' : '' }} ">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>"  class="nav-item {{ 'template-customer' == request()->path() ? 'active' : '' }} ">
                         <a class="nav-link" href="{{url('/template-customer')}}">
                             <i class="material-icons">library_books</i>
                             <p>Template - Customer</p>
                         </a>
                     </li>
-                    <li class="nav-item {{ 'testimoni' == request()->path() ? 'active' : '' }} ">
+                    <li class="nav-item {{ 'komentar-ucapan' == request()->path() ? 'active' : '' }} ">
+                        <a class="nav-link" href="{{url('/komentar-ucapan')}}">
+                            <i class="material-icons">library_books</i>
+                            <p>Komentar Ucapan</p>
+                        </a>
+                    </li>
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item {{ 'testimoni' == request()->path() ? 'active' : '' }} ">
                         <a class="nav-link" href="{{url('testimoni')}}">
                             <i class="material-icons">library_books</i>
                             <p>Testimoni</p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    <li style="<?= !empty($user[0]->role->kode_role == 'CSR' )  ? 'display:none;' : '' ?>" class="nav-item ">
                         <a class="nav-link" href="#">
                             <i class="material-icons">credit_card</i>
                             <p>Transaksi</p>
@@ -105,7 +113,7 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        <form action="/cari/@yield('cari')" method="GET">
+                        {{-- <form action="/cari/@yield('cari')" method="GET">
                             <div class="input-group no-border">
                                 <input type="text" name="cari" value="{{ old('cari') }}" class="form-control" placeholder="Search...">
                                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -113,7 +121,7 @@
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
-                        </form>
+                        </form> --}}
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="javascript:;">
@@ -246,6 +254,7 @@
     <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
+    
     <script>
         $(document).ready(function() {
             $().ready(function() {
@@ -380,6 +389,15 @@
             });
         });
     </script>
+
+          <!-- jQuery -->
+        {{-- <script src="//code.jquery.com/jquery.js"></script> --}}
+        <!-- DataTables -->
+        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> --}}
+        <!-- App scripts -->
+        @stack('scripts')
     @yield('scripts')
 
 </body>

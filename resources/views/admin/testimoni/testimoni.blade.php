@@ -35,31 +35,16 @@ Testimoni
                 @endif  
                 <!-- <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button> -->
                     <div class="table-responsive">
-                        <table class="table">
+                    <table class="table table-hover scroll-horizontal-vertical w-100" id="datatables">
                             <thead class=" text-primary">
-                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Deskripsi</th>
                                 <th>Rating</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
-                                @foreach($testimonis as $result => $tmn)
-                                <tr>
-                                    <td>{{$result + $testimonis->firstitem()}}</td>
-                                    <td>{{$tmn->nama}}</td>
-                                    <td>{{$tmn->deskripsi}}</td>
-                                    <td>{{$tmn->rating}}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-view open_modal_view" value="{{$tmn->id}}"><i class="far fa-eye"></i><a>
-                                        <a data-toggle="modal" value="{{$tmn->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
-                                        <a  data-toggle="modal" href="#" value="{{$tmn->id}}"  class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i><a>
-                                    </td>
-                                </tr>
-                             @endforeach
                             </tbody>
                         </table>
-                        {{ $testimonis->links() }}
                     </div>
                 </div>
             </div>
@@ -149,6 +134,29 @@ Testimoni
 
 
 @section('scripts')
+
+<script>
+    var datatable = $('#datatables').DataTable({
+        processing: true,
+        serverSide: true,
+         ordering   : true,
+        ajax : {
+                url : '{!! url()->current()  !!}'    
+        },
+        columns: [
+            { data: 'nama', name: 'nama' },
+            { data: 'deskripsi', name: 'deskripsi' },
+            { data: 'rating', name: 'rating' },
+            { 
+                data: 'action',
+                name: 'action' ,
+                orderble : false,
+                searcable : false ,
+            },
+
+        ]
+    });
+</script>
 
 <script> 
 $(document).ready( function() {

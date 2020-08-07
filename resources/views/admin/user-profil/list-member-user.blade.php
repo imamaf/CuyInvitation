@@ -33,10 +33,10 @@ User
                        <?php echo !empty($error) ? $error:$notFound ?>
                     </p>
                     @endif
-                    <div class="table-responsive">
-                        <table class="table">
+                <div class="table-responsive">
+                    <table class="table table-hover scroll-horizontal-vertical w-100" id="datatables">
                             <thead class=" text-primary">
-                                <th>No</th>
+                                {{-- <th>No</th> --}}
                                 <th>Nama</th>
                                 <th>Telepon</th>
                                 <th>Email</th>
@@ -44,23 +44,8 @@ User
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
-                            @foreach($users as $result => $usr)
-                                <tr>
-                                    <td>{{$result + $users->firstitem()}}</td>
-                                    <td>{{$usr->user_attribut->nama}}</td>
-                                    <td>{{$usr->user_attribut->no_hp}}</td>
-                                    <td>{{$usr->email}}</td>
-                                    <td>{{$usr->role->kode_role}}</td>
-                                    <td>
-                                        <a href="#" value="{{$usr->id}}" class="btn btn-view open_modal_view"><i class="far fa-eye"></i><a>
-                                        <a id="editButton" data-toggle="modal" value="{{$usr->id}}" href="#" class="btn btn-edit open_modal-update"><i class="far fa-edit"></i><a>
-                                        <a  data-toggle="modal" href="#" value="{{$usr->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
-                                    </td>
-                                </tr>
-                           @endforeach
                             </tbody>
                         </table>
-                        {{ $users->links() }}
                     </div>
                 </div>
             </div>
@@ -199,8 +184,34 @@ User
 
 @section('scripts')
 
+<script>
+    var datatable = $('#datatables').DataTable({
+        processing: true,
+        serverSide: true,
+         ordering   : true,
+        ajax : {
+                url : '{!! url()->current()  !!}'    
+        },
+        columns: [
+            { data: 'name', name: 'name' ,  width : '10%' },
+            { data: 'user_attribut.no_hp', name: 'no_hp',  width : '20%' },
+            { data: 'email', name: 'email', width : '20%' },
+            {data:'role.kode_role',name:'role.kode_role'},
+            { 
+                data: 'action',
+                name: 'action' ,
+                orderble : false,
+                searcable : false ,
+                width : '25%'
+            },
+
+        ]
+    });
+</script>
+
+
 <script> 
-    $(document).on('click', '.open_modal-update', function() {
+    $(document).on('click', '.open-update', function() {
         var url = "/getUserById";
         var tour_id = $(this).attr("value");
             console.log('id : ', tour_id);

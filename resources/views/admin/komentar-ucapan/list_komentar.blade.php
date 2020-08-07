@@ -2,15 +2,15 @@
 
 
 @section('title')
-Web Company | CuyInvitation
+Komentar Ucapan | CuyInvitation
 @endsection
 
 @section('header')
-Web Company
+Komentar Ucapan
 @endsection
 
 @section('cari')
-Web Company
+Komentar Ucapan
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@ Web Company
     <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Data (Web Company)</h4>
+                <h4 class="card-title ">Data (Komentar Ucapan)</h4>
                 <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
             </div>
             <div class="card-body">
@@ -33,32 +33,19 @@ Web Company
                     <?php echo !empty($error) ? $error:$notFound ?>
                 </p>
                 @endif  
-                <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
+                {{-- <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button> --}}
                 <div class="table-responsive">
                     <table class="table table-hover scroll-horizontal-vertical w-100" id="datatables">
                         <thead class=" text-primary">
                             {{-- <th>No</th>9 --}}
-                            <th>Link</th>
-                            <th>Telepon</th>
-                            <th>Email</th>
+                            <th>Acara Pernikahan</th>
+                            <th>Nama</th>
+                            <th>Foto</th>
+                            <th>Ucapan</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            {{-- @foreach($companys as $result => $cmp)
-                            <tr>
-                                <td>{{$result + $companys->firstitem()}}</td>
-                                <td>{{$cmp->links}}</td>
-                                <td>{{$cmp->telepon}}</td>
-                                <td>{{$cmp->email}}</td>
-                                <td>{{$cmp->aktif_flag == 'Y' ? 'Aktif' : 'Tidak Aktif'}}</td>
-                                <td>
-                                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$cmp->id}}"><i class="far fa-eye"></i><a>
-                                    <a data-toggle="modal" value="{{$cmp->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
-                                    <a data-toggle="modal" href="#" value="{{$cmp->id}}"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i><a>
-                                </td>
-                            </tr>
-                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -200,12 +187,64 @@ Web Company
 @endsection
 
 @section('url')
- /delete-user/
+ /delete-komentar/
 @endsection
 @include('layouts.modal-info.modal-info')
 <!-- END -->
 
 @endsection
+
+<style>
+
+    .onoffswitch {
+        position: relative; width: 90px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+    .onoffswitch-label {
+        display: block; overflow: hidden; cursor: pointer;
+        border: 2px solid #999999; border-radius: 20px;
+    }
+    .onoffswitch-inner {
+        display: block; width: 200%; margin-left: -100%;
+        transition: margin 0.1s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+        display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+        font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+        box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+        content: "ON";
+        padding-left: 10px;
+        background-color: #34A7C1; color: #FFFFFF;
+    }
+    .onoffswitch-inner:after {
+        content: "OFF";
+        padding-right: 10px;
+        background-color: #EEEEEE; color: #999999;
+        text-align: right;
+    }
+    .onoffswitch-switch {
+        display: block; width: 18px; margin: 6px;
+        background: #FFFFFF;
+        position: absolute; top: 0; bottom: 0;
+        right: 56px;
+        border: 2px solid #999999; border-radius: 20px;
+        transition: all 0.1s ease-in 0s; 
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px; 
+    }
+    
+</style>
 
 
 @section('scripts')
@@ -219,10 +258,11 @@ Web Company
                 url : '{!! url()->current()  !!}'    
         },
         columns: [
-            { data: 'links', name: 'links' ,  width : '10%' },
-            { data: 'telepon', name: 'telepon',  width : '20%' },
-            { data: 'email', name: 'email', width : '20%' },
-            {data:'aktif_flag',name:'aktif_flag'},
+            { data: 'nama_pasangan', name: 'nama_pasangan', width : '20%' },
+            { data: 'nama', name: 'nama' ,  width : '10%' },
+            { data: 'path_foto', name: 'path_foto',  width : '20%' },
+            { data: 'deskripsi', name: 'deskripsi', width : '20%' },
+            {data:'aktif_flag',name:'aktif_flag',orderble : false, searcable : false},
             { 
                 data: 'action',
                 name: 'action' ,
@@ -237,82 +277,20 @@ Web Company
 
 <script>
     $(document).ready(function() {
-        $(document).on('change', '.btn-file :file', function() {
-            var input = $(this),
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [label]);
-        });
-
-        $('.btn-file :file').on('fileselect', function(event, label) {
-
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
-
-            if (input.length) {
-                input.val(log);
-            } else {
-                if (log) alert(log);
-            }
-
-        });
-
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $('#img-upload2').attr('src', e.target.result);
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        $("#imgInp2").change(function() {
-            readURL(this);
-        });
-
-        $(document).on('click', '.open_modal_update', function() {
-            var url = "/getCompanyById";
-            var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
-            $.get(url + '/' + tour_id, function(data) {
-                //success data
-                console.log('data : ', data);
-                console.log("$('#links')", $('#linksModal'));
-                $('#action').attr('action' , '/update-web-company/' + tour_id);
-                $('#telepon_Modal').val(data.telepon);
-                $('#links_Modal').val(data.links);
-                $('#email_Modal').val(data.email);
-                $('#aktif_flagModal').val(data.aktif_flag);
-                $('#btn-save').val("update");
-                $('#modalEdit').modal('show');
-            })
-        });
-
         $(document).on('click', '.open_modal-delete', function() {
         var tour_id = $(this).attr("value");
             console.log('id : ', tour_id);
 
-            $('#action-info').attr('action' , '/delete-web-company/' + tour_id);
+            $('#action-info').attr('action' , '/delete-komentar/' + tour_id);
 
             $('#modal-info').modal('show');
-         });
+            });
+
+        function submit() {
+            $( "#target" ).submit();
+        }
     });
-    $(document).on('click', '.open_modal_view', function() {
-            var url = "/getCompanyById";
-            var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
-            $.get(url + '/' + tour_id, function(data) {
-                //success data
-                console.log('data : ', data);
-                $('#teleponModal').val(data.telepon);
-                $('#linksModal').val(data.links);
-                $('#emailModal').val(data.email);
-                $('#aktif_flagModal').val(data.aktif_flag);
-                $('#btn-save').val("update");
-                $('#modalView').modal('show');
-            })
-        });
+
     
 </script>
 

@@ -242,7 +242,31 @@
 
 	<!-- other services -->
 	<section class="other_services py-5" id="why">
+		
 		<div class="container py-lg-5 py-3">
+			<form action="/filter-design" method="GET">
+			<div class="row">
+				<div class="form-group col-md-5">
+					<label for="exampleFormControlSelect1">Filter Tipe Template</label>
+						<select class="form-control" id="filterType" name="filterType">
+							<option value="W01">Wedding</option>
+							<option>Birthday</option>
+							<option>Other</option>
+					</select>
+				</div>
+				<div class="form-group col-md-5">
+					<label for="exampleFormControlSelect1">Filter Design Template</label>
+						<select class="form-control" id="filterDesign" name="filterDesign">
+							<option value="modern">Modern</option>
+							<option>Islami</option>
+							<option>Other</option>
+					</select>
+				</div>
+				<div class="col-md-2">
+					<button type="submit" class="btn btn-secondary">Filter</button>
+				</div>
+			</div>
+		</form>
 			<h3 class="heading mb-sm-5 mb-4">Choose Your Design </h3>
 			<div class="row">
 				@foreach($template_company as $templateCompany)

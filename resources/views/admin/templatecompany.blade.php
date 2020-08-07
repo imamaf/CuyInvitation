@@ -20,32 +20,17 @@
                 </div>
                 <div class="card-body">
                 <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
-                    <div class="table-responsive">
-                        <table class="table">
+                <div class="table-responsive">
+                    <table class="table table-hover scroll-horizontal-vertical w-100" id="datatable">
                             <thead class=" text-primary">
                                 <th>Nama</th>
                                 {{-- <th>Link</th> --}}
                                 <th>Harga</th>
-                                <th>Images</th>
+                                {{-- <th>Images</th> --}}
                                 <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </thead>
-                            <tbody>
-                                @foreach($template_company as $templateCompany)
-                                    <tr>
-                                        <td>{{$templateCompany->nama_template}}</td>
-                                        <!-- <td>{{$templateCompany->url_gambar}}</td> -->
-                                        <td>{{$templateCompany->harga_template}}</td>
-                                        <td>{{str_limit($templateCompany->url_gambar, $limit = 30, $end = '...')}}</td>
-                                        <td>{{str_limit($templateCompany->deskripsi_template, $limit = 30, $end = '...')}}</td>
-                                        <td>
-                                            <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="{{$templateCompany->id}}"><i class="far fa-eye"></i><a>
-                                            <a data-toggle="modal" value="{{$templateCompany->id}}" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i><a>
-                                            <a data-toggle="modal" href="#" value="{{$templateCompany->id}}"  class="btn btn-delete open_modal_delete"><i class="far fa-trash-alt"></i><a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                            <tbody> </tbody>
                         </table>
                     </div>
                 </div>
@@ -176,6 +161,29 @@
 
 
 @section('scripts')
+
+<script>
+    var datatable = $('#datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ordering   : true,
+        ajax : {
+                url : '{!! url()->current() !!}'    
+        },
+        columns: [
+            { data: 'nama_template', name: 'nama_template' },
+            { data: 'harga_template', name: 'harga_template' },
+            { data: 'deskripsi_template', name: 'deskripsi_template' ,  width : '60%' },
+            { 
+                data: 'action',
+                name: 'action' ,
+                orderble : false,
+                searcable : false ,
+            },
+
+        ]
+    });
+</script>
 
 <script>
     $(document).ready(function() {

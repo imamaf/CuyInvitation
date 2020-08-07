@@ -33,7 +33,7 @@ class TemplateCustomerController extends Controller
         $gallerys = null;
         if(!empty($tmplt_custr)) {
             $gallerys = Foto_gallery::where('template_id' , $tmplt_custr->id)->where('user_id',  $tmplt_custr->user_id)->get();
-            $komentars = Komentar::where('template_id' , $tmplt_custr->id)->get();
+            $komentars = Komentar::where('template_id' , $tmplt_custr->id)->where('aktif_flag' , 'Y')->get();
         } else {
             return 'not found';
         }

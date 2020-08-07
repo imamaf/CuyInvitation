@@ -27,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//fonts-->
 </head>
 <body>
+
+	@include('sweetalert::alert')
 <!-- header -->
 	<header>
 		<div class="container">
@@ -143,13 +145,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<!-- end normal -->
 										  <h4>{{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_mempelai_pria }}</h4>
 										  <h1>Putra dari Bpk. {{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_orang_tua_pria_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_pria_ibu }} </h1>
-										  <div class="icons">
+										  {{-- <div class="icons">
 													<ul>
 														<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 														<li class="team-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
 														<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 													</ul>
-												</div>
+												</div> --}}
 									</div>
 									<div class="col-md-6 team-grid">
 										<!-- normal -->
@@ -162,14 +164,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<!-- end normal -->
 										 <h4>{{ empty($tmplt_custr) ? 'Bride' : $tmplt_custr->nama_mempelai_wanita }}</h4>
-										<h1>Putri dari Bpk. {{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_orang_tua_wanita_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_ibu }} </h1>
-										  <div class="icons">
+										<h1>Putri dari Bpk. {{ empty($tmplt_custr) ? 'Groom' : $tmplt_custr->nama_orang_tua_wanita_bapak }}  &amp; {{ empty($tmplt_custr) ? "Ibu Mislawati" : "Ibu ".$tmplt_custr->nama_orang_tua_wanita_ibu }} </h1>
+										  {{-- <div class="icons">
 													<ul>
 														<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 														<li class="team-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
 														<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
 													</ul>
-												</div>
+												</div> --}}
 									</div>
 									<div class="clearfix"></div>
 						</div>
@@ -228,11 +230,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="form-group">
 			<label>Nama anda</label>
-			<input type="text" class="form-control" id="nama" placeholder="Silahkan diisi" name="nama">
+			<input type="text" class="form-control" id="nama" placeholder="Silahkan diisi" name="nama" required>
 		</div>
 		<div class="form-group">
 			<label>Ucapan</label>
-			<input type="text" class="form-control" id="deskripsi" placeholder="Silahkan diisi" name="deskripsi">
+			<input type="text" class="form-control" id="deskripsi" maxlength="100" placeholder="Silahkan diisi" name="deskripsi" required>
 		</div>
       </div>
       <div class="modal-footer">
@@ -395,10 +397,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
      </div>
 </div>
 
-    {{-- MAPS  --}}
-    <div class="row" style="margin-top:1em">
-
-        <div id = "googleMap" style = "width:100%; height:600px;"></div>
+	{{-- MAPS  --}}
+	<div class="wthree_title_agile" style="margin-top: 30px;">
+	<h2>Location</h2>
+</div>
+<p class="sub_para">WE ARE GETTING MARRIED</p>
+	<div class="row" style="margin-top:1em">
+		<div class="col-12 col-md-12">
+			<div id = "googleMap" style = "width:100%; height:600px;"></div>
+		</div>
     </div>
     {{-- END MAPS  --}}
 
@@ -432,152 +439,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 		</div>
 	 @endforeach
-	@endif
-	@if(empty($gallerys))
-        <div class="col-md-4 w3_tabs_grid">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g1.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g1.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g2.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g2.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g3.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g3.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g4.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g4.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g5.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g5.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid w3_tabs_grid_sub">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g6.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g6.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g7.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g7.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g9.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g9.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4 w3_tabs_grid">
-            <div class="grid">
-                <a href="{{ asset('assets/images/designc02/g2.jpg') }}" class="lsb-preview" data-lsb-group="header">
-                    <figure class="effect-winston">
-                        <img src="{{ asset('assets/images/designc02/g2.jpg') }}" class="img-responsive" alt=" " />
-                        <figcaption>
-                            <p>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                            </p>
-                        </figcaption>			
-                    </figure>
-                </a>
-            </div>
-		</div>
 	@endif
         <div class="clearfix"> </div>
 

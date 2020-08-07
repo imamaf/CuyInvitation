@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Foto_gallery;
 use App\Template_customer;
 use App\User;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
 
 class AdminTemplateCustomerController extends Controller
@@ -13,15 +16,35 @@ class AdminTemplateCustomerController extends Controller
 
     //   --------------------  CONTROLLER TEMPLATE CUSTOMER --------------
          // DATATABLE Template Customer
-         public function viewTemplateCustomer()
-         {
-            $userDropdown = User::whereHas('role', function($query){
+        public function viewTemplateCustomer()
+        {
+        $id = auth()->user()->id;
+        $user = User::with(['role'])->where('id' , $id)->get();
+        if(request()->ajax())
+        {
+            $query = DB::table('template_customer');
+            return Datatables::of($query)
+                ->addColumn('links_preview', function($query) {
+                    return '
+                <a href="'.$query->links.'" >'.substr($query->links, 0, 30) . '...'.'</a>
+                    ' ;
+                })
+                ->addColumn('action', function($query) {
+                    return '
+                    <a data-toggle="modal" href="#" class="btn btn-view open_modal_view" value="'.$query->id.'"><i class="far fa-eye"></i></a>
+                    <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" href="#" value="'.$query->id.'" class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
+                    ' ;
+                })->escapeColumns([])
+                ->make(true);
+        }
+           $userDropdown = User::whereHas('role', function($query){
                 $query->where('kode_role', '=', 'CSR');
             })->get();
              $template_customer = Template_customer::paginate(5);       
-             return view('admin.template_customer.template_customer' , ['template_customer' => $template_customer , 'userDropdown' => $userDropdown] );
+        return view('admin.template_customer.template_customer', ['template_customer' => $template_customer , 'user' =>$user,  'userDropdown' => $userDropdown] );
+        //
          }
-         // GET TEMPLATE CLIENT BY ID
         public function getTemplateCustomerByIndex(Request $request)
         {
             $data = Template_customer::find($request->id);
@@ -71,8 +94,8 @@ class AdminTemplateCustomerController extends Controller
                     ]);
                 }
             }
-
-            return redirect('/template-customer')->with('status' , 'Data berhasil di tambah');
+            Alert::success('Berhasil' , 'Data Berhasil Ditambahkan' );
+            return redirect('/template-customer');
         }  
 
         // UPDATE TEMPLATE CUSTOMER
@@ -191,13 +214,15 @@ class AdminTemplateCustomerController extends Controller
         //         }
                 
         // }
-            return redirect('/template-customer')->with('status' , 'Data berhasil di update');
+            Alert::success('Berhasil' , 'Data Berhasil Diubah' );
+            return redirect('/template-customer');
          }
 
     public function deleteTempateCustomer(Template_customer $template_customer) {
         Foto_gallery::where('template_id', $template_customer->id)->get()->each->delete();
         $template_customer->delete();
-        return redirect('/template-customer')->with('status' , 'Data berhasil dihapus');
+        Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
+        return redirect('/template-customer');
     }
 
     //
