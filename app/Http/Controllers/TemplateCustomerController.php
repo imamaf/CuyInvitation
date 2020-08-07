@@ -60,4 +60,8 @@ class TemplateCustomerController extends Controller
 
         return !is_null($tmplt_custr) ? view('product_cust_design.design_C03' , $data ) : 'NOT FOUND';
     }
+
+    public function index_tempalet_4(){
+        return view('product_design.design_C04');
+    }
 }
