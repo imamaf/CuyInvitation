@@ -20,6 +20,7 @@ Route::get('/','CompanyController@index');
 //INDEX PAGE
 Route::get('/detailproduk/{id}','DetailProdukController@getTemplateDetail');
 
+Route::get('/templatecompany','AdminTemplateCompany@index');
 Route::get('/companyTemplate/{id}', 'AdminTemplateCompany@getTemplateById');
 
 Route::put('/companyTemplate/{id}', 'AdminTemplateCompany@updateTemplate');
@@ -107,5 +108,7 @@ Route::delete('/delete-komentar/{komentar}', 'KomentarController@deleteKomentar'
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/{any}', function () {
+//     return view('welcome');
+// })->where('any','.*');
 

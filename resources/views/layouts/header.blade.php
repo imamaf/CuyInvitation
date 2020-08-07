@@ -15,7 +15,7 @@
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet" >
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
 
-	<script src="{{ asset('js/app.js') }}" defer></script>
+	{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 	  <!-- CSRF Token -->
 	  <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- //css files -->
@@ -52,7 +52,7 @@
 				<li class="nav-item"><a href="#stats">Stats</a></li>
 				<li class="nav-item"><a href="#design">Design</a></li>
 				<li class="nav-item"><a href="#testi">Testimonials</a></li>
-				@if(Auth::user())
+				@if(Auth::check())
 					@if(Auth::user()->role->kode_role == 'SA')
 						<li class="nav-item dropdown">
 							<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -67,16 +67,22 @@
 							</div>
 						</li>
 					@endif
-				@endif
-				@if(Auth::user())
 					@if(Auth::user()->role->kode_role == 'CSR')
 						<li class="nav-item dropdown">
 							<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 								Hi {{ Auth::user()->name}}
-								<span class="fa fa-envelope-open"></span>11</a>
+								<span class="fa fa-envelope-open"></span>{{ auth()->user()->unreadNotifications->count() }}</a>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{{ url('/komentar-ucapan') }}">Pemberitahuan <span style="color:red">11</span></a>
+							@if(auth()->user()->unreadNotifications->count())
+								@foreach (auth()->user()->unreadNotifications as $notif)
+								<a class="dropdown-item" href="{{ url('/komentar-ucapan') }}">Pemberitahuan <span style="color:red">{{ $notif->data['komentar']['nama'] }}</span></a>
+									
+								@endforeach
+							@else
+								<a class="dropdown-item" href="{{ url('/komentar-ucapan') }}">No Pemberitahuan</span></a>
+							@endif
+							
 								<a class="dropdown-item"  href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 									@csrf
@@ -126,9 +132,9 @@
 
 </body>
 </html>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+{{-- <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
-<!-- <script type="text/javascript" src="js/wow.min.js"></script> -->
+<script type="text/javascript" src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/jQuery.scrollSpeed.js"></script>
 <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/custom.js"></script> --}}

@@ -9,6 +9,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
+        "pusher/pusher-php-server": "~3.0",
         "realrashid/sweet-alert": "^3.1",
         "yajra/laravel-datatables-oracle": "~8.0"
     },

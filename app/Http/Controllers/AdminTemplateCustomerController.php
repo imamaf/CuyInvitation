@@ -26,7 +26,7 @@ class AdminTemplateCustomerController extends Controller
             return Datatables::of($query)
                 ->addColumn('links_preview', function($query) {
                     return '
-                <a href="'.$query->links.'" >'.$query->links.'</a>
+                <a href="'.$query->links.'" >'.substr($query->links, 0, 30) . '...'.'</a>
                     ' ;
                 })
                 ->addColumn('action', function($query) {
@@ -35,7 +35,8 @@ class AdminTemplateCustomerController extends Controller
                     <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
                     <a data-toggle="modal" href="#" value="'.$query->id.'" class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
                     ' ;
-                })->make();
+                })->escapeColumns([])
+                ->make(true);
         }
            $userDropdown = User::whereHas('role', function($query){
                 $query->where('kode_role', '=', 'CSR');

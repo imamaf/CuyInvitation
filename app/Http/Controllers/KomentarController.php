@@ -9,6 +9,10 @@ use Yajra\DataTables\DataTables;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\NewItem;
+use Notification;
+
+// use Illuminate\Notifications\Notification;
 
 class KomentarController extends Controller
 {
@@ -31,6 +35,12 @@ class KomentarController extends Controller
             ->select('komentar.*', 'template_customer.nama_panggilan_pria', 'template_customer.nama_panggilan_wanita');
         }
         return Datatables::of($query)
+            ->editColumn('deskripsi', function($query) {
+                    if(strlen($query->deskripsi) > 40) {
+                        return substr($query->deskripsi, 0, 30) . '........';
+                    }
+                    return $query->deskripsi;
+                })
             ->editColumn('aktif_flag', function($query) {
                     return $query->aktif_flag == 'Y' ? 'Aktif' : 'Tidak Aktif';
                 })
@@ -73,13 +83,18 @@ class KomentarController extends Controller
         if($request->path_foto != null) {
             $dir_foto = $request->file('path_foto')->store('foto_komentar');
          }
-         Komentar::create([
+        $id = auth()->user()->id;
+        $user = User::with(['role'])->where('id' , $id)->get();
+        $komentar = Komentar::create([
              'template_id' => $request->template_id,
              'nama' => $request->nama,
              'path_foto' => $dir_foto,
              'deskripsi' => $request->deskripsi,
              'aktif_flag' => 'N',
          ]);
+          if(Notification::send($user, new NewItem($komentar))) {
+              return back();
+          }
             Alert::success('Berhasil' , 'Ucapan Berhasil Dikirim Menuggu di approve' );
          return redirect(redirect()->back()->getTargetUrl());
     }
@@ -99,6 +114,6 @@ class KomentarController extends Controller
         Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
         Storage::delete($komentar->path_foto);
         $komentar->delete();
-        return redirect('/komentar-ucapan')->with('status' , 'Data berhasil dihapus');
+        return redirect('/komentar-ucapan');
     }
 }
