@@ -19,7 +19,7 @@
                     <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                 </div>
                 <div class="card-body">
-                <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button>
+                <button data-toggle="modal" data-target="#modalTambah" onclick="resetForm()" type="button" class="btn btn-primary">Tambah</button>
                 <div class="table-responsive">
                     <table class="table table-hover scroll-horizontal-vertical w-100" id="datatable">
                             <thead class=" text-primary">
@@ -64,6 +64,24 @@
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="linkAdd" placeholder="Link Preview" name="link">
+                        </div>
+                         <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kode Type Template</label>
+                            <select class="form-control" id="kode_type_templateAdd" name="kode_type_templateAdd" required>
+                                <option value="" checked>Pilih ....</option>
+                                @foreach ($templateType as $item)
+                                    <option value="{{ $item->kode_type_template }}">{{ $item->deskripsi }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kode Design Template</label>
+                            <select class="form-control" id="kode_template_designAdd" name="kode_template_designAdd" required>
+                                <option value="" checked >Pilih ....</option>
+                                @foreach ($templateDesign as $item)
+                                <option value="{{ $item->kode_template_design }}">{{ $item->deskripsi }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Image Banner 1</label>
@@ -116,6 +134,22 @@
                             <input type="text" class="form-control" id="linkModal" placeholder="Link Preview" name="linkModal">
                         </div>
                         <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kode Type Template</label>
+                            <select class="form-control" id="kode_type_template" name="kode_type_template">
+                                @foreach ($templateType as $item)
+                                    <option value="{{ $item->kode_type_template }}">{{ $item->deskripsi }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kode Design Template</label>
+                            <select class="form-control" id="kode_template_design" name="kode_template_design">
+                                @foreach ($templateDesign as $item)
+                                <option {{ $item->kode_template_design }} value="{{ $item->kode_template_design }}">{{ $item->deskripsi }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Gambar</label>
                             <br>
                             <div id="imageGroupEdit" class="input-group">
@@ -129,13 +163,6 @@
                             </div>
                             <img class="img-thumbnail" id='img-upload-edit' style="width : 200px; heigth: 200px" />
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="exampleFormControlSelect1">Status</label>
-                            <select class="form-control" id="aktif_flagModal" name="aktif_flagModal">
-                                <option value="Y">Aktif</option>
-                                <option value="T">Tidak Aktif</option>
-                            </select>
-                        </div> -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" id="btn-save-edit">Save</button>
@@ -186,6 +213,15 @@
 </script>
 
 <script>
+    function resetForm(){
+        $('#templateNameAdd').val("");
+        $('#descriptionAdd').val("");
+        $('#priceAdd').val("");
+        $('#linkAdd').val("");
+        $('#kode_type_templateAdd').val("");
+        $('#kode_template_designAdd').val("");
+    }
+
     $(document).ready(function() {
         $(document).on('change', '.btn-file :file', function() {
             var input = $(this),
@@ -239,6 +275,9 @@
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', false);
                 $('#priceModal').val(data.harga_template).prop('disabled', false);
                 $('#linkModal').val(data.link).prop('disabled', false);
+                console.log(data)
+                $('#kode_type_template').val(data.kode_type_template).prop('disabled', false);
+                $('#kode_template_design').val(data.kode_template_design).prop('disabled', false);
                 $('#img-upload-edit').attr('src', 'storage/' + data.url_gambar);
                 // $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', false);
                 $('#imageModalEdit').prop('disabled', false);
@@ -258,6 +297,8 @@
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', true);
                 $('#priceModal').val(data.harga_template).prop('disabled', true);
                 $('#linkModal').val(data.link).prop('disabled', true);
+                $('#kode_type_template').val(data.kode_type_template).prop('disabled', true);
+                $('#kode_template_design').val(data.kode_template_design).prop('disabled', true);
                  $('#img-upload-edit').attr('src', 'storage/' + data.url_gambar);
                 // $('#img-upload-edit').attr('src', "{{Storage::url('')}}"+data.url_gambar.replace("public/","")).prop('disabled', true);
                 $('#imageModalEdit').prop('disabled', true);

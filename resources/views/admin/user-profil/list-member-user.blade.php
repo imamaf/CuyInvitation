@@ -122,7 +122,7 @@ User
                      
                      <div class="form-group">
                             <label for="exampleFormControlSelect1">Role</label>
-                            <select class="form-control" id="role_Modal" name="role_Modal">
+                            <select class="form-control" id="role_ModalAdd" name="role_Modal">
                                 <option value="SA">Super Admin</option>
                                 <option value="CSR">Customer</option>
                             </select>

@@ -77,12 +77,6 @@
 											</span>
 										@endif
 										<input class="form-control" placeholder="Contact Number" name="no_hp" type="text" required="">
-										<!-- <select>
-										<option value="0">Gender</option>
-										<option value="1">Male</option>
-										<option value="2">Female</option>
-										<option value="4">Transgender</option>
-										</select> -->
 										<input id="password" placeholder="Password" type="password" class="form-control" name="password" required>
 											@if ($errors->has('password'))
 												<span class="invalid-feedback" role="alert">
@@ -241,36 +235,55 @@
 	<!-- //stats section -->
 
 	<!-- other services -->
-	<section class="other_services py-5" id="why">
-		
-		<div class="container py-lg-5 py-3">
+	<section class="other_services py-5" id="why">		
+		<div class="container py-lg-5 py-3" id="design">
 			<form action="/filter-design" method="GET">
 			<div class="row">
 				<div class="form-group col-md-5">
 					<label for="exampleFormControlSelect1">Filter Tipe Template</label>
-						<select class="form-control" id="filterType" name="filterType">
-							<option value="W01">Wedding</option>
-							<option>Birthday</option>
-							<option>Other</option>
+					<select class="form-control" id="filterType" name="filterType" required>
+						<option value="" checked>Search ...</option>
+					@foreach ($templateType as $item)
+						<option value="{{ $item->kode_type_template }}">{{ $item->deskripsi }}</option>
+					@endforeach
 					</select>
 				</div>
 				<div class="form-group col-md-5">
 					<label for="exampleFormControlSelect1">Filter Design Template</label>
-						<select class="form-control" id="filterDesign" name="filterDesign">
-							<option value="modern">Modern</option>
-							<option>Islami</option>
-							<option>Other</option>
+						<select class="form-control" id="filterDesign" name="filterDesign" required>
+							<option value="" checked>Search ...</option>
+							@foreach ($templateDesign as $item)
+							<option value="{{ $item->kode_template_design }}">{{ $item->deskripsi }}</option>
+							@endforeach
 					</select>
 				</div>
 				<div class="col-md-2">
-					<button type="submit" class="btn btn-secondary">Filter</button>
+					<button type="sbumit" class="btn btn-secondary">Filter</button>
 				</div>
 			</div>
 		</form>
-			<h3 class="heading mb-sm-5 mb-4">Choose Your Design </h3>
+		<h3 class="heading mb-sm-5 mb-4" >Choose Your Design </h3>
+		@if (session('template_company'))
+				<div class="row">
+					@foreach(session('template_company') as $templateCompany)
+						<div class="col-lg-4 col-md-6 mt-3">
+							<div class="grid">
+								<a href="/detailproduk/{{$templateCompany->id}}">
+									<img src="{{ url('storage' , $templateCompany->url_gambar)}}" alt="" class="img-fluid" />
+									<div class="info p-4">
+										<h4 class="">{{$templateCompany->nama_template}}</h4>
+										<p class="mt-3">Rp. {{$templateCompany->harga_template}}</p>
+										<button class="btn btn-primary">See more</button>
+									</div>
+								</a>
+							</div>
+						</div>
+					@endforeach
+				</div>
+		@else
 			<div class="row">
 				@foreach($template_company as $templateCompany)
-					<div class="col-lg-4 col-md-6">
+					<div class="col-lg-4 col-md-6 mt-3">
 						<div class="grid">
 							<a href="/detailproduk/{{$templateCompany->id}}">
 								<img src="{{ url('storage' , $templateCompany->url_gambar)}}" alt="" class="img-fluid" />
@@ -284,6 +297,7 @@
 					</div>
 				@endforeach
 			</div>
+		@endif
 		</div>
 	</section>
 	<!-- //other services -->
@@ -384,4 +398,20 @@
         <i class="fa fa-whatsapp" style="font-size:40px;"></i>
     </a>
 
-@endsection
+	@endsection
+	@push('custom-scripts')
+	{{-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> --}}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(document).on('click', '.click-filter', function() {
+				var url = "/filter-design/";
+				$.get("/", function(data) {
+					//success data
+				   console.log(data);
+	
+					})
+				});
+			});
+		</script>
+	@endpush

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\TemplateType;
+use App\TemplateDesign;
 
 class AdminTemplateCompany extends Controller
 {
@@ -33,6 +35,9 @@ class AdminTemplateCompany extends Controller
         {
         $id = auth()->user()->id;
         $user = User::with(['role'])->where('id' , $id)->get();
+        $templateType = TemplateType::all();
+        $templateDesign = TemplateDesign::all();
+        // dd($templateDesign);
         if(request()->ajax())
         {
             $query = DB::table('template_company');
@@ -45,7 +50,7 @@ class AdminTemplateCompany extends Controller
                     ' ;
                 })->make();
         }
-        return view('admin.templatecompany' , ['user' => $user]);
+        return view('admin.templatecompany' , ['user' => $user , 'templateType' =>  $templateType , 'templateDesign' => $templateDesign]);
         //
          }
 
@@ -70,6 +75,8 @@ class AdminTemplateCompany extends Controller
             'url_gambar' => $path_banner,
             'harga_template' => $request->priceModal,
             'link' => $request->linkModal,
+            'kode_type_templateAdd' => $request->kode_type_templateAdd,
+            'kode_template_designAdd' => $request->kode_template_designAdd,
             'deskripsi_template' => $request->descriptionModal
         ]);
         Alert::success('Berhasil' , 'Data Berhasil Diubah' );
@@ -83,6 +90,8 @@ class AdminTemplateCompany extends Controller
             'url_gambar' => $path_banner,
             'harga_template' => $request->priceAdd,
             'link' => $request->link,
+            'kode_type_template' => $request->kode_type_template,
+            'kode_template_design' => $request->kode_template_design,
             'deskripsi_template' => $request->descriptionAdd
         ]);
         Alert::success('Berhasil' , 'Data Berhasil Ditambahkan' );

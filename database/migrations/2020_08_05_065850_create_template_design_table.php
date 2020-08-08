@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemplateTable extends Migration
+class CreateTemplateDesignTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateTemplateTable extends Migration
      */
     public function up()
     {
-        Schema::create('template', function (Blueprint $table) {
-            $table->string('kode_template' , 30)->unique()->nullable();
-            $table->string('kode_type_template' , 30)->nullable();
+        Schema::create('template_design', function (Blueprint $table) {
+            $table->string('kode_template_design' , 30)->unique()->nullable();
             $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ class CreateTemplateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('template');
+        Schema::dropIfExists('template_design');
     }
 }
