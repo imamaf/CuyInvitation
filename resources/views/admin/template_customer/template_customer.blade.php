@@ -310,13 +310,14 @@ Template Customer
                      </div>
                        <div class="row">
                            <div class="col-12 col-md-4">
-                                <div class="form-group">
+                                <div class="form-group" id="test">
                                     <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery1">
-                                        <input type="text" class="form-control" id="command_gallery1" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery1">Choose file</label>
-                                    </div>
+                                        <div class="custom-file test">
+                                            <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery1">
+                                            <input type="text" class="form-control" id="command_gallery1" value="" name="command_gallery[]" style="display: none">
+                                            <label class="custom-file-label" for="imgInpGallery1">Choose file</label>
+                                        </div>
+                                        <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery1' , 'imgInpGallery1')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery1')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery1" style="width : 200px; heigth: 200px" />
@@ -331,6 +332,7 @@ Template Customer
                                        <input type="text" class="form-control" id="command_gallery2" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery2">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery2' , 'imgInpGallery2')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery2')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery2" style="width : 200px; heigth: 200px" />
@@ -345,6 +347,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery3" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery3">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery3' , 'imgInpGallery3')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery3')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery3" style="width : 200px; heigth: 200px" />
@@ -359,6 +362,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery4" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery4">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery4' , 'imgInpGallery4')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery4')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery4" style="width : 200px; heigth: 200px" />
@@ -373,6 +377,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery5" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery5">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery5' , 'imgInpGallery5')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery5')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery5" style="width : 200px; heigth: 200px" />
@@ -387,6 +392,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery6" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery6">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery6' , 'imgInpGallery6')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery6')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery6" style="width : 200px; heigth: 200px" />
@@ -401,6 +407,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery7" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery7">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery7' , 'imgInpGallery7')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery7')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery7" style="width : 200px; heigth: 200px" />
@@ -415,6 +422,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery8" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery8">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery8' , 'imgInpGallery8')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery8')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery8" style="width : 200px; heigth: 200px" />
@@ -429,6 +437,7 @@ Template Customer
                                         <input type="text" class="form-control" id="command_gallery9" value="" name="command_gallery[]" style="display: none">
                                         <label class="custom-file-label" for="imgInpGallery9">Choose file</label>
                                     </div>
+                                    <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery9' , 'imgInpGallery9')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
                                 <a onclick="thisFileUpload('imgInpGallery9')">
                                     <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery9" style="width : 200px; heigth: 200px" />
@@ -1040,6 +1049,12 @@ function initDropEffect(box){
     
   }
 }
+
+ function thisRemoveImage( image, input){
+     console.log('remove  '  + input)
+        $('#'+image).attr('src', '/assets/images/add-image.png');
+        $('#'+input).val('');
+    }
 
     
 </script>

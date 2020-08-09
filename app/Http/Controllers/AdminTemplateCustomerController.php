@@ -56,6 +56,7 @@ class AdminTemplateCustomerController extends Controller
         // ADD TEMPLATE CUSTOMER
         public function addTemplateCustomer(Request $request)
         {
+            dd( $request->path_foto);
             $dir_banner = $request->file('banner')->store('foto_banner_cust');
             $dir_foto_pria = $request->file('path_foto_pria')->store('foto_mempelai_pria');
             $dir_foto_wanita = $request->file('path_foto_wanita')->store('foto_mempelai_wanita');
