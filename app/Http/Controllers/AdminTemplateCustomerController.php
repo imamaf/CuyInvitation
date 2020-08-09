@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\TemplateCompany;
 use Illuminate\Support\Facades\Storage;
 
 class AdminTemplateCustomerController extends Controller
@@ -20,6 +21,7 @@ class AdminTemplateCustomerController extends Controller
         {
         $id = auth()->user()->id;
         $user = User::with(['role'])->where('id' , $id)->get();
+        $templateCompany = TemplateCompany::all();
         if(request()->ajax())
         {
             $query = DB::table('template_customer');
@@ -42,7 +44,7 @@ class AdminTemplateCustomerController extends Controller
                 $query->where('kode_role', '=', 'CSR');
             })->get();
              $template_customer = Template_customer::paginate(5);       
-        return view('admin.template_customer.template_customer', ['template_customer' => $template_customer , 'user' =>$user,  'userDropdown' => $userDropdown] );
+        return view('admin.template_customer.template_customer', ['template_customer' => $template_customer ,'templateCompany' => $templateCompany, 'user' =>$user,  'userDropdown' => $userDropdown] );
         //
          }
         public function getTemplateCustomerByIndex(Request $request)

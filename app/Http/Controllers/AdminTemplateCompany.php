@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\TemplateType;
 use App\TemplateDesign;
+use Illuminate\Database\QueryException;
 
 class AdminTemplateCompany extends Controller
 {
@@ -60,7 +61,7 @@ class AdminTemplateCompany extends Controller
     }
 
     public function updateTemplate(Request $request) {
-        // dd($request->file('banner_1'));
+    try {
         $request_banner = $request->file('banner_1');
         $path_banner = '';
         $dataFind = TemplateCompany::where('id', $request->id);
@@ -69,31 +70,44 @@ class AdminTemplateCompany extends Controller
             Storage::delete($dataFind->get()->first()->url_gambar);
         } else {
             $path_banner = $dataFind->get()->first()->url_gambar;
+        } $dataFind->update([
+                'template_company_kode' => $request->template_company_kode,
+                'nama_template' => $request->templateNameModal,
+                'url_gambar' => $path_banner,
+                'harga_template' => $request->priceModal,
+                'link' => $request->linkModal,
+                'kode_type_template' => $request->kode_type_template,
+                'kode_template_design' => $request->kode_template_design,
+                'deskripsi_template' => $request->descriptionModal
+             ]);
+        }  catch (QueryException $e) {
+            Alert::warning('Warning' , 'Duplicate Kode' );
+            return redirect('/templatecompany');
         }
-        $data = $dataFind->update([
-            'nama_template' => $request->templateNameModal,
-            'url_gambar' => $path_banner,
-            'harga_template' => $request->priceModal,
-            'link' => $request->linkModal,
-            'kode_type_templateAdd' => $request->kode_type_templateAdd,
-            'kode_template_designAdd' => $request->kode_template_designAdd,
-            'deskripsi_template' => $request->descriptionModal
-        ]);
         Alert::success('Berhasil' , 'Data Berhasil Diubah' );
         return redirect('/templatecompany');
     }
 
     public function addTemplate(Request $request) {
-        $path_banner = $request->file('banner_1_add')->store('template_company');
-        $data = TemplateCompany::create([
-            'nama_template' => $request->templateNameAdd,
-            'url_gambar' => $path_banner,
-            'harga_template' => $request->priceAdd,
-            'link' => $request->link,
-            'kode_type_template' => $request->kode_type_template,
-            'kode_template_design' => $request->kode_template_design,
-            'deskripsi_template' => $request->descriptionAdd
-        ]);
+        try {
+            $path_banner = $request->file('banner_1_add')->store('template_company');
+            // dd($request);
+            $data = TemplateCompany::create([
+                'template_company_kode' => $request->template_company_kodeAdd,
+                'nama_template' => $request->templateNameAdd,
+                'url_gambar' => $path_banner,
+                'harga_template' => $request->priceAdd,
+                'link' => $request->link,
+                'kode_type_template' => $request->kode_type_templateAdd,
+                'kode_template_design' => $request->kode_template_designAdd,
+                'deskripsi_template' => $request->descriptionAdd
+            ]);
+
+        }  catch (QueryException $e) {
+            Alert::warning('Warning' , 'Duplicate Kode' );
+            return redirect('/templatecompany');
+        }
+
         Alert::success('Berhasil' , 'Data Berhasil Ditambahkan' );
         return redirect('/templatecompany');
     }

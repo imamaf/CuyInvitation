@@ -154,9 +154,10 @@ Template Customer
                         <div class="form-group">
                         <label> Kode Template </label>
                             <select class="form-control" id="kode_template" name="kode_template" value="">
-                                <option value="C01">C01 - Template 1</option>
-                                <option value="C02">C02 - Template 2</option>
-                                <option value="C03">C03 - Template 3</option>
+                                <option>Pilih ...</option>
+                                @foreach ($templateCompany as $item)
+                                <option value="{{ $item->template_company_kode }}">{{ $item->nama_template }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="row">

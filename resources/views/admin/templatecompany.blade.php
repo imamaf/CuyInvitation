@@ -54,6 +54,9 @@
                     <form action="{{url('/addCompanyTemplate')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
+                            <input type="text" class="form-control" id="template_company_kodeAdd" placeholder="Kode" name="template_company_kodeAdd">
+                        </div>
+                        <div class="form-group">
                             <input type="text" class="form-control" id="templateNameAdd" placeholder="Nama Template" name="templateNameAdd">
                         </div>
                         <div class="form-group">
@@ -121,6 +124,9 @@
                     <form id="action" action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="template_company_kode" placeholder="Kode" name="template_company_kode">
+                        </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="templateNameModal" placeholder="Nama Template" name="templateNameModal">
                         </div>
@@ -214,6 +220,7 @@
 
 <script>
     function resetForm(){
+        $('#template_company_kodeAdd').val("");
         $('#templateNameAdd').val("");
         $('#descriptionAdd').val("");
         $('#priceAdd').val("");
@@ -271,6 +278,7 @@
             $.get(url + '/' + id, function(data) {
                 //success data
                 $('#action').attr('action' , '/companyTemplate/' + id);
+                $('#template_company_kode').val(data.template_company_kode).prop('disabled', false);
                 $('#templateNameModal').val(data.nama_template).prop('disabled', false);
                 $('#descriptionModal').val(data.deskripsi_template).prop('disabled', false);
                 $('#priceModal').val(data.harga_template).prop('disabled', false);

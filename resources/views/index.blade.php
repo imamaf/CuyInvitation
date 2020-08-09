@@ -86,6 +86,19 @@
 											<input id="password-confirm" placeholder="Confirm password" type="password" class="form-control" name="password_confirmation" required>
 										<button type="submit" Class="btn"> Get Started</button>
 										<p>Have an account?<a href="{{ route('login') }}" style="color:#ff3e75"> Login here</a></p>
+
+								          {{-- <div class="form-group row">
+											<div class="col-md-6 offset-md-4">
+												<a href="{{ url('/auth/google') }}" class="btn btn-github"><i class="fa fa-github"></i> Google</a>
+												<a href="{{ url('/auth/twitter') }}" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
+												<a href="{{ url('/auth/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+											</div>
+											<div class="form-group">
+												<div class="col-md-8 col-md-offset-4">
+												<a href="{{url('/redirect')}}" class="btn btn-primary">Login with Facebook</a>
+												</div>
+											</div>
+										</div> --}}
 									</div>
 								</form>
 							</div>
@@ -266,6 +279,9 @@
 		@if (session('template_company'))
 				<div class="row">
 					@foreach(session('template_company') as $templateCompany)
+						{{-- @if (session('template_company'))
+							<p>Coming soon</p>
+						@endif --}}
 						<div class="col-lg-4 col-md-6 mt-3">
 							<div class="grid">
 								<a href="/detailproduk/{{$templateCompany->id}}">
