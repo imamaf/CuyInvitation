@@ -60,13 +60,14 @@ Route::delete('/delete-web-company/{company}','DashboardController@deleteWebComp
 
 // ---------------------------- ROUTER PAGE TESTIMONI DASHBOARD ----------------
 // VIEW TESTIMONI-DATATABLE
-Route::get('/testimoni','DashboardController@viewTestimoni');
+Route::get('/testimoni','TestimoniController@viewTestimoni');
 //GET BY ID
-Route::get('/getTestimoniById/{id}', 'DashboardController@getTestimoniByIndex');
+Route::get('/getTestimoniById/{id}', 'TestimoniController@getTestimoniByIndex');
 // UPDATE TESTIMONI
-Route::put('/update-testimoni/{testimoni}','DashboardController@updateTestimoni');
+Route::post('/create-testimoni','TestimoniController@addTestimoni');
+Route::put('/update-testimoni/{testimoni}','TestimoniController@updateTestimoni');
 // DELETE TESTIMONI
-Route::delete('/delete-testimoni/{testimoni}','DashboardController@deleteTestimoni');
+Route::delete('/delete-testimoni/{testimoni}','TestimoniController@deleteTestimoni');
 
 // ---------------------------- ROUTER PAGE TEMPLATE CUSTOMER DASHBOARD ----------------
 // VIEW  TEMPLATE CUSTOMER-DATATABLE

@@ -34,6 +34,7 @@ Testimoni
                 </p>
                 @endif  
                 <!-- <button data-toggle="modal" data-target="#modalTambah" type="button" class="btn btn-primary">Tambah</button> -->
+                <button data-toggle="modal" data-target="#myModalAdd1" type="button" onclick="resetForm()" class="btn btn-primary">Tambah</button>    
                     <div class="table-responsive">
                     <table class="table table-hover scroll-horizontal-vertical w-100" id="datatables">
                             <thead class=" text-primary">
@@ -50,6 +51,56 @@ Testimoni
             </div>
         </div>
     </div>
+
+<!-- Modal Tambah -->
+<section>
+    <div class="modal fade" id="myModalAdd1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"
+                    <form action="{{url('/create-testimoni')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="country">Pilih User</label>
+                            <select name="country" class="form-control" style="width:250px">
+                               <option value="Pilih .... "></option>
+                               @foreach($userDropdown as $usr)
+                               <option value="{{ $usr->id }}"> {{ $usr->name }} </option>
+                               @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="userId" placeholder="userId" name="userId" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="pathPhoto" placeholder="pathPhoto" name="pathPhoto" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nama" placeholder="nama" name="nama" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="deskripsi" placeholder="deskripsi" name="deskripsi" value="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="rating" placeholder="rating" name="rating" value="">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
 
 <!-- Modal VIEW -->
 <section>
