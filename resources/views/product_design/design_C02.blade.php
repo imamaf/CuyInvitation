@@ -546,6 +546,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 
+<div class="container">
+	<audio id="myAudio" controls autoplay >
+	  <source src="https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/backsound.mp3"  type="audio/mp3">
+	</audio> 
+	
+
+</div>
+
+<style>
+
+.controlBar {
+    position: relative;
+    display: none;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 9px;
+    background-color: rgba(26,26,26,.8);
+    color: #fff;
+}
+</style>
+<script>
+document.getElementById("myAudio").autoplay;
+</script>
+
 
 <!-- footer -->
 <div class="agile-footer">

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\TemplateCompany;
-use Illuminate\Support\Facades\Storage;
 
 class AdminTemplateCustomerController extends Controller
 {
@@ -56,7 +55,6 @@ class AdminTemplateCustomerController extends Controller
         // ADD TEMPLATE CUSTOMER
         public function addTemplateCustomer(Request $request)
         {
-            dd( $request->path_foto);
             $dir_banner = $request->file('banner')->store('foto_banner_cust');
             $dir_foto_pria = $request->file('path_foto_pria')->store('foto_mempelai_pria');
             $dir_foto_wanita = $request->file('path_foto_wanita')->store('foto_mempelai_wanita');
@@ -144,79 +142,34 @@ class AdminTemplateCustomerController extends Controller
                 'latitude'=> $request->latitude,
                 'longitude'=> $request->longitude,    
             ]);
-            $filesUpdate = $request->file('path_foto_update');
-            // dd($filesUpdate);
-            $gallleryId = $request->command_gallery;
+            $filesUpdate = $request->file('path_foto');
+            $gallleryId = $request->gallery_id;
+            
             if(!empty($gallleryId) ){
-                if(!empty($filesUpdate)) {
-                    for ($i=0; $i < count($gallleryId); $i++) {
-                        for($i = 0; $i < count($filesUpdate); $i++){
-                            // $image =  $filesUpdate[$i]->store('template_customer');
-                            // $image2 =  $filesUpdate[1]->store('template_customer');
-                            // dd($image[0] . ' - ' . $image[1]);
-                           if($gallleryId[0]) {
-                               if($filesUpdate[0]) {
-                               Foto_gallery::where('id' , $gallleryId[0])->update([
+                foreach($gallleryId as $id){
+                    if(!empty($filesUpdate)){
+                        if(!empty($id)){
+                            foreach($filesUpdate as $file){
+                                Foto_gallery::where('id' , $id)->update([
                                 'user_id' => $template_customer->user_id,
-                               'template_id' => $template_customer->id,
-                               'path_foto'=> $filesUpdate[0]->store('template_customer_gallery') ,
-           
-                               ]);
-                               }
-                               
-                           } 
-                           if ($gallleryId[1] || $filesUpdate[1]){
-                            //    dd($gallleryId[1]);
-                               Foto_gallery::where('id' , $gallleryId[1])->update([
-                                'user_id' => $template_customer->user_id,
-                               'template_id' => $template_customer->id,
-                               'path_foto'=> $filesUpdate[1]->store('template_customer_gallery')  ,
-           
-                               ]);
-                           } 
-                           if ($gallleryId[2]){
-                               Foto_gallery::where('id' , $gallleryId[2])->update([
-                                'user_id' => $template_customer->user_id,
-                               'template_id' => $template_customer->id,
-                               'path_foto'=> '3' ,
-           
-                               ]);
-                           }
-                       }
-                           // } 
-       
-                           // if(!empty($foto_gallery)){
-                           //     // Storage::delete($foto_gallery->path_foto);
-                           //     $foto_gallery->delete();
-       
-                           // }
-                       }       
+                                'template_id' => $template_customer->id,
+                                'path_foto'=> $file->store('template_customer_gallery') ,   
+                                ]);                         
+                            }
+                        } else{
+                            foreach ($filesUpdate as $fileAdd) {
+                                Foto_gallery::create([
+                                    'user_id' => $template_customer->user_id,
+                                    'template_id' => $template_customer->id,
+                                    'path_foto'=> $fileAdd->store('template_customer_gallery') ,
+                                ]);
+                            }
+                        }
+                    }
 
                 }
-            }
+            } 
             
-            $files = $request->file('path_foto');
-            if ($files > 0) {
-                foreach($files as $file){
-                    $image =  $file->store('template_customer');
-                    Foto_gallery::create([
-                        'user_id' => $template_customer->user_id,
-                        'template_id' => $template_customer->id,
-                        'path_foto'=> $image ,
-                    ]);
-                }
-            }
-        //      if(!empty($files)) {
-        //         foreach($files as $file){
-        //         $image =  $file->store('template_customer');
-        //         Foto_gallery::create([
-        //             'user_id' => $template_customer->user_id,
-        //             'template_id' => $template_customer->id,
-        //             'path_foto'=> $image ,
-        //         ]);
-        //         }
-                
-        // }
             Alert::success('Berhasil' , 'Data Berhasil Diubah' );
             return redirect('/template-customer');
          }
