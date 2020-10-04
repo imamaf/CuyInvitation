@@ -745,10 +745,8 @@ CKEDITOR.replace("deskripsi");
     $(document).on('click', '.open_modal_view', function() {
             var url = "/getTemplateCustomerById";
             var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
             $.get(url + '/' + tour_id, function(data) {
                 //success data
-                console.log('data : ', data);
                 $('#links_view').val(data.links);
                 $('#nama_mempelai_pria_view').val(data.nama_mempelai_pria);
                 $('#nama_mempelai_wanita_view').val(data.nama_mempelai_wanita);

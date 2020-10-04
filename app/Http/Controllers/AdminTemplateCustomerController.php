@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\TemplateCompany;
+use Illuminate\Support\Facades\Storage;
 
 class AdminTemplateCustomerController extends Controller
 {
@@ -102,21 +103,24 @@ class AdminTemplateCustomerController extends Controller
         // UPDATE TEMPLATE CUSTOMER
         public function updateTemplateCustomer(Request $request , Template_customer $template_customer)
         {
-            // dd($request);
+            // dd($template_customer);
             $link_preview = url('/').'/design_'.$request->kode_template.'/'.$request->nama_panggilan_pria.'-'.$request->nama_panggilan_wanita;
             if(!empty($request->banner)){
+                Storage::delete($template_customer->banner);
                 $dir_banner = $request->file('banner')->store('foto_banner_cust');
                 Template_customer::where('id' ,  $template_customer->id)->update([
                     'banner'=> $dir_banner
                 ]);
             }
             if(!empty($request->path_foto_pria)){
+                Storage::delete($template_customer->path_foto_pria);
                 $dir_foto_pria = $request->file('path_foto_pria')->store('foto_mempelai_pria');
                 Template_customer::where('id' ,  $template_customer->id)->update([
                     'path_foto_pria'=> $dir_foto_pria,
                 ]);
             }
             if(!empty($request->path_foto_wanita)){
+                Storage::delete($template_customer->path_foto_wanita);
                 $dir_foto_wanita = $request->file('path_foto_wanita')->store('foto_mempelai_wanita');
                 Template_customer::where('id' ,  $template_customer->id)->update([
                     'path_foto_wanita'=> $dir_foto_wanita,
@@ -149,13 +153,20 @@ class AdminTemplateCustomerController extends Controller
                 foreach($gallleryId as $id){
                     if(!empty($filesUpdate)){
                         if(!empty($id)){
-                            foreach($filesUpdate as $file){
-                                Foto_gallery::where('id' , $id)->update([
-                                'user_id' => $template_customer->user_id,
-                                'template_id' => $template_customer->id,
-                                'path_foto'=> $file->store('template_customer_gallery') ,   
-                                ]);                         
-                            }
+                           
+                            $galllerys = DB::table('foto_gallery')
+                                ->where('id', $id)->get();
+                                foreach($galllerys as $galllery){
+                                    Storage::delete($galllery->path_foto);
+                                     foreach($filesUpdate as $file){
+                                            Foto_gallery::where('id' , $id)->update([
+                                                'user_id' => $template_customer->user_id,
+                                                'template_id' => $template_customer->id,
+                                                'path_foto'=> $file->store('template_customer_gallery') ,   
+                                        ]);    
+                                    }                     
+                                }                            
+                            
                         } else{
                             foreach ($filesUpdate as $fileAdd) {
                                 Foto_gallery::create([
