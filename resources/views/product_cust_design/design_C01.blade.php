@@ -398,7 +398,7 @@
                     <div class="judul-1" data-sal="flip-up" data-sal-duration="800">Save The Date</div>
                     <div class="judul-2" data-sal="flip-up" data-sal-duration="800" data-sal-delay="200">wedding of</div>
                     <div class="judul-1" data-sal="flip-up" data-sal-duration="800" data-sal-delay="400">{{ empty($tmplt_custr) ? "Henry Fernandez" : $tmplt_custr->nama_mempelai_pria }} &amp; {{ empty($tmplt_custr) ? "Laura Basuki Kirana" : $tmplt_custr->nama_mempelai_wanita }}</div>
-                    <div class="judul-3" data-sal="flip-up" data-sal-duration="800" data-sal-delay="600">On February 02, 2020</div>
+                    <div class="judul-3" data-sal="flip-up" data-sal-duration="800" data-sal-delay="600">On {{date('l, d F Y', strtotime($tmplt_custr->tgl_akad))}}</div>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 pad-nol">
                     {{--  --}}
@@ -481,10 +481,12 @@
                     <div class="box-akad">
                         <div class="bag4-judul py-2">Akad</div>
                         <div class="bag4-tempat py-2">
-                            Minggu, <?php echo date('d F Y', strtotime('1994-02-15'))?> <br>
-                            08.00 s/d selesai <br>
-                            Mason Pine Hotel Bandung <br>
-                            ( Pine Garden Area ) <br> 
+                            <?= empty($tmplt_custr) ? 'March 20 2021' :  date('l, d F Y', strtotime($tmplt_custr->tgl_akad))?> <br>
+                            <?= empty($tmplt_custr) ? '08.00' :  date('h.i', strtotime($tmplt_custr->tgl_akad))?> s/d Selesai<br>
+                            <?= empty($tmplt_custr) ? '' : $tmplt_custr->gedung_akad?><br>
+                            <?= empty($tmplt_custr) ? '--' :  $tmplt_custr->lokasi_akad?><br>
+                            {{-- Mason Pine Hotel Bandung <br> --}}
+                            {{-- ( Pine Garden Area ) <br>  --}}
                         <br>
                             Merupakan suatu kehormatan apabila <br>
                             Bapak/Ibu/Saudara/i dapat hadir <br>
@@ -504,10 +506,14 @@
                     <div class="box-akad">
                         <div class="bag4-judul py-2">Resepsi</div>
                         <div class="bag4-tempat py-2">
-                            Minggu, 02 Februari 2020 <br>
+                            <?= empty($tmplt_custr) ? 'March 20 2021' :  date('l, d F Y', strtotime($tmplt_custr->tgl_resepsi))?> <br>
+                            <?= empty($tmplt_custr) ? '08.00' :  date('h.i', strtotime($tmplt_custr->tgl_resepsi))?> s/d Selesai<br>
+                            <?= empty($tmplt_custr) ? '' : $tmplt_custr->gedung_resepsi?><br>
+                            <?= empty($tmplt_custr) ? '--' :  $tmplt_custr->lokasi_akad?><br>
+                            {{-- Minggu, 02 Februari 2020 <br>
                             11.00 s/d selesai <br>
                             Mason Pine Hotel Bandung <br>
-                            ( Pine Garden Area ) <br> 
+                            ( Pine Garden Area ) <br>  --}}
                         <br>
                             Merupakan suatu kehormatan apabila <br>
                             Bapak/Ibu/Saudara/i dapat hadir <br>
@@ -520,7 +526,6 @@
     </div>
     {{-- MAPS  --}}
     <div class="row" style="margin-top:1em">
-
         <div id = "googleMap" style = "width:100%; height:600px;"></div>
     </div>
     {{-- END MAPS  --}}
@@ -629,8 +634,9 @@ function initialize() {
 
 // event jendela di-load  
 google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+
 // END JS GOOGLE MAPS 
+</script>
 
 <script>
 // Set the date we're counting down to

@@ -83,6 +83,8 @@ class AdminTemplateCustomerController extends Controller
                 'latitude'=> $request->latitude,
                 'longitude'=> $request->longitude,
                 'aktif_flag'=> 'Y',
+                'gedung_akad'=> $request->gedung_akad,
+                'gedung_resepsi'=> $request->gedung_resepsi,
             ]);
             $files = $request->file('path_foto');
             if($request->file('path_foto'))
@@ -141,7 +143,9 @@ class AdminTemplateCustomerController extends Controller
                 'path_video'=> $request->path_video,
                 'deskripsi'=> $request->deskripsi,  
                 'latitude'=> $request->latitude,
-                'longitude'=> $request->longitude,    
+                'longitude'=> $request->longitude,
+                'gedung_akad'=> $request->gedung_akad,
+                'gedung_resepsi'=> $request->gedung_resepsi,    
             ]);
             $filesUpdate = $request->file('path_foto_update');
             // dd($filesUpdate);
