@@ -134,7 +134,12 @@ class DashboardController extends Controller
                     <a data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open_modal_update"><i class="far fa-edit"></i></a>
                     <a data-toggle="modal" href="#" value="'.$query->id.'"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
                     ' ;
-                })->make();
+                })
+                 ->editColumn('aktif_flag', function($query) {
+                    return $query->aktif_flag == 'Y' ? 'Aktif' : 'Tidak Aktif';
+                })
+                
+                ->make();
         }
        return view('admin.web-company.web-company' , ['user' => $user]);
         //

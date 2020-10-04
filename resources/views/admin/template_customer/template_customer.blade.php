@@ -322,132 +322,24 @@ Template Customer
                         <p>Lengkapi data berikut</p>
                      </div>
                        <div class="row">
+                        @for ($index = 1; $index <= 9; $index++)
                            <div class="col-12 col-md-4">
-                                <div class="form-group">
+                                <div class="form-group" id="test">
                                     <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery1">
-                                        <input type="text" class="form-control" id="command_gallery1" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery1">Choose file</label>
-                                    </div>
+                                        <div class="custom-file test">
+                                            <input type="file" value="{{ $index }}" name="path_foto[]"  class="custom-file-input galler_foto" id="imgInpGallery{{ $index }}">
+                                            <input type="text" class="form-control" id="command_gallery{{ $index }}" name="command_gallery[]" style="display: none">
+                                            <div id="appendTo"></div>
+                                            <label class="custom-file-label" for="imgInpGallery1">Choose file</label>
+                                        </div>
+                                        <a data-toggle="modal" href="#" onclick="thisRemoveImage( 'img-uploadGallery{{ $index }}' , 'imgInpGallery{{ $index }}')" class="remove"><i class="far fa-trash-alt"></i></a>
                                 </div>
-                                <a onclick="thisFileUpload('imgInpGallery1')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery1" style="width : 200px; heigth: 200px" />
+                                <a onclick="thisFileUpload('imgInpGallery{{ $index }}')">
+                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery{{ $index }}" style="width : 200px; heigth: 200px" />
                                 </a>
                              </div>
                            </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery2">
-                                       <input type="text" class="form-control" id="command_gallery2" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery2">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery2')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery2" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery3">
-                                        <input type="text" class="form-control" id="command_gallery3" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery3">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery3')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery3" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery4">
-                                        <input type="text" class="form-control" id="command_gallery4" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery4">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery4')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery4" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery5">
-                                        <input type="text" class="form-control" id="command_gallery5" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery5">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery5')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery5" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery6">
-                                        <input type="text" class="form-control" id="command_gallery6" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery6">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery6')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery6" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery7">
-                                        <input type="text" class="form-control" id="command_gallery7" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery7">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery7')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery7" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                           <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery8">
-                                        <input type="text" class="form-control" id="command_gallery8" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery8">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery8')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery8" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <div   div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" name="path_foto[]"  class="custom-file-input" id="imgInpGallery9">
-                                        <input type="text" class="form-control" id="command_gallery9" value="" name="command_gallery[]" style="display: none">
-                                        <label class="custom-file-label" for="imgInpGallery9">Choose file</label>
-                                    </div>
-                                </div>
-                                <a onclick="thisFileUpload('imgInpGallery9')">
-                                    <img src="{{ asset('/assets/images/add-image.png') }}" class="img-thumbnail" id="img-uploadGallery9" style="width : 200px; heigth: 200px" />
-                                </a>
-                             </div>
-                           </div>
+                        @endfor
                        </div>
                         <input type="text" class="form-control" value="add" style="display:none" id="command" name="command">
                         <input type="text" class="form-control" value="" style="display:none" id="command_gallery" name="command_gallery[]">
@@ -656,6 +548,17 @@ i.material-icons {
 
 <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 <script>
+
+    var input_gallery = document.querySelectorAll('input.galler_foto');
+    input_gallery.forEach((element, indx) => {
+        element.addEventListener("click",_=>{
+            var gallery_id = $('#command_gallery'+ (indx+1)).val();
+            console.log(gallery_id)
+            console.log(indx+1)
+             $("#appendTo").append(" <input type='hidden' name='gallery_id[]' value='"+gallery_id+"' id='gallery_id' class='form-control' id=''>");
+        });
+    });
+    
 CKEDITOR.replace("deskripsi");
   function thisFileUpload(fileId) {
     document.getElementById(fileId).click();
@@ -690,33 +593,12 @@ CKEDITOR.replace("deskripsi");
             }
             function resetFormGallery(){
                 console.log('resetFormgallery')
-              $('#command_gallery1').val('');
-              $('#command_gallery2').val('');
-              $('#command_gallery3').val('');
-              $('#command_gallery4').val('');
-              $('#command_gallery5').val('');
-              $('#command_gallery6').val('');
-              $('#command_gallery7').val('');
-              $('#command_gallery8').val('');
-              $('#command_gallery9').val('');
-              $('#imgInpGallery1').attr('name', 'path_foto[]');
-              $('#imgInpGallery2').attr('name', 'path_foto[]');
-              $('#imgInpGallery3').attr('name', 'path_foto[]');
-              $('#imgInpGallery4').attr('name', 'path_foto[]');
-              $('#imgInpGallery5').attr('name', 'path_foto[]');
-              $('#imgInpGallery6').attr('name', 'path_foto[]');
-              $('#imgInpGallery7').attr('name', 'path_foto[]');
-              $('#imgInpGallery8').attr('name', 'path_foto[]');
-              $('#imgInpGallery9').attr('name', 'path_foto[]');
-              $('#img-uploadGallery1').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery2').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery3').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery4').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery5').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery6').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery7').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery8').attr('src', '/assets/images/add-image.png');
-              $('#img-uploadGallery9').attr('src', '/assets/images/add-image.png');
+                for(var index = 1; index <= 9; index++){
+                    $('#command_gallery'+index).val('');
+                    $('#imgInpGallery'+index).attr('name', 'path_foto[]');
+                    $('#img-uploadGallery'+index).attr('src', '/assets/images/add-image.png');
+
+                }
         }
 
     $(document).ready(function() {
@@ -818,7 +700,6 @@ CKEDITOR.replace("deskripsi");
             var url = "/getTemplateCustomerById";
             var tour_id = $(this).attr("value");
             $.get(url + '/' + tour_id, function(data) {
-                //success data
                 console.log('id : ', data);
                 $('#links').val(data.links);
                 $('#img-upload3').attr('src', 'storage/' + data.banner);
@@ -850,52 +731,15 @@ CKEDITOR.replace("deskripsi");
             })
             $.get('/getFotoGalleryById/' + tour_id, function(data) {
                 //success data
-                console.log('data : ', data);
-                for (i = 0; i < data.length; ++i) {       
-                    if(data[0] != undefined ){
-                        $('#command_gallery1').val(data[0].id);
-                         $('#imgInpGallery1').attr('name', 'path_foto_update[]');
-                        $('#img-uploadGallery1').attr('src', 'storage/' + data[0].path_foto);
+                indexID = 1
+                for (i = 0; i < data.length; i++) {  
+                    // console.log(i)
+                    if(data[i] != undefined ){
+                        $('#command_gallery'+indexID).val(data[i].id);
+                        //  $('#imgInpGallery'+indexID).attr('name', 'path_foto_update[]');
+                        $('#img-uploadGallery'+indexID).attr('src', 'storage/' + data[i].path_foto);
                     } 
-                    if(data[1] != undefined ){
-                        $('#img-uploadGallery2').attr('src', 'storage/' + data[1].path_foto);
-                         $('#imgInpGallery2').attr('name', 'path_foto_update[]');
-                        $('#command_gallery2').val(data[1].id);
-                    } 
-                    if(data[2] != undefined ){
-                        $('#img-uploadGallery3').attr('src', 'storage/' + data[2].path_foto);
-                         $('#imgInpGallery3').attr('name', 'path_foto_update[]');
-                        $('#command_gallery3').val(data[2].id);
-                    } 
-                    if(data[3] != undefined ){
-                        $('#img-uploadGallery4').attr('src', 'storage/' + data[3].path_foto);
-                         $('#imgInpGallery4').attr('name', 'path_foto_update[]');
-                        $('#command_gallery4').val(data[3].id);
-                    } 
-                    if(data[4] != undefined ){
-                        $('#img-uploadGallery5').attr('src', 'storage/' + data[4].path_foto);
-                         $('#imgInpGallery5').attr('name', 'path_foto_update[]');
-                        $('#command_gallery5').val(data[4].id);
-                    } 
-                    if(data[5] != undefined ){
-                        $('#img-uploadGallery6').attr('src', 'storage/' + data[5].path_foto);
-                        $('#imgInpGallery6').attr('name', 'path_foto_update[]');
-                        $('#command_gallery6').val(data[5].id);
-                    } 
-                    if(data[6] != undefined ){
-                        $('#img-uploadGallery7').attr('src', 'storage/' + data[6].path_foto);
-                        $('#imgInpGallery7').attr('name', 'path_foto_update[]');
-                        $('#command_gallery7').val(data[6].id);
-                    } 
-                    if(data[7] != undefined ){
-                        $('#img-uploadGallery8').attr('src', 'storage/' + data[7].path_foto);
-                        $('#command_gallery8').val(data[7].id);
-                    } 
-                    if(data[8] != undefined ){
-                        $('#img-uploadGallery9').attr('src', 'storage/' + data[8].path_foto);
-                        $('#imgInpGallery9').attr('name', 'path_foto_update[]');
-                        $('#command_gallery9').val(data[8].id);
-                    } 
+                    indexID++
                 }
             })
 
@@ -1013,8 +857,6 @@ for (let i = 0; i < boxes.length; i++) {
   initImageUpload(box);
 }
 
-
-
 /// drop-effect
 function initDropEffect(box){
   let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
@@ -1060,6 +902,12 @@ function initDropEffect(box){
     
   }
 }
+
+ function thisRemoveImage( image, input){
+     console.log('remove  '  + input)
+        $('#'+image).attr('src', '/assets/images/add-image.png');
+        $('#'+input).val('');
+    }
 
     
 </script>
