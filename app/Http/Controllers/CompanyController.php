@@ -7,13 +7,14 @@ use App\TemplateCompany;
 use Illuminate\Support\Facades\DB;
 use App\TemplateType;
 use App\TemplateDesign;
+use App\Testimoni;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        $user_testimonis = User::with(['testimoni'])->get();
+        $user_testimonis = Testimoni::all(); 
         $companys = Company::where('aktif_flag', 'Y')->first();
 
         $templateType = TemplateType::all();

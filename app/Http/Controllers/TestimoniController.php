@@ -50,9 +50,11 @@ class TestimoniController extends Controller
 
     public function addTestimoni(Request $request)
     {
+            $path_foto = $request->file('pathPhoto')->store('testimoni');
             Testimoni::create([
             'user_id' =>  $request->userId,
             'nama' => $request->nama,
+            'path_foto' => $path_foto,
             'deskripsi'=> $request->deskripsi ,
             'rating'=> $request->rating,
         ]);
