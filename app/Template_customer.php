@@ -13,5 +13,9 @@ class Template_customer extends Model
         'nama_orang_tua_pria_ibu','nama_orang_tua_wanita_bapak','nama_orang_tua_wanita_ibu','lokasi_akad','tgl_akad','tgl_resepsi', 'banner',
         'path_foto_pria','path_foto_wanita','path_video','deskripsi','latitude','longitude','aktif_flag','gedung_akad','gedung_resepsi'
    ];
+
+    public function subItems() {
+        return $this->belongsTo(GuestBook::class, 'template_id', 'id');
+    }
     //
 }
