@@ -126,11 +126,10 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
 //NEW INDEX PAGE
 Route::get('/indexbaru', function() {
     return view('indexbaru');
-});
-
-Route::get('/debug-sentry', function () {
-    throw new Exception('My first Sentry error!');
 });
