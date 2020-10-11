@@ -63,14 +63,15 @@ Testimoni
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body"
+                <div class="modal-body">
                     <form action="{{url('/create-testimoni')}}" method="POST" enctype="multipart/form-data">
+                        
                         @csrf
 
                         <div class="form-group">
                             <label for="country">Pilih User</label>
-                            <select name="country" class="form-control" style="width:250px">
-                               <option value="Pilih .... "></option>
+                            <select class="form-control" placeholder="userId" name="userId" value="" id="userId">
+                               <option value="">...</option>
                                @foreach($userDropdown as $usr)
                                <option value="{{ $usr->id }}"> {{ $usr->name }} </option>
                                @endforeach
@@ -78,20 +79,45 @@ Testimoni
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="userId" placeholder="userId" name="userId" value="">
+                            <label>Image Banner 1</label>
+                            <br>
+                            <div class="input-group center-form">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" accept="image/*" id="imgInp"  name="pathPhoto" class="custom-file-input" style="z-index: 1" required>
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" readonly>
+                            </div>
+                            <img class="img-thumbnail" id='img-upload' style="width : 200px; heigth: 200px" />
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <input type="text" class="form-control" id="pathPhoto" placeholder="pathPhoto" name="pathPhoto" value="">
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <input type="text" class="form-control" id="nama" placeholder="nama" name="nama" value="">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="deskripsi" placeholder="deskripsi" name="deskripsi" value="">
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="rating" placeholder="rating" name="rating" value="">
+                        <div>
+                            <label for="rating">Rating</label>
                         </div>
+                        <div class="stars">
+                            <input class="star star-5" id="star-5" type="radio" name="rating" value="5"/>
+                            <label class="star star-5" for="star-5"></label>
+                            <input class="star star-4" id="star-4" type="radio" name="rating" value="4"/>
+                            <label class="star star-4" for="star-4"></label>
+                            <input class="star star-3" id="star-3" type="radio" name="rating" value="3"/>
+                            <label class="star star-3" for="star-3"></label>
+                            <input class="star star-2" id="star-2" type="radio" name="rating" value="2"/>
+                            <label class="star star-2" for="star-2"></label>
+                            <input class="star star-1" id="star-1" type="radio" name="rating" value="1"/>
+                            <label class="star star-1" for="star-1"></label>
+                        </div>
+                        {{-- <div class="form-group">
+                            <input type="text" class="form-control" id="rating" placeholder="rating" name="rating" value="">
+                        </div> --}}
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -162,7 +188,7 @@ Testimoni
                     
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                    <button type="submit" class="btn btn-primary ">Konfirmasi</button>
                 </div>
                 </form>
             </div>
@@ -229,6 +255,7 @@ $(document).ready( function() {
 		    }
 	    
 		});
+
 		function readURL(input) {
 		    if (input.files && input.files[0]) {
 		        var reader = new FileReader();
@@ -287,4 +314,40 @@ $(document).ready( function() {
          });
 </script>
 
+<style>
+    div.stars {
+    width: 270px;
+    display: inline-block;
+    }
+
+    input.star { display: none; }
+
+    label.star {
+    float: right;
+    padding: 10px;
+    font-size: 36px;
+    color: #444;
+    transition: all .2s;
+    }
+
+    input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+    }
+
+    input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+    }
+
+    input.star-1:checked ~ label.star:before { color: #F62; }
+
+    label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+    label.star:before {
+    content: '\f006';
+    font-family: FontAwesome;
+    }
+</style>
 @endsection

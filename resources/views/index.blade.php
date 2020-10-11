@@ -326,20 +326,18 @@
 				<div class="text-center">
 					<div class="row">
 					@foreach($user_testimonis as $testimonis)
-						@if(!empty($testimonis->testimoni))
 						<div class="col-md-6">
 							<div class="testi-w3pvt-grid">
 								<p>
-									<span class="fa fa-quote-left"></span>{{$testimonis->testimoni->deskripsi}}
+									<span class="fa fa-quote-left"></span>{{$testimonis->deskripsi}}
 									<span class="fa ml-2 fa-quote-right"></span>
 								</p>
 							</div>
 							<div class="testi-pos">
-								<img src="assets/images/ts1.jpg" alt="" class="img-fluid rounded-circle mb-3" />
+								<img src="{{ url('storage' , $testimonis->path_foto )}}" alt="" class="img-fluid rounded-circle mb-3" />
 								<h4>{{$testimonis->name}}</h4>
 							</div>
 						</div>
-						@endif
 					@endforeach
 					</div>
 				</div>

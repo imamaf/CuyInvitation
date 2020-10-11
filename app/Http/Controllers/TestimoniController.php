@@ -13,7 +13,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class TestimoniController extends Controller
 {
-        
+
 // --------------------- CONTROLLER PAGE TESTIMONI ADMIN DASHBOARD  ----------------------
 
      // DATATABLE TESTIMONI
@@ -50,9 +50,11 @@ class TestimoniController extends Controller
 
     public function addTestimoni(Request $request)
     {
+            $path_foto = $request->file('pathPhoto')->store('testimoni');
             Testimoni::create([
             'user_id' =>  $request->userId,
             'nama' => $request->nama,
+            'path_foto' => $path_foto,
             'deskripsi'=> $request->deskripsi ,
             'rating'=> $request->rating,
         ]);
@@ -74,11 +76,11 @@ class TestimoniController extends Controller
     }
 
     //Delete List User
-    public function deleteTestimoni(Testimoni $testimoni) 
+    public function deleteTestimoni(Testimoni $testimoni)
     {
         $testimoni->delete();
         Alert::success('Berhasil' , 'Data Berhasil Dihapus' );
         return redirect('/testimoni');
     }
-    
+
 }

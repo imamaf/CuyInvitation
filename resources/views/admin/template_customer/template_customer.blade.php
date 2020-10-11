@@ -105,6 +105,12 @@ Template Customer
                         <div class="form-group">
                             <input type="text" readOnly class="form-control" id="deskripsi_view" placeholder="Deskripsi" name="deskripsi_view">
                         </div>
+                        <div class="form-group">
+                            <input type="text" readOnly class="form-control" id="gedung_akad_view" placeholder="Gedung Akad" name="gedung_akad_view">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" readOnly class="form-control" id="gedung_resepsi_view" placeholder="Gedung Resepsi" name="gedung_resepsi_view">
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         </div>
@@ -188,6 +194,13 @@ Template Customer
                                 <input type="text" class="form-control" id="longitude" placeholder="Longitude" name="longitude">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="gedung_akad" placeholder="Nama Gedung Akad" name="gedung_akad">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="gedung_resepsi" placeholder="Nama Gedung Resepsi" name="gedung_resepsi">
+                            </div>
                         <div class="form-group">
                             <label>Keterangan</label>
                             <textarea name="deskripsi" id="deskripsi"> </textarea>
@@ -574,6 +587,8 @@ CKEDITOR.replace("deskripsi");
                 $('#deskripsi').val('');
                 $('#latitude').val('');
                 $('#longitude').val('');
+                $('#gedung_akad').val('');
+                $('#gedung_resepsi').val('');
                 $('#actionAddTemplateCustomer').attr('action' , '/add/template-customer/');
             }
             function resetFormGallery(){
@@ -705,6 +720,9 @@ CKEDITOR.replace("deskripsi");
                 $('#longitude').val(data.longitude);
                 $('#tgl_akad').val(data.tgl_akad);
                 $('#tgl_resepsi').val(data.tgl_resepsi);
+                $('#gedung_akad').val(data.gedung_akad);
+                $('#gedung_resepsi').val(data.gedung_resepsi);
+                $('#gedung_resepsi').val('');
                 var editor = CKEDITOR.instances['deskripsi'];  
                 editor.setData(data.deskripsi);
                 $('#command').val("update");
@@ -745,10 +763,8 @@ CKEDITOR.replace("deskripsi");
     $(document).on('click', '.open_modal_view', function() {
             var url = "/getTemplateCustomerById";
             var tour_id = $(this).attr("value");
-                console.log('id : ', tour_id);
             $.get(url + '/' + tour_id, function(data) {
                 //success data
-                console.log('data : ', data);
                 $('#links_view').val(data.links);
                 $('#nama_mempelai_pria_view').val(data.nama_mempelai_pria);
                 $('#nama_mempelai_wanita_view').val(data.nama_mempelai_wanita);
@@ -760,6 +776,8 @@ CKEDITOR.replace("deskripsi");
                 $('#tgl_akad_view').val(data.tgl_akad);
                 $('#tgl_resepsi_view').val(data.tgl_resepsi);
                 $('#deskripsi_view').val(data.deskripsi);
+                $('#gedung_akad_view').val(data.gedung_akad);
+                $('#gedung_resepsi_view').val(data.gedung_resepsi);
                 $('#btn-save').val("update");
                 $('#modalView').modal('show');
             })

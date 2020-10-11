@@ -82,8 +82,14 @@
                             <p>Transaksi</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ 'GuestBook' == request()->path() ? 'active' : '' }} ">
+                        <a class="nav-link" href="{{url('/guestbook')}}">
+                            <i class="material-icons">library_books</i>
+                            <p>Buku Tamu</p>
+                        </a>
+                    </li>
                     <li class="nav-item" style="position: absolute; bottom: 10px;">
-                        <a 
+                        <a
                         href="{{ route('logout') }}"
                          onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();"
@@ -138,7 +144,7 @@
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <div class="dropdown-divider"></div>
-                                    <a 
+                                    <a
                                     href="{{ route('logout') }}"
                                       onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();"
@@ -254,7 +260,7 @@
     <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
-    
+
     <script>
         $(document).ready(function() {
             $().ready(function() {
