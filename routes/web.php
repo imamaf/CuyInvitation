@@ -120,3 +120,7 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
+//NEW INDEX PAGE
+Route::get('/indexbaru', function() {
+    return view('indexbaru');
+});
