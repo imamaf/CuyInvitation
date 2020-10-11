@@ -100,6 +100,13 @@ Route::post('/add-komentar', 'KomentarController@addKomentar');
 Route::get('/approve-komentar', 'KomentarController@approveKomentar');
 Route::delete('/delete-komentar/{komentar}', 'KomentarController@deleteKomentar');
 
+
+//Buku Tamu
+Route::get('/guestbook', 'GuestBookController@datatable');
+Route::get('/getid/{id}', 'GuestBookController@store');
+Route::delete('/delete-guestbook/{guestBook}', 'GuestBookController@destroy');
+Route::put('/update-guestbook/{guestBook}', 'GuestBookController@edit');
+
 // Route::get('/design_C02', function () {
 //     return view('product_design.design_C02');
 // });
