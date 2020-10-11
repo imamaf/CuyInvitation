@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"><!-- bootstrap css -->
     <link href="{{ asset('assets/css/new-style.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -54,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="jumbotron-title">
+                    <div class="jumbotron-title" data-aos="fade-up">
                         <div class="title-banner">
                             <h1 class="text-1">Website & Undangan</h1>
                             <h1 class="text-2">Pernikahan Digital</h1>
@@ -68,7 +69,7 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="img-banner">
+                    <div class="img-banner" data-aos="fade-left">
                         <img src="../assets/img/img-banner.png" alt="">
                     </div>
                 </div>
@@ -90,7 +91,7 @@
                 <div class="services-content">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="text">
+                            <div class="text" data-aos="fade-right">
                                 <img src="../assets/img/icon-1.svg" alt="">
                                 <div class="main">
                                     <h3>Halaman Undangan Pernikahan</h3>
@@ -101,7 +102,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="text">
+                            <div class="text" data-aos="fade-left">
                                 <img src="../assets/img/icon-2.svg" alt="">
                                 <div class="main">
                                     <h3>Database Kehadiran</h3>
@@ -113,7 +114,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="text">
+                            <div class="text" data-aos="fade-right">
                                 <img src="../assets/img/icon-3.svg" alt="">
                                 <div class="main">
                                     <h3>Musik & Gallery Foto</h3>
@@ -125,7 +126,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="text">
+                            <div class="text" data-aos="fade-left">
                                 <img src="../assets/img/icon-6.svg" alt="">
                                 <div class="main">
                                     <h3>Peta Lokasi Tepat</h3>
@@ -137,7 +138,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="text">
+                            <div class="text" data-aos="fade-right">
                                 <img src="../assets/img/icon-5.svg" alt="">
                                 <div class="main">
                                     <h3>Countdown Hari Besarmu</h3>
@@ -148,7 +149,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="text">
+                            <div class="text" data-aos="fade-left">
                                 <img src="../assets/img/icon-4.svg" alt="">
                                 <div class="main">
                                     <h3>Link Special</h3>
@@ -170,7 +171,7 @@
 
     <div class="additional">
         <div class="content">
-            <div class="card-content">
+            <div class="card-content" data-aos="fade-up">
                 <div class="text">
                     <h3>Make a Beautiful Homepage
                         For Your<br>
@@ -201,7 +202,7 @@
                 <div class="catalog-content">
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 transform-on-hover">
+                            <div class="card border-0 transform-on-hover" data-aos="zoom-in-up">
                                 <a class="lightbox" href="#">
                                     <img src="../assets/img/catalog-1.jpg" alt="Card Image" class="card-img-top">
                                 </a>
@@ -214,7 +215,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 transform-on-hover">
+                            <div class="card border-0 transform-on-hover" data-aos="zoom-in-up">
                                 <a class="lightbox" href="#">
                                     <img src="../assets/img/catalog-2.jpg" alt="Card Image" class="card-img-top">
                                 </a>
@@ -227,7 +228,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 transform-on-hover">
+                            <div class="card border-0 transform-on-hover" data-aos="zoom-in-up">
                                 <a class="lightbox" href="#">
                                     <img src="../assets/img/catalog-1.jpg" alt="Card Image" class="card-img-top">
                                 </a>
@@ -240,7 +241,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 transform-on-hover">
+                            <div class="card border-0 transform-on-hover" data-aos="zoom-in-up">
                                 <a class="lightbox" href="#">
                                     <img src="../assets/img/catalog-2.jpg" alt="Card Image" class="card-img-top">
                                 </a>
@@ -253,7 +254,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 transform-on-hover">
+                            <div class="card border-0 transform-on-hover" data-aos="zoom-in-up">
                                 <a class="lightbox" href="#">
                                     <img src="../assets/img/catalog-1.jpg" alt="Card Image" class="card-img-top">
                                 </a>
@@ -266,7 +267,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 transform-on-hover">
+                            <div class="card border-0 transform-on-hover" data-aos="zoom-in-up">
                                 <a class="lightbox" href="#">
                                     <img src="../assets/img/catalog-2.jpg" alt="Card Image" class="card-img-top">
                                 </a>
@@ -286,7 +287,7 @@
 
     <div class="additional">
         <div class="content">
-            <div class="quotes-content">
+            <div class="quotes-content" data-aos="fade-down">
                 <div class="text">
                     <h3>Sebarkan kabar bahagiamu dengan mudah,
                         Kirim link undangan pada teman,
@@ -311,7 +312,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimoni-content">
+                <div class="testimoni-content" data-aos="fade-up">
                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Carousel indicators -->
                         <ol class="carousel-indicators">
@@ -378,7 +379,7 @@
                 </div>
                 <div class="faq-content">
                     <div class="row">
-                        <div class="col-sm-6 accordionTwo">
+                        <div class="col-sm-6 accordionTwo" data-aos="fade-up-right">
                             <div class="panel-group" id="accordionTwoLeft">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -447,7 +448,7 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6 accordionTwo">
+                        <div class="col-sm-6 accordionTwo" data-aos="fade-up-left">
                             <div class="panel-group" id="accordionTwoRight">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -526,7 +527,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="col-md-3 col-sm-3">
                             <h5>Contact Us</h5>
                             <p>
                                 WA : +6285695398738 <br>
@@ -536,7 +537,7 @@
                                 Jakarta - Selatan 12630
                             </p>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="col-md-3 col-sm-3">
                             <h5>Fitur</h5>
                             <ul>
                                 <li>Page Website</li>
@@ -547,14 +548,14 @@
                                 <li>Peta Lokasi</li>
                             </ul>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="col-md-3 col-sm-3">
                             <h5>Home</h5>
                             <h5>Services</h5>
                             <h5>Catalog</h5>
                             <h5>Testimony</h5>
                             <h5>FAQ</h5>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="col-md-3 col-sm-3">
                             <h5>Instagram</h5>
                             <ul>
                                 <li>@cuyinvitation</li>
@@ -576,6 +577,12 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1300
+        });
+    </script>
 </body>
 
 </html>
