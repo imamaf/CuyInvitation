@@ -112,7 +112,8 @@
 
             <div class="col-md-7 col-sm-12">
                 <div class="signup-form" data-aos="fade-up">
-                    <form>
+                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                        @csrf
                         <div class="form-group row">
                             <label for="email" class="col-sm-3 col-form-label">Email Address</label>
                             <div class="col-sm-5">
@@ -135,10 +136,11 @@
                                 @endif
                             </div>
                         </div>
-                    </form>
+                   
                     <div class="signup-button">
                         <button type="submit" class="btn-signup">
-                            <a>Login</a><i class="fa fa-arrow-right"></i>
+                            <a> {{ __('Login') }}
+                            </a><i class="fa fa-arrow-right"></i>
                         </button>
                         <a class="btn btn-link" href="{{ route('password.request') }}">Forgot Your Password?</a>
                     </div>
@@ -147,7 +149,7 @@
                     </div>
                 </div>
             </div>
-
+            </form>
         </div>
     </div>
 </div>
