@@ -134,3 +134,6 @@ Route::get('/debug-sentry', function () {
 Route::get('/indexbaru', function() {
     return view('indexbaru');
 });
+Route::get('/guestbook', function() {
+    return view('guestbook');
+});
