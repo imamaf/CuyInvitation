@@ -75,6 +75,7 @@ textarea::-webkit-input-placeholder {
     font-size: 14px;
     border-radius: 10px;
     height: 40px;
+    width: 80%;
 }
 
 .login-footer {
@@ -87,6 +88,58 @@ textarea::-webkit-input-placeholder {
     text-align: center;
     font-size: 8px;
     color: #3a3a40;
+}
+
+.login-button {
+    justify-content: center;
+    display: flex;
+}
+
+.modal-body .modal-logo {
+    justify-content: center;
+    display: flex;
+}
+
+.modal-body .modal-logo img {
+    width: 20%;
+}
+
+.modal-body .modal-text {
+    font-family: 'Poppins-Regular';
+}
+
+.modal-body .modal-text h5 {
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.modal-body .modal-text h3 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal-body .modal-text .modal-text-p {
+    justify-content: center;
+    display: flex;
+}
+
+.modal-body .modal-text p {
+    text-align: center;
+    font-size: 13px;
+    width: 70%;
+}
+
+.modal-body .modal-close {
+    justify-content: center;
+    display: flex;
+}
+
+.modal-body .modal-close .btn-ok {
+    background: #72C484;
+    color: #fff;
+    width: 100px;
 }
 
 .main {
@@ -148,6 +201,23 @@ textarea::-webkit-input-placeholder {
         justify-content: center;
         display: flex;
         margin-top: 40px;
+    }
+
+    .btn-success {
+        font-family: 'Poppins-Regular';
+        color: #fff;
+        background-color: #72c484;
+        border-color: unset;
+        font-size: 14px;
+        border-radius: 10px;
+        height: 40px;
+        width: 50%;
+    }
+
+    .modal-body .modal-text p {
+        text-align: center;
+        font-size: 13px;
+        width: 50%;
     }
 }
 
