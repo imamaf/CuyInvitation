@@ -22,7 +22,7 @@ class CompanyController extends Controller
 
         $templateCompany = TemplateCompany::where('kode_type_template', 'WDDNG')->where('kode_template_design', 'MDRN')->get();
         $data = ['companys' => $companys , 'user_testimonis' => $user_testimonis, 'template_company' => $templateCompany , 'templateType' => $templateType , 'templateDesign' => $templateDesign];
-        return !is_null($companys)?view('index', $data):'';
+        return !is_null($companys)?view('indexbaru', $data):'';
         
     }
 
