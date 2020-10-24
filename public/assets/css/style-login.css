@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url('../fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../fonts/Poppins/Poppins-SemiBold.ttf');
+}
+
+.signup {
+    background-color: #FFFBEF;
+    padding: 0;
+    overflow: hidden;
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #72C484;
+    border-radius: 0;
+    overflow-x: hidden;
+    padding-top: 0;
+    z-index: 1;
+    position: relative;
+    height: 270px;
+    width: auto;
+    padding: 25px;
+    display: block;
+}
+
+.sidenav .signup-content {
+    color: #fff;
+    margin-top: 0;
+}
+
+.sidenav .signup-content h5 {
+    font-family: 'Poppins-SemiBold';
+    font-size: 30px;
+}
+
+
+.sidenav .signup-content p {
+    font-family: 'Poppins-Regular';
+    font-size: 15px;
+    letter-spacing: 0.7px;
+    width: auto;
+    margin-top: 20px;
+}
+
+.sidenav .signup-main {
+    display: flex;
+}
+
+.sidenav .card-signup {
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff1f;
+    border-radius: 10px;
+    /* position: absolute;
+    bottom: 30px; */
+    color: #fff;
+    /* margin-top: 30px; */
+}
+
+.sidenav .card-signup p {
+    font-family: 'Poppins-Regular';
+    font-size: 14px;
+}
+
+.sidenav .card-signup .login-icon {
+    display: flex;
+}
+
+.sidenav .card-signup a {
+    font-family: 'Poppins-SemiBold';
+    font-size: 18px;
+    margin-bottom: auto;
+    margin-top: auto;
+    color: #fff;
+}
+
+.sidenav .card-signup a:hover {
+    text-decoration: none;
+}
+
+.sidenav .card-signup .login-icon i {
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 10px;
+}
+
+.signup-form {
+    background: url('../img/bg-logo-hijau.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 25px;
+    z-index: 1;
+    position: relative;
+    /* height: 400px; */
+    padding: 25px;
+}
+
+.signup-form .form-group {
+    margin-bottom: 20px;
+}
+
+.signup-form label {
+    font-family: 'Poppins-Regular';
+    color: #000;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.signup-form .form-control {
+    border: none;
+    border-bottom: 1px solid #3a3a40;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.signup-form .form-control:focus {
+    box-shadow: none;
+    border-bottom: 2px solid #72C484;
+    /* background-color: #fff; */
+}
+
+.signup-form .signup-button {
+    margin-top: 20px;
+    display: flex;
+}
+
+.signup-form .signup-button a {
+    font-size: 13px;
+}
+
+.signup-form .signup-button .btn-link:focus {
+    text-decoration: underline;
+    box-shadow: none;
+}
+
+.signup-form .signup-button .btn-signup {
+    background: #FDB64B;
+    border: 0;
+    padding-left: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    width: 100px;
+    justify-content: left;
+    display: flex;
+}
+
+.signup-form .signup-button .btn-signup:hover {
+    background: #faa019;
+}
+
+.signup-form .signup-button .btn-signup a {
+    font-family: 'Poppins-Regular';
+    color: #fff;
+    font-size: 13px;
+}
+
+.signup-form .signup-button .btn-signup i {
+    color: #fff;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 10px;
+    font-size: 13px;
+}
+
+.signup-form .people-img {
+    margin-top: 30px;
+    justify-content: center;
+    display: flex;
+}
+
+.signup-form .people-img img {
+    width: 70%;
+}
+
+@media (min-width: 576px) {
+    .signup {
+        background-color: #FFFBEF;
+        padding: 20px;
+        overflow: hidden;
+    }
+
+    .sidenav {
+        height: 100%;
+        background-color: #72C484;
+        border-radius: 20px;
+        overflow-x: hidden;
+        padding-top: 20px;
+        z-index: 1;
+        position: relative;
+        height: 710px;
+        width: 60%;
+        padding: 30px;
+        display: block;
+    }
+
+    .sidenav .signup-content {
+        color: #fff;
+        margin-top: 120px;
+    }
+
+    .sidenav .signup-content p {
+        font-family: 'Poppins-Regular';
+        font-size: 15px;
+        letter-spacing: 0.7px;
+        width: 222px;
+        margin-top: 20px;
+    }
+
+    .sidenav .signup-main {
+        justify-content: center;
+        display: flex;
+    }
+
+    .sidenav .card-signup {
+        width: 300px;
+        padding: 25px;
+        background-color: #ffffff1f;
+        border-radius: 15px;
+        position: absolute;
+        bottom: 50px;
+        color: #fff;
+    }
+
+    .signup-form {
+        background: url('../img/bg-logo-hijau.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: 100px;
+        z-index: 1;
+        position: relative;
+        height: 400px;
+    }
+
+    .signup-form .people-img {
+        margin-top: 30px;
+    }
+
+    .signup-form .people-img img {
+        width: 53%;
+        margin-right: 25%;
+    }
+}
