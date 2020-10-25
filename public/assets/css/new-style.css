@@ -18,17 +18,28 @@ body {
     margin: 0;
     font-size: 100%;
     font-family: 'Poppins-Regular', sans-serif;
+    overflow-x: hidden;
 }
 
-.bg-light {
-    background-color: transparent !important;
+.bg-light-2 {
+    position: fixed;
+    top: 0;
+    background: transparent;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 15px;
-    padding-left: 15px;
+    font-family: 'Poppins-Light';
+    padding-right: 18px;
+    padding-left: 18px;
     color: #fff;
     font-size: 14px;
+}
+
+.nav-link:hover::after {
+    content: '';
+    display: block;
+    border-bottom: 3px solid #fff;
+    width: 70%;
 }
 
 .navbar-nav .active {
@@ -38,7 +49,7 @@ body {
 .jumbotron {
     background-color: #72C484;
     height: 760px;
-    margin-top: -140px;
+    /* margin-top: -140px; */
 }
 
 .jumbotron-title {
@@ -301,7 +312,6 @@ body {
     background: url('../img/bg-logo-hijau.svg');
     background-repeat: no-repeat;
     background-position: center;
-    width: 100%;
 }
 
 .testimoni-header {
@@ -590,6 +600,50 @@ a:link {
 }
 
 @media only screen and (max-width: 600px) {
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.78);
+        left: 0px;
+        right: 0px;
+        top: 90px;
+        position: fixed;
+        width: auto;
+        bottom: 0px;
+        float: none;
+        flex-direction: column;
+        z-index: 9;
+    }
+
+    .navbar-nav .nav-item {
+        height: 100px;
+        justify-content: center;
+        display: flex;
+    }
+
+    .navbar-nav .nav-item:hover {
+        height: 100px;
+        justify-content: center;
+        display: flex;
+        background-color: #72C484;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 15px;
+        padding-left: 15px;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .navbar-light .navbar-toggler {
+        border: 0;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:hover {
+        outline: none;
+    }
+
     .navbar-brand img {
         width: 70%;
     }

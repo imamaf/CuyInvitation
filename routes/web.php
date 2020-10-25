@@ -11,7 +11,6 @@
 |
 */
 //INDEX PAGE
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -127,13 +126,13 @@ Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallba
 Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
-<<<<<<< HEAD
+Route::get('/debug-sentry', function () {
+    throw new Exception('My first Sentry error!');
+});
 //NEW INDEX PAGE
 Route::get('/indexbaru', function() {
     return view('indexbaru');
 });
-=======
-Route::get('/debug-sentry', function () {
-    throw new Exception('My first Sentry error!');
+Route::get('/guestbook', function() {
+    return view('guestbook');
 });
->>>>>>> e1a52ae82cf67efd80eb444834b0bf143e494c3c
