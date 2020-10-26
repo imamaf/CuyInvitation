@@ -71,7 +71,7 @@ class DashboardController extends Controller
                     <a id="editButton" data-toggle="modal" value="'.$query->id.'" href="#" class="btn btn-edit open-update"><i class="far fa-edit"></i></a>
                     <a  data-toggle="modal" href="#" value="'.$query->id.'"  class="btn btn-delete open_modal-delete"><i class="far fa-trash-alt"></i></a>
                     ' ;
-                })->make();
+                })->make(true);
         }
        return view('admin.user-profil.list-member-user' , ['user' => $user]);
         //

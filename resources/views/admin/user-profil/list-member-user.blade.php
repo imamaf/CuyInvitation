@@ -205,7 +205,10 @@ User
                 width : '25%'
             },
 
-        ]
+        ],
+        "initComplete": function () {
+
+        }
     });
 </script>
 
