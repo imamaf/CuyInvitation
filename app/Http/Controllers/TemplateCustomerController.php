@@ -39,7 +39,7 @@ class TemplateCustomerController extends Controller
         }
         $data =['tmplt_custr' => $tmplt_custr ,'gallerys' => $gallerys , 'komentars' => $komentars ];
 
-        return !is_null($tmplt_custr) ? view('product_cust_design.design_C02', $data ) : 'NOT FOUND';
+        return !is_null($tmplt_custr) ? view('product_cust_design.testing_C02', $data ) : 'NOT FOUND';
     }
 
     public function index_tempalet_3(){

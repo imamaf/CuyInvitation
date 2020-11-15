@@ -33,6 +33,7 @@
         height: 70%;
         width: 100vw;
         display: block;
+        pointer-events: none;
     }
 
     .controlBar {
@@ -62,7 +63,7 @@
     }
 </style>
 
-<body>
+<>
     <header>
         <div class="container">
             <nav class="navbar navbar-inverse">
@@ -161,21 +162,23 @@
     </div>
 
     <!--/counter-->
-    <div class="agileinfo_counter_section">
-        <div class="wthree_title_agile">
-            <h3 class="h-t">Wedding <span>Coming Soon</span></h3>
-            <!-- <p><i class="fa fa-heart-o" aria-hidden="true"></i></p> -->
+    <section style="margin-top: 100px;">
+        <div class="agileinfo_counter_section">
+            <div class="wthree_title_agile">
+                <h3 class="h-t">Wedding <span>Coming Soon</span></h3>
+                <!-- <p><i class="fa fa-heart-o" aria-hidden="true"></i></p> -->
+            </div>
+            <p class="sub_para two">WE ARE GETTING MARRIED</p>
+            <div class="wthree-counter-agile">
+                <!--timer-->
+                <section class="examples">
+                    <div class="simply-countdown-losange" id="simply-countdown-losange"></div>
+                    <div class="clearfix"></div>
+                </section>
+            </div>
+            <div class="clearfix"></div>
         </div>
-        <p class="sub_para two">WE ARE GETTING MARRIED</p>
-        <div class="wthree-counter-agile">
-            <!--timer-->
-            <section class="examples">
-                <div class="simply-countdown-losange" id="simply-countdown-losange"></div>
-                <div class="clearfix"></div>
-            </section>
-        </div>
-        <div class="clearfix"></div>
-    </div>
+    </section>
 
     {{-- MODAL KOMENTAR  --}}
     <!-- Modal -->
