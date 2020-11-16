@@ -13,6 +13,8 @@
     <link href="{{ asset('assets/css/new-style.css') }}" rel='stylesheet' type='text/css' /><!-- custom css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="30900513-0b80-4d5b-8de4-c23d1dea15a6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </head>
 
 <body>
