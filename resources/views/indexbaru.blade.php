@@ -47,6 +47,48 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('login')}}">Login</a>
+                    </li>
+                    @if(Auth::check())
+					@if(Auth::user()->role->kode_role == 'SA')
+						<li class="nav-item dropdown">
+							<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+								Hi {{ Auth::user()->name}}
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard Admin </a>
+								<a class="dropdown-item"  href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</div>
+						</li>
+					@endif
+					@if(Auth::user()->role->kode_role == 'CSR')
+						<li class="nav-item dropdown">
+							<a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+								Hi {{ Auth::user()->name}}
+								<span class="fa fa-envelope-open"></span>{{ auth()->user()->unreadNotifications->count() }}</a>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+							@if(auth()->user()->unreadNotifications->count())
+								@foreach (auth()->user()->unreadNotifications as $notif)
+								<a class="dropdown-item" href="{{ url('/komentar-ucapan') }}">Pemberitahuan {{ $notif->data['komentar']['nama'] .' mengucapakan '. $notif->data['komentar']['deskripsi']  }} </a>
+									
+								@endforeach
+							@else
+								<a class="dropdown-item" href="{{ url('/komentar-ucapan') }}">No Pemberitahuan</span></a>
+							@endif
+							
+								<a class="dropdown-item"  href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</div>
+						</li>
+					@endif
+				@endif
                 </ul>
             </div>
         </div>

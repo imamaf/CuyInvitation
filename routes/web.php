@@ -131,7 +131,7 @@ Route::get('/debug-sentry', function () {
 });
 //NEW INDEX PAGE
 Route::get('/indexbaru', function() {
-    return view('indexbaru');
+    return view('index');
 });
 Route::get('/guestbook', function() {
     return view('guestbook');
